@@ -1,0 +1,303 @@
+/* === EAT THAT FROG - GLOBAL STYLESHEET === */
+/* Theme: Dark Mode, Focus, High Contrast */
+
+:root {
+    --bg-primary: #0f172a;       /* Deep navy background */
+    --bg-card: #1e293b;          /* Slightly lighter card background */
+    --bg-card-hover: #334155;    /* Card hover state */
+    --text-primary: #f8fafc;     /* Almost white text */
+    --text-secondary: #cbd5e1;   /* Soft grey text */
+    --text-muted: #94a3b8;       /* Muted grey for tags */
+    --accent-green: #22c55e;     /* Frog Green for buttons/highlights */
+    --accent-green-glow: #4ade80;/* Lighter green for hover */
+    --border-subtle: #334155;    /* Border color */
+    --danger-red: #ef4444;       /* For warnings/delete */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+    line-height: 1.7;
+    font-size: 16px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* === MAIN CONTENT CONTAINER === */
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px 24px 60px 24px;
+}
+
+/* === TOP NAVIGATION BAR === */
+.nav-bar {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-green);
+}
+
+.nav-badge {
+    background-color: var(--bg-card);
+    color: var(--text-muted);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* === HERO SECTION === */
+.hero {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.chapter-tag {
+    display: inline-block;
+    background-color: rgba(34, 197, 94, 0.1);
+    color: var(--accent-green);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* === FROG PHILOSOPHY BOX === */
+.frog-box {
+    background-color: var(--bg-card);
+    border-left: 4px solid var(--accent-green);
+    padding: 24px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.frog-box p {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* === CONTENT SECTIONS === */
+.content-section {
+    margin-bottom: 40px;
+}
+
+.content-section h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-green);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.content-section p {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.content-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.content-section ul li {
+    color: var(--text-secondary);
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 12px;
+}
+
+.content-section ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--accent-green);
+    font-weight: bold;
+}
+
+/* === EXAMPLE BOX === */
+.example-box {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 20px 0;
+}
+
+.example-box .example-label {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.example-box p {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* === YOUR TURN SECTION === */
+.your-turn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.your-turn h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.your-turn p {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 16px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-green);
+}
+
+/* === BUTTON === */
+.btn-complete {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin-top: 20px;
+    background-color: var(--accent-green);
+    color: #0f172a;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-complete:hover {
+    background-color: var(--accent-green-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+}
+
+/* === FOOTER NAVIGATION === */
+.footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.footer-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--accent-green);
+}
+
+.footer-nav .disabled {
+    color: var(--text-muted);
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-bar {
+        padding: 12px 16px;
+    }
+    
+    .container {
+        padding: 16px 16px 40px 16px;
+    }
+    
+    .frog-box {
+        padding: 18px;
+    }
+    
+    .frog-box p {
+        font-size: 1.05rem;
+    }
+}
