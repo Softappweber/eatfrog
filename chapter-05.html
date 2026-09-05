@@ -5,6 +5,241 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 5: Practice the ABCDE Method - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 5 SPECIFIC STYLES === */
+        
+        .abcde-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .abcde-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .abcde-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .task-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .task-input {
+            flex: 1;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .task-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-add-task {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-add-task:hover {
+            background-color: var(--accent-green-glow);
+        }
+        
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+        
+        .task-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            flex-wrap: wrap;
+        }
+        
+        .task-list li:hover {
+            border-color: var(--accent-green);
+        }
+        
+        .task-text {
+            flex: 1;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            min-width: 150px;
+        }
+        
+        .priority-selector {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .priority-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid var(--border-subtle);
+            background: none;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .priority-btn:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        
+        .priority-btn.active-a {
+            background-color: #ef4444;
+            border-color: #ef4444;
+            color: white;
+        }
+        
+        .priority-btn.active-b {
+            background-color: #f59e0b;
+            border-color: #f59e0b;
+            color: white;
+        }
+        
+        .priority-btn.active-c {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+        
+        .priority-btn.active-d {
+            background-color: #8b5cf6;
+            border-color: #8b5cf6;
+            color: white;
+        }
+        
+        .priority-btn.active-e {
+            background-color: #64748b;
+            border-color: #64748b;
+            color: white;
+        }
+        
+        .btn-delete-task {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+            padding: 0 5px;
+        }
+        
+        .btn-delete-task:hover {
+            color: #ef4444;
+        }
+        
+        .empty-state {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .btn-sort {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .btn-sort:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .sort-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .sort-result.show {
+            display: block;
+        }
+        
+        .sort-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .sort-result .a1-task {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        
+        .sort-result .other-tasks {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .sort-result .other-tasks ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+        
+        .sort-result .other-tasks li {
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .sort-result .other-tasks li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +254,7 @@
         <div class="hero">
             <span class="chapter-tag">Strategy #5</span>
             <h1>Practice the ABCDE Method</h1>
-            <p class="hero-subtitle">Organize your list by priority before you start working.</p>
+            <p class="hero-subtitle">Organize your list by priority before you start working. Not after.</p>
         </div>
 
         <div class="frog-box">
@@ -27,37 +262,101 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Take your to-do list and assign a letter to each task. 
-                "A" tasks are must-do (major consequences). "B" tasks are should-do (minor consequences). 
-                "C" tasks are nice-to-do (no consequences). "D" tasks are delegate. "E" tasks are eliminate. 
-                Always work on your A-1 task before anything else.
+                Most to-do lists are useless. They are just random collections of tasks with no hierarchy.
+                You look at 15 items and feel overwhelmed. You do the easy ones first and avoid the hard ones.
+                That is not productivity. That is cowardice disguised as busyness.
+            </p>
+            <p>
+                The ABCDE method fixes this. You assign a letter to every task:
+            </p>
+            <ul>
+                <li><strong>A Task:</strong> Must do. Serious consequences if not done. <em>Your frogs.</em></li>
+                <li><strong>B Task:</strong> Should do. Mild consequences. <em>Never do a B before all A's are done.</em></li>
+                <li><strong>C Task:</strong> Nice to do. No consequences. <em>Coffee with a friend. Organizing your desk.</em></li>
+                <li><strong>D Task:</strong> Delegate. Someone else should do this. <em>Free yourself.</em></li>
+                <li><strong>E Task:</strong> Eliminate. It doesn't matter anymore. <em>Delete it and never think about it again.</em></li>
+            </ul>
+            <p>
+                If you have multiple A tasks, number them: A-1, A-2, A-3. 
+                Your A-1 task is your biggest frog. Eat it first. Do not touch anything else until it is done.
+            </p>
+            <p>
+                <strong>Rule: Never do a B task when an A task is waiting.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Forces evaluation.</strong> You must actively decide what is truly important.</li>
-                <li><strong>Prevents overwhelm.</strong> You know exactly what to do next.</li>
-                <li><strong>Boosts efficiency.</strong> You never waste time on "C" tasks when "A" tasks are waiting.</li>
+                <li><strong>It forces evaluation.</strong> You must actively decide what truly matters.</li>
+                <li><strong>It removes overwhelm.</strong> You know exactly what to do next.</li>
+                <li><strong>It kills busywork.</strong> C, D, and E tasks no longer steal your time.</li>
+                <li><strong>It builds discipline.</strong> You train yourself to focus on A-1 before anything else.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer lists: write proposal (A-1), answer client email (B), organize Dropbox (C), 
-                post on social media (D—delegate or delete). If they spend two hours organizing Dropbox, 
-                they avoided the one task that would actually bring in money.
+                <strong>The Manager:</strong> Deepak manages a team of 8 people. His typical day is chaos. 
+                He arrives at 9 AM with 12 tasks floating in his head. Emails, meetings, reports, approvals.
+                He spends the first hour answering emails—a C task. Then he attends a meeting that could have 
+                been an email—another C task. By 5 PM, he has done nothing important.
+            </p>
+            <p>
+                Now Deepak uses ABCDE. He writes his list the night before. A-1: Complete the annual budget report 
+                (his boss needs it tomorrow). A-2: Approve the hiring plan for the new project. B: Respond to 
+                non-urgent emails. C: Organize his files. D: Delegate meeting notes to his assistant. E: Cancel 
+                the optional team lunch.
+            </p>
+            <p>
+                He arrives at 9 AM, closes his email, and works on A-1 for 90 minutes. The report is done by 10:30. 
+                The rest of the day feels light. He is in control.
             </p>
         </div>
 
+        <!-- INTERACTIVE ABCDE TASK SORTER -->
+        <div class="abcde-tool" id="abcdeTool">
+            <h3>🔤 The ABCDE Task Sorter</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Add your tasks for tomorrow. Then assign each one a letter: A, B, C, D, or E.
+                Be honest. If everything is A, nothing is A.
+            </p>
+            
+            <div class="task-input-row">
+                <input type="text" class="task-input" id="taskInput" placeholder="e.g., Complete budget report" autocomplete="off">
+                <button class="btn-add-task" id="addTaskBtn">+ Add</button>
+            </div>
+            
+            <ul class="task-list" id="taskList">
+                <!-- Tasks appear here -->
+            </ul>
+            
+            <div class="empty-state" id="emptyState">
+                Your list is empty. Add the tasks you plan to do tomorrow.
+            </div>
+            
+            <button class="btn-sort" id="sortBtn">Find My A-1 Frog</button>
+            
+            <div class="sort-result" id="sortResult">
+                <div class="result-label">Your A-1 Task</div>
+                <div class="a1-task" id="a1TaskText">—</div>
+                <div class="other-tasks" id="otherTasksText">
+                    <!-- Other tasks listed here -->
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>Write down your top 5 tasks for tomorrow. Label them A, B, C, D, or E. What is your A-1 task?</p>
-            <textarea id="chapter5Exercise" placeholder="A-1: Finish proposal for client... B: Reply to emails... C: Organize files..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just sorted your tasks using the ABCDE tool. 
+                Now write down your A-1 task in the box below. 
+                This is the ONE task you will do first thing tomorrow. No exceptions.
+            </p>
+            <textarea id="chapter5Exercise" placeholder="My A-1 task for tomorrow is..."></textarea>
             <button class="btn-complete" id="markComplete5">Mark Chapter as Complete</button>
         </div>
 
@@ -69,5 +368,195 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 5: ABCDE TASK SORTER === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+            const emptyState = document.getElementById('emptyState');
+            const sortBtn = document.getElementById('sortBtn');
+            const sortResult = document.getElementById('sortResult');
+            const a1TaskText = document.getElementById('a1TaskText');
+            const otherTasksText = document.getElementById('otherTasksText');
+            
+            let tasks = [];
+            
+            // Load saved tasks
+            const savedTasks = localStorage.getItem('frog_ch5_tasks');
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+                renderTasks();
+            }
+            
+            // Add task
+            function addTask() {
+                const text = taskInput.value.trim();
+                if (text === '') return;
+                
+                tasks.push({ id: Date.now(), text: text, priority: null });
+                taskInput.value = '';
+                saveTasks();
+                renderTasks();
+                taskInput.focus();
+            }
+            
+            // Delete task
+            function deleteTask(id) {
+                tasks = tasks.filter(function(task) {
+                    return task.id !== id;
+                });
+                saveTasks();
+                renderTasks();
+            }
+            
+            // Assign priority
+            function assignPriority(id, priority) {
+                tasks.forEach(function(task) {
+                    if (task.id === id) {
+                        task.priority = priority;
+                    }
+                });
+                saveTasks();
+                renderTasks();
+            }
+            
+            // Save to localStorage
+            function saveTasks() {
+                localStorage.setItem('frog_ch5_tasks', JSON.stringify(tasks));
+            }
+            
+            // Render task list
+            function renderTasks() {
+                taskList.innerHTML = '';
+                
+                if (tasks.length === 0) {
+                    emptyState.style.display = 'block';
+                    return;
+                }
+                
+                emptyState.style.display = 'none';
+                
+                tasks.forEach(function(task) {
+                    const li = document.createElement('li');
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'task-text';
+                    textSpan.textContent = task.text;
+                    
+                    const prioritySelector = document.createElement('div');
+                    prioritySelector.className = 'priority-selector';
+                    
+                    const priorities = ['A', 'B', 'C', 'D', 'E'];
+                    
+                    priorities.forEach(function(letter) {
+                        const btn = document.createElement('button');
+                        btn.className = 'priority-btn';
+                        btn.textContent = letter;
+                        
+                        if (task.priority === letter) {
+                            btn.classList.add('active-' + letter.toLowerCase());
+                        }
+                        
+                        btn.addEventListener('click', function() {
+                            assignPriority(task.id, letter);
+                        });
+                        
+                        prioritySelector.appendChild(btn);
+                    });
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-delete-task';
+                    deleteBtn.textContent = '✕';
+                    deleteBtn.title = 'Remove task';
+                    deleteBtn.addEventListener('click', function() {
+                        deleteTask(task.id);
+                    });
+                    
+                    li.appendChild(textSpan);
+                    li.appendChild(prioritySelector);
+                    li.appendChild(deleteBtn);
+                    taskList.appendChild(li);
+                });
+            }
+            
+            // Sort and find A-1
+            sortBtn.addEventListener('click', function() {
+                if (tasks.length === 0) {
+                    alert('Please add at least one task first.');
+                    return;
+                }
+                
+                const aTasks = tasks.filter(function(task) {
+                    return task.priority === 'A';
+                });
+                
+                const bTasks = tasks.filter(function(task) {
+                    return task.priority === 'B';
+                });
+                
+                const cTasks = tasks.filter(function(task) {
+                    return task.priority === 'C';
+                });
+                
+                const dTasks = tasks.filter(function(task) {
+                    return task.priority === 'D';
+                });
+                
+                const eTasks = tasks.filter(function(task) {
+                    return task.priority === 'E';
+                });
+                
+                if (aTasks.length === 0) {
+                    a1TaskText.textContent = 'You have no A tasks. Everything on your list is optional.';
+                    otherTasksText.innerHTML = '';
+                } else {
+                    a1TaskText.textContent = aTasks[0].text + ' (Do this first)';
+                    
+                    let otherHTML = '<strong>Your other tasks:</strong><ul>';
+                    
+                    // Remaining A tasks
+                    for (let i = 1; i < aTasks.length; i++) {
+                        otherHTML += '<li><strong>A-' + (i + 1) + ':</strong> ' + aTasks[i].text + '</li>';
+                    }
+                    
+                    // B tasks
+                    bTasks.forEach(function(task) {
+                        otherHTML += '<li><strong>B:</strong> ' + task.text + '</li>';
+                    });
+                    
+                    // C tasks
+                    cTasks.forEach(function(task) {
+                        otherHTML += '<li><strong>C:</strong> ' + task.text + '</li>';
+                    });
+                    
+                    // D tasks
+                    dTasks.forEach(function(task) {
+                        otherHTML += '<li><strong>D:</strong> ' + task.text + ' (Delegate it)</li>';
+                    });
+                    
+                    // E tasks
+                    eTasks.forEach(function(task) {
+                        otherHTML += '<li><strong>E:</strong> ' + task.text + ' (Eliminate it)</li>';
+                    });
+                    
+                    otherHTML += '</ul>';
+                    otherTasksText.innerHTML = otherHTML;
+                }
+                
+                sortResult.classList.add('show');
+            });
+            
+            addTaskBtn.addEventListener('click', addTask);
+            
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+            
+        });
+    </script>
 </body>
 </html>
