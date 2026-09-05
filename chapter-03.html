@@ -5,6 +5,208 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 3: Apply the 80/20 Rule - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 3 SPECIFIC STYLES === */
+        
+        .value-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .value-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .value-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .task-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .task-input {
+            flex: 1;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .task-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-add-task {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-add-task:hover {
+            background-color: var(--accent-green-glow);
+        }
+        
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+        
+        .task-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .task-list li:hover {
+            border-color: var(--accent-green);
+        }
+        
+        .task-list li.selected-vital {
+            border-color: var(--accent-green);
+            background-color: var(--frog-pond-bg);
+        }
+        
+        .task-number {
+            font-weight: 800;
+            color: var(--text-muted);
+            min-width: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .task-text {
+            flex: 1;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+        
+        .task-vital-badge {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: none;
+        }
+        
+        .task-list li.selected-vital .task-vital-badge {
+            display: inline-block;
+        }
+        
+        .btn-delete-task {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+            padding: 0 5px;
+        }
+        
+        .btn-delete-task:hover {
+            color: #ef4444;
+        }
+        
+        .empty-state {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .analysis-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .analysis-result.show {
+            display: block;
+        }
+        
+        .analysis-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .analysis-result .vital-few {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+        
+        .analysis-result .trivial-many {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .btn-analyze {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .btn-analyze:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .selection-hint {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +221,7 @@
         <div class="hero">
             <span class="chapter-tag">Strategy #3</span>
             <h1>Apply the 80/20 Rule</h1>
-            <p class="hero-subtitle">20% of your activities will account for 80% of your results.</p>
+            <p class="hero-subtitle">20% of your tasks produce 80% of your results. Find the 20%.</p>
         </div>
 
         <div class="frog-box">
@@ -27,37 +229,90 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Vilfredo Pareto noticed that in society, 20% of the people owned 80% of the land. 
-                This principle applies everywhere. In your work, only a small fraction of your tasks 
-                truly move the needle. Your job is to identify that vital 20% and focus on it relentlessly.
+                You have 10 tasks on your list right now. Only 2 of them matter. The other 8 are noise.
+                They feel productive. They keep you busy. But they will not move the needle.
+            </p>
+            <p>
+                Vilfredo Pareto discovered this in 1895. 20% of the people owned 80% of the land. 
+                20% of your clients give you 80% of your income. 20% of your tasks create 80% of your results.
+            </p>
+            <p>
+                <strong>Rule: Never do a "C" task when an "A" task is waiting.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Maximizes impact.</strong> You get the most reward for the least amount of effort.</li>
-                <li><strong>Prevents busywork.</strong> You stop doing tasks that feel urgent but are actually unimportant.</li>
-                <li><strong>Clarifies value.</strong> You start asking, "Is this task in my top 20% or my bottom 80%?"</li>
+                <li><strong>It exposes busywork.</strong> Most tasks feel urgent but are not important. The 80/20 rule forces you to see the difference.</li>
+                <li><strong>It multiplies your output.</strong> When you focus on the vital few, your results compound. One hour on the right task beats five hours on the wrong ones.</li>
+                <li><strong>It reduces stress.</strong> You stop trying to do everything. You accept that most things can wait, be delegated, or be deleted.</li>
+                <li><strong>It creates leverage.</strong> You become the person who knows what actually matters. That is rare and valuable.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer has 10 tasks on their list. Two of those tasks—finishing a project for a 
-                high-paying client and sending a proposal to a potential retainer client—will bring in 
-                80% of their income this month. The other 8 tasks (checking email, organizing files) 
-                will only bring in 20%. Eat the 2 frogs first.
+                <strong>The Restaurant Owner:</strong> Ramesh runs a small restaurant. He works 12 hours a day. 
+                He spends his mornings checking inventory, his afternoons arguing with suppliers, and his evenings 
+                posting on Instagram. He is exhausted and barely breaking even.
+            </p>
+            <p>
+                Then he applies the 80/20 rule. He looks at his revenue. He realizes 80% of his profit comes 
+                from just 3 menu items and a handful of regular customers. He stops wasting time on the other 
+                20 menu items that barely sell. He simplifies the menu. He focuses on delighting his regulars. 
+                He works 8 hours a day now and makes more money.
+            </p>
+            <p>
+                He didn't work harder. He worked on the right things.
             </p>
         </div>
 
+        <!-- INTERACTIVE TASK VALUE ANALYZER -->
+        <div class="value-tool" id="valueTool">
+            <h3>📊 The Task Value Analyzer</h3>
+            <p class="tool-intro">
+                <strong>Do not skip this exercise.</strong> List every task you plan to do this week. 
+                Then click on the tasks that are in your "vital few" — the 20% that will produce 80% of your results.
+            </p>
+            
+            <div class="task-input-row">
+                <input type="text" class="task-input" id="taskInput" placeholder="e.g., Write proposal for big client" autocomplete="off">
+                <button class="btn-add-task" id="addTaskBtn">+ Add</button>
+            </div>
+            
+            <ul class="task-list" id="taskList">
+                <!-- Tasks appear here -->
+            </ul>
+            
+            <div class="empty-state" id="emptyState">
+                Your list is empty. Add the tasks you plan to do this week.
+            </div>
+            
+            <div class="selection-hint" id="selectionHint" style="display:none;">
+                Click a task to mark it as part of your <strong>Vital Few</strong>. Click again to unmark.
+            </div>
+            
+            <button class="btn-analyze" id="analyzeBtn">Analyze My Tasks</button>
+            
+            <div class="analysis-result" id="analysisResult">
+                <div class="result-label">Your 80/20 Analysis</div>
+                <div class="vital-few" id="vitalFewText">—</div>
+                <div class="trivial-many" id="trivialManyText">—</div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>Look at your to-do list. Which TWO tasks, if completed today, would generate the most significant results?</p>
-            <textarea id="chapter3Exercise" placeholder="e.g., 1) Deliver final website to client  2) Pitch to new client..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just identified your vital few tasks using the analyzer above. 
+                Now write them down in the box below. These are your frogs for the week. 
+                Everything else on your list is secondary. Treat it that way.
+            </p>
+            <textarea id="chapter3Exercise" placeholder="Write your vital few tasks here. The tasks that truly matter..."></textarea>
             <button class="btn-complete" id="markComplete3">Mark Chapter as Complete</button>
         </div>
 
@@ -69,5 +324,195 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 3: TASK VALUE ANALYZER === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+            const emptyState = document.getElementById('emptyState');
+            const selectionHint = document.getElementById('selectionHint');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const analysisResult = document.getElementById('analysisResult');
+            const vitalFewText = document.getElementById('vitalFewText');
+            const trivialManyText = document.getElementById('trivialManyText');
+            
+            let tasks = [];
+            let vitalFew = [];
+            
+            // Load saved data
+            const savedTasks = localStorage.getItem('frog_ch3_tasks');
+            const savedVital = localStorage.getItem('frog_ch3_vital');
+            
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+            }
+            if (savedVital) {
+                vitalFew = JSON.parse(savedVital);
+            }
+            
+            renderTasks();
+            
+            // Add task
+            function addTask() {
+                const text = taskInput.value.trim();
+                if (text === '') return;
+                
+                tasks.push({ id: Date.now(), text: text });
+                taskInput.value = '';
+                saveTasks();
+                renderTasks();
+                taskInput.focus();
+            }
+            
+            // Delete task
+            function deleteTask(id) {
+                tasks = tasks.filter(function(task) {
+                    return task.id !== id;
+                });
+                vitalFew = vitalFew.filter(function(id) {
+                    return id !== id;
+                });
+                saveTasks();
+                saveVital();
+                renderTasks();
+            }
+            
+            // Toggle vital few
+            function toggleVital(id) {
+                if (vitalFew.includes(id)) {
+                    vitalFew = vitalFew.filter(function(vitalId) {
+                        return vitalId !== id;
+                    });
+                } else {
+                    vitalFew.push(id);
+                }
+                saveVital();
+                renderTasks();
+            }
+            
+            // Save to localStorage
+            function saveTasks() {
+                localStorage.setItem('frog_ch3_tasks', JSON.stringify(tasks));
+            }
+            
+            function saveVital() {
+                localStorage.setItem('frog_ch3_vital', JSON.stringify(vitalFew));
+            }
+            
+            // Render task list
+            function renderTasks() {
+                taskList.innerHTML = '';
+                
+                if (tasks.length === 0) {
+                    emptyState.style.display = 'block';
+                    selectionHint.style.display = 'none';
+                    return;
+                }
+                
+                emptyState.style.display = 'none';
+                selectionHint.style.display = 'block';
+                
+                tasks.forEach(function(task, index) {
+                    const li = document.createElement('li');
+                    li.dataset.id = task.id;
+                    
+                    if (vitalFew.includes(task.id)) {
+                        li.classList.add('selected-vital');
+                    }
+                    
+                    const numberSpan = document.createElement('span');
+                    numberSpan.className = 'task-number';
+                    numberSpan.textContent = index + 1;
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'task-text';
+                    textSpan.textContent = task.text;
+                    
+                    const badge = document.createElement('span');
+                    badge.className = 'task-vital-badge';
+                    badge.textContent = 'VITAL';
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-delete-task';
+                    deleteBtn.textContent = '✕';
+                    deleteBtn.title = 'Remove task';
+                    
+                    li.appendChild(numberSpan);
+                    li.appendChild(textSpan);
+                    li.appendChild(badge);
+                    li.appendChild(deleteBtn);
+                    
+                    // Toggle vital on click (except when clicking delete)
+                    li.addEventListener('click', function(e) {
+                        if (e.target !== deleteBtn) {
+                            toggleVital(task.id);
+                        }
+                    });
+                    
+                    deleteBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        deleteTask(task.id);
+                    });
+                    
+                    taskList.appendChild(li);
+                });
+            }
+            
+            // Analyze tasks
+            analyzeBtn.addEventListener('click', function() {
+                if (tasks.length === 0) {
+                    alert('Please add at least one task first.');
+                    return;
+                }
+                
+                const vitalTasks = tasks.filter(function(task) {
+                    return vitalFew.includes(task.id);
+                });
+                
+                const trivialTasks = tasks.filter(function(task) {
+                    return !vitalFew.includes(task.id);
+                });
+                
+                let vitalText = '';
+                let trivialText = '';
+                
+                if (vitalTasks.length === 0) {
+                    vitalText = 'You did not select any vital tasks. Go back and click on the tasks that truly matter.';
+                } else {
+                    vitalText = 'Your Vital Few (' + vitalTasks.length + '): ';
+                    vitalTasks.forEach(function(task, index) {
+                        vitalText += task.text;
+                        if (index < vitalTasks.length - 1) vitalText += '; ';
+                    });
+                }
+                
+                if (trivialTasks.length === 0) {
+                    trivialText = 'You have no trivial tasks. Everything on your list is vital.';
+                } else {
+                    trivialText = 'The Trivial Many (' + trivialTasks.length + '): ';
+                    trivialTasks.forEach(function(task, index) {
+                        trivialText += task.text;
+                        if (index < trivialTasks.length - 1) trivialText += '; ';
+                    });
+                    trivialText += '. These can wait, be delegated, or be deleted.';
+                }
+                
+                vitalFewText.textContent = vitalText;
+                trivialManyText.textContent = trivialText;
+                analysisResult.classList.add('show');
+            });
+            
+            addTaskBtn.addEventListener('click', addTask);
+            
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+            
+        });
+    </script>
 </body>
 </html>
