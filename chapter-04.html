@@ -5,6 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 4: Consider the Consequences - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 4 SPECIFIC STYLES === */
+        
+        .consequence-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .consequence-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .consequence-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .consequence-step {
+            margin-bottom: 20px;
+        }
+        
+        .consequence-step label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .consequence-step .step-hint {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .consequence-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+        
+        .consequence-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-calculate {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .btn-calculate:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .consequence-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .consequence-result.show {
+            display: block;
+        }
+        
+        .consequence-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .consequence-result .do-it-section {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .consequence-result .do-it-section h4 {
+            color: var(--accent-green);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .consequence-result .do-it-section p {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        .consequence-result .skip-it-section h4 {
+            color: #ef4444;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .consequence-result .skip-it-section p {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+        
+        .consequence-result .verdict {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .consequence-result .verdict p {
+            margin: 0;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+    </style>
 </head>
 <body>
 
@@ -27,37 +175,107 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Every action you take has a consequence. Superior thinkers constantly project forward 
-                and ask: "If I do this task right now, what will be the outcome? If I don't do it, 
-                what will be the cost?" The clearer you are about the future impact, the easier it is 
-                to identify your biggest frog.
+                Every action has a consequence. Every task you complete—or avoid—creates a ripple effect.
+                The problem is that most people never stop to think about those ripples. They react to what 
+                feels urgent instead of what is truly important.
+            </p>
+            <p>
+                Superior thinkers are different. Before they act, they project forward. They ask two questions:
+                <strong>"What happens if I do this?"</strong> and <strong>"What happens if I don't?"</strong>
+            </p>
+            <p>
+                The answers reveal which tasks are frogs and which are tadpoles.
+            </p>
+            <p>
+                <strong>Rule: Never do a task with small consequences when a task with large consequences is waiting.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Creates urgency.</strong> When you realize a task will save you time or money later, you do it now.</li>
-                <li><strong>Reduces procrastination.</strong> You see the pain of not doing it.</li>
-                <li><strong>Aligns with goals.</strong> You naturally gravitate toward tasks that have the biggest positive ripple effect.</li>
+                <li><strong>It creates urgency.</strong> When you see the cost of delay, you stop delaying.</li>
+                <li><strong>It kills procrastination.</strong> You realize that avoiding the task is more painful than doing it.</li>
+                <li><strong>It aligns you with your goals.</strong> You naturally gravitate toward tasks that have the biggest positive impact on your future.</li>
+                <li><strong>It sharpens judgment.</strong> You stop confusing "busy" with "productive."</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer has a choice: watch TV or learn a new skill (like video editing). 
-                Watching TV has zero future benefit. Learning video editing could double their income 
-                in six months. The consequence of learning is massive; the consequence of watching TV is zero.
+                <strong>The Student:</strong> Anjali is preparing for her medical entrance exam. It's 6 PM. 
+                She has two choices: study biology for 3 hours, or scroll Instagram for 3 hours.
+            </p>
+            <p>
+                She applies the consequence rule. 
+                If she studies: she moves closer to her dream of becoming a doctor. She feels proud tomorrow. 
+                Her confidence grows. If she skips studying: she falls behind. She feels guilty tomorrow. 
+                She has to study double the next day just to catch up.
+            </p>
+            <p>
+                The consequence of studying is massive. The consequence of scrolling is zero—or negative. 
+                She studies. Not because she is disciplined, but because she saw the future clearly.
             </p>
         </div>
 
+        <!-- INTERACTIVE CONSEQUENCE CALCULATOR -->
+        <div class="consequence-tool" id="consequenceTool">
+            <h3>⚖️ The Consequence Calculator</h3>
+            <p class="tool-intro">
+                <strong>Stop reading. Do this now.</strong> Pick one task you have been avoiding. 
+                Then answer the two questions below honestly. See what the future really looks like.
+            </p>
+            
+            <div class="consequence-step">
+                <label>1. What is the task you have been avoiding?</label>
+                <div class="step-hint">Be specific. Not "work" but "finish the quarterly report."</div>
+                <input type="text" class="consequence-input" id="taskName" placeholder="e.g., Finish the quarterly report" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="consequence-step">
+                <label>2. What happens if you DO this task today?</label>
+                <div class="step-hint">List the positive consequences. What doors open? What stress disappears?</div>
+                <textarea class="consequence-input" id="doConsequence" placeholder="e.g., My boss will trust me more. I will be eligible for a promotion. I will stop dreading it..."></textarea>
+            </div>
+            
+            <div class="consequence-step">
+                <label>3. What happens if you DON'T do this task this week?</label>
+                <div class="step-hint">List the negative consequences. What pain will you feel? What opportunities will you lose?</div>
+                <textarea class="consequence-input" id="skipConsequence" placeholder="e.g., I will look unreliable. I might lose my job. The stress will grow every day..."></textarea>
+            </div>
+            
+            <button class="btn-calculate" id="calculateBtn">Show Me the Future</button>
+            
+            <div class="consequence-result" id="consequenceResult">
+                <div class="result-label">Your Consequence Analysis</div>
+                
+                <div class="do-it-section">
+                    <h4>✅ If You Do It</h4>
+                    <p id="doItText">—</p>
+                </div>
+                
+                <div class="skip-it-section">
+                    <h4>❌ If You Skip It</h4>
+                    <p id="skipItText">—</p>
+                </div>
+                
+                <div class="verdict">
+                    <p id="verdictText">—</p>
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is one task you have been avoiding that will have the biggest positive impact on your future if you complete it this week?</p>
-            <textarea id="chapter4Exercise" placeholder="e.g., Learn how to use a new design tool..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just saw the future. Now make the decision. 
+                Write down the ONE task from the calculator that you will complete today, 
+                and the specific time you will start it. No vague promises. No "later." A specific time.
+            </p>
+            <textarea id="chapter4Exercise" placeholder="e.g., I will finish the quarterly report today at 2:00 PM sharp..."></textarea>
             <button class="btn-complete" id="markComplete4">Mark Chapter as Complete</button>
         </div>
 
@@ -69,5 +287,64 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 4: CONSEQUENCE CALCULATOR === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const taskName = document.getElementById('taskName');
+            const doConsequence = document.getElementById('doConsequence');
+            const skipConsequence = document.getElementById('skipConsequence');
+            const calculateBtn = document.getElementById('calculateBtn');
+            const consequenceResult = document.getElementById('consequenceResult');
+            const doItText = document.getElementById('doItText');
+            const skipItText = document.getElementById('skipItText');
+            const verdictText = document.getElementById('verdictText');
+            
+            // Load saved data
+            const savedTask = localStorage.getItem('frog_ch4_task');
+            const savedDo = localStorage.getItem('frog_ch4_do');
+            const savedSkip = localStorage.getItem('frog_ch4_skip');
+            
+            if (savedTask) taskName.value = savedTask;
+            if (savedDo) doConsequence.value = savedDo;
+            if (savedSkip) skipConsequence.value = savedSkip;
+            
+            // Auto-save inputs
+            taskName.addEventListener('input', function() {
+                localStorage.setItem('frog_ch4_task', taskName.value);
+            });
+            
+            doConsequence.addEventListener('input', function() {
+                localStorage.setItem('frog_ch4_do', doConsequence.value);
+            });
+            
+            skipConsequence.addEventListener('input', function() {
+                localStorage.setItem('frog_ch4_skip', skipConsequence.value);
+            });
+            
+            // Calculate consequence
+            calculateBtn.addEventListener('click', function() {
+                const task = taskName.value.trim();
+                const doText = doConsequence.value.trim();
+                const skipText = skipConsequence.value.trim();
+                
+                if (task === '' || doText === '' || skipText === '') {
+                    alert('Please fill in all three fields before showing the future.');
+                    return;
+                }
+                
+                doItText.textContent = doText;
+                skipItText.textContent = skipText;
+                
+                verdictText.textContent = 'The consequences are clear. "' + task + '" is your frog. Eat it today.';
+                
+                consequenceResult.classList.add('show');
+                
+                // Save the verdict
+                localStorage.setItem('frog_ch4_verdict', verdictText.textContent);
+            });
+            
+        });
+    </script>
 </body>
 </html>
