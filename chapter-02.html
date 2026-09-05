@@ -5,6 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 2: Plan Every Day in Advance - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 2 SPECIFIC STYLES === */
+        
+        .planning-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .planning-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .planning-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .task-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .task-input {
+            flex: 1;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .task-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-add-task {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-add-task:hover {
+            background-color: var(--accent-green-glow);
+        }
+        
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+        
+        .task-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .task-list li:hover {
+            border-color: var(--accent-green);
+        }
+        
+        .task-number {
+            font-weight: 800;
+            color: var(--accent-green);
+            min-width: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .task-text {
+            flex: 1;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+        
+        .task-priority-badge {
+            background-color: var(--accent-green);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .task-priority-badge.high {
+            background-color: #ef4444;
+        }
+        
+        .task-priority-badge.medium {
+            background-color: #f59e0b;
+        }
+        
+        .task-priority-badge.low {
+            background-color: #64748b;
+        }
+        
+        .btn-delete-task {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+            padding: 0 5px;
+        }
+        
+        .btn-delete-task:hover {
+            color: #ef4444;
+        }
+        
+        .empty-state {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .plan-result {
+            background-color: var(--frog-pond-bg);
+            border: 1px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .plan-result.show {
+            display: block;
+        }
+        
+        .plan-result p {
+            margin: 0;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +180,7 @@
         <div class="hero">
             <span class="chapter-tag">Strategy #2</span>
             <h1>Plan Every Day in Advance</h1>
-            <p class="hero-subtitle">Think on paper. Every minute spent planning saves five minutes in execution.</p>
+            <p class="hero-subtitle">Think on paper. Every minute you spend planning saves ten minutes in execution.</p>
         </div>
 
         <div class="frog-box">
@@ -27,37 +188,82 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Truth About Planning</h2>
             <p>
-                The most productive people don't wake up wondering what to do. They already know. 
-                The night before, or first thing in the morning, they sit down and write out a list 
-                of everything they need to accomplish. Then they organize that list by priority.
+                The average person wakes up and reacts. Email. Messages. Other people's emergencies. 
+                They spend the whole day putting out fires and wonder why they never move forward.
+            </p>
+            <p>
+                The top 10% of performers do something different. They decide the night before—or first thing 
+                in the morning—exactly what they will do, in what order, and for how long. They don't leave 
+                their day to chance. They write it down.
+            </p>
+            <p>
+                <strong>Rule: Never start your day until you have written down your plan.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Eliminates decision fatigue.</strong> You don't waste mental energy choosing what to do first.</li>
-                <li><strong>Creates momentum.</strong> Starting your day with a clear plan gives you a psychological head start.</li>
-                <li><strong>Increases accuracy.</strong> When you plan on paper, you see conflicts and bottlenecks before they happen.</li>
+                <li><strong>It removes decision fatigue.</strong> When you have a written list, you don't waste mental energy choosing. You just execute.</li>
+                <li><strong>It forces you to think.</strong> The act of writing separates what is truly important from what is merely noise.</li>
+                <li><strong>It builds momentum.</strong> Checking off tasks creates a psychological reward that drives you forward.</li>
+                <li><strong>It gives you control.</strong> You stop being a victim of your day and become the architect of it.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer who ends their day by writing tomorrow's task list sleeps peacefully. 
-                They wake up, look at the list, and immediately start on task #1. 
-                Compare this to a freelancer who wakes up, opens their laptop, and spends 30 minutes 
-                just trying to figure out where to begin.
+                <strong>The Busy Parent:</strong> Sarah works from home while raising two kids. Every morning used to be chaos—breakfast, school runs, emails, and by 10 AM she was exhausted. 
+                Then she started planning the night before. She writes down 3 things: one work task, one home task, and one self-care task. 
+                Now she wakes up knowing exactly what matters. She does the work task while the kids eat breakfast. She does the home task during nap time. 
+                She does the self-care task after dinner. Her day is not perfect, but it is hers.
+            </p>
+            <p>
+                <strong>The Salesperson:</strong> Rajesh is in field sales. He used to drive around randomly, visiting whichever client was closest. 
+                He wasted hours in traffic. Now he plans his route the night before. He groups his meetings by location. He saves 90 minutes a day. 
+                That's 7.5 extra hours a week—almost a full working day—just from a simple plan.
             </p>
         </div>
 
+        <!-- INTERACTIVE PLANNING TOOL -->
+        <div class="planning-tool" id="planningTool">
+            <h3>🧠 Your Daily Planning Sheet</h3>
+            <p class="tool-intro">
+                Stop reading and <strong>do the exercise now</strong>. List every task you need to complete tomorrow. 
+                Add them below, then number them by priority. Your #1 task is your frog.
+            </p>
+            
+            <div class="task-input-row">
+                <input type="text" class="task-input" id="taskInput" placeholder="e.g., Finish project proposal for client" autocomplete="off">
+                <button class="btn-add-task" id="addTaskBtn">+ Add Task</button>
+            </div>
+            
+            <ul class="task-list" id="taskList">
+                <!-- Tasks will appear here -->
+            </ul>
+            
+            <div class="empty-state" id="emptyState">
+                Your list is empty. Add your first task above.
+            </div>
+            
+            <div class="plan-result" id="planResult">
+                <p>🎯 Your #1 Frog for tomorrow is: <span id="frogTask">—</span></p>
+                <p style="font-size:0.85rem; color: var(--text-secondary); margin-top: 5px;">Eat it first. Everything else comes after.</p>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>Before you go to bed tonight, write down the three most important tasks for tomorrow morning.</p>
-            <textarea id="chapter2Exercise" placeholder="e.g., 1) Finish client logo design  2) Send invoice  3) Research new leads..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                Use the planning tool above to list every task you need to do tomorrow. 
+                Then number them in order of true importance—not urgency, but importance. 
+                The first task on your list is the one you will eat first. 
+                If you skip this step, you are planning to fail.
+            </p>
+            <textarea id="chapter2Exercise" placeholder="Write your top 3 priorities for tomorrow here. Be specific. Be honest..."></textarea>
             <button class="btn-complete" id="markComplete2">Mark Chapter as Complete</button>
         </div>
 
@@ -69,5 +275,119 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 2: INTERACTIVE PLANNING TOOL === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+            const emptyState = document.getElementById('emptyState');
+            const planResult = document.getElementById('planResult');
+            const frogTask = document.getElementById('frogTask');
+            
+            let tasks = [];
+            
+            // Load saved tasks
+            const savedTasks = localStorage.getItem('frog_chapter2_tasks');
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+                renderTasks();
+            }
+            
+            // Add task
+            function addTask() {
+                const text = taskInput.value.trim();
+                if (text === '') return;
+                
+                tasks.push({ text: text, priority: tasks.length + 1 });
+                taskInput.value = '';
+                saveTasks();
+                renderTasks();
+                taskInput.focus();
+            }
+            
+            // Delete task
+            function deleteTask(index) {
+                tasks.splice(index, 1);
+                // Renumber priorities
+                tasks.forEach(function(task, i) {
+                    task.priority = i + 1;
+                });
+                saveTasks();
+                renderTasks();
+            }
+            
+            // Save to localStorage
+            function saveTasks() {
+                localStorage.setItem('frog_chapter2_tasks', JSON.stringify(tasks));
+            }
+            
+            // Render task list
+            function renderTasks() {
+                taskList.innerHTML = '';
+                
+                if (tasks.length === 0) {
+                    emptyState.style.display = 'block';
+                    planResult.classList.remove('show');
+                    return;
+                }
+                
+                emptyState.style.display = 'none';
+                
+                tasks.forEach(function(task, index) {
+                    const li = document.createElement('li');
+                    
+                    const numberSpan = document.createElement('span');
+                    numberSpan.className = 'task-number';
+                    numberSpan.textContent = task.priority;
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'task-text';
+                    textSpan.textContent = task.text;
+                    
+                    const badge = document.createElement('span');
+                    badge.className = 'task-priority-badge';
+                    if (task.priority === 1) {
+                        badge.textContent = 'FROG';
+                        badge.classList.add('high');
+                    } else if (task.priority === 2) {
+                        badge.textContent = 'HIGH';
+                        badge.classList.add('medium');
+                    } else {
+                        badge.textContent = 'LOW';
+                        badge.classList.add('low');
+                    }
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-delete-task';
+                    deleteBtn.textContent = '✕';
+                    deleteBtn.title = 'Remove task';
+                    deleteBtn.addEventListener('click', function() {
+                        deleteTask(index);
+                    });
+                    
+                    li.appendChild(numberSpan);
+                    li.appendChild(textSpan);
+                    li.appendChild(badge);
+                    li.appendChild(deleteBtn);
+                    taskList.appendChild(li);
+                });
+                
+                // Show result
+                planResult.classList.add('show');
+                frogTask.textContent = tasks[0].text;
+            }
+            
+            addTaskBtn.addEventListener('click', addTask);
+            
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+            
+        });
+    </script>
 </body>
 </html>
