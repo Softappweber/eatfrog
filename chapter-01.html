@@ -5,73 +5,230 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 1: Set the Table - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 1 SPECIFIC STYLES === */
+        
+        .goal-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .goal-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .goal-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .goal-step {
+            margin-bottom: 20px;
+        }
+        
+        .goal-step label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .goal-step .step-hint {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .goal-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .goal-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .goal-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .goal-result.show {
+            display: block;
+        }
+        
+        .goal-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 8px;
+        }
+        
+        .goal-result .result-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+        
+        .goal-result .result-warning {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .btn-generate {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .btn-generate:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+    </style>
 </head>
 <body>
 
-    <!-- TOP NAVIGATION BAR -->
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
         <span class="nav-badge">Chapter 1 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
 
-    <!-- MAIN CONTENT -->
     <div class="container">
 
-        <!-- HERO SECTION -->
         <div class="hero">
             <span class="chapter-tag">Strategy #1</span>
             <h1>Set the Table</h1>
-            <p class="hero-subtitle">Decide exactly what you want. Clarity is the starting point of all achievement.</p>
+            <p class="hero-subtitle">Decide exactly what you want. Clarity is not a luxury—it is the price of entry.</p>
         </div>
 
-        <!-- FROG PHILOSOPHY BOX -->
         <div class="frog-box">
             <p>"If you don't know where you are going, any road will take you there."</p>
         </div>
 
-        <!-- THE BREAKDOWN -->
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Before you can accomplish anything, you must first define exactly what "it" is. 
-                Most people drift through their days reacting to whatever appears in front of them. 
-                Setting the table means sitting down with a blank piece of paper and deciding, 
-                in very specific terms, what you want your life, your career, and your day to look like.
+                Most people never decide what they actually want. They have wishes, not goals. 
+                They say "I want more money" or "I want to be successful." That is not clarity. That is fog.
+            </p>
+            <p>
+                Successful people do something different. They sit down with a blank piece of paper 
+                and write down exactly what they want. They define the amount, the deadline, and the measurement.
+            </p>
+            <p>
+                <strong>Rule: A goal that is not written down is just a dream. A dream has no power.</strong>
             </p>
         </div>
 
-        <!-- WHY IT WORKS -->
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Clarity removes confusion.</strong> When your goal is crystal clear, your brain automatically starts looking for solutions.</li>
-                <li><strong>Written goals activate your focus.</strong> You start noticing opportunities and resources that were always there but invisible to you.</li>
-                <li><strong>Specificity beats vagueness.</strong> "I want to earn more" is a wish. "I will earn ₹1000 today by 5 PM" is a plan.</li>
+                <li><strong>Clarity activates your brain.</strong> When you define a target, your mind automatically starts scanning for ways to hit it.</li>
+                <li><strong>Writing creates commitment.</strong> A written goal is a contract with yourself. It becomes real.</li>
+                <li><strong>Specificity kills procrastination.</strong> "Lose weight" is easy to avoid. "Lose 5 kg by March 1st" demands action.</li>
+                <li><strong>Measurement drives focus.</strong> What gets measured gets managed. What gets managed gets done.</li>
             </ul>
         </div>
 
-        <!-- REAL WORLD EXAMPLE -->
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                Imagine a freelancer who wakes up and thinks, "I need to make money today." 
-                They spend hours scrolling, checking emails, and feeling busy but making no progress. 
-                Now imagine a freelancer who wakes up and reads their written goal: 
-                "I will complete 2 client projects and send 5 cold pitches before lunch." 
-                By noon, they are already ahead of everyone else.
+                <strong>The Vague Employee:</strong> Priya works in marketing. She tells herself she wants a promotion. 
+                She works hard but never writes down what "promotion" means. Three years pass. No promotion.
+            </p>
+            <p>
+                <strong>The Clear Employee:</strong> Priya sits down and writes: "I will be promoted to Senior Marketing Manager 
+                by December 31st. I will complete 3 major campaigns, generate 50 qualified leads, and manage a team of 2 interns." 
+                Now she has a table. Every day she knows exactly what to work on. She gets the promotion in 10 months.
+            </p>
+            <p>
+                Same person. Same company. The only difference was clarity.
             </p>
         </div>
 
-        <!-- YOUR TURN -->
+        <!-- INTERACTIVE GOAL CLARITY TOOL -->
+        <div class="goal-tool" id="goalTool">
+            <h3>🎯 The Goal Clarity Tool</h3>
+            <p class="tool-intro">
+                Do not just read this chapter. <strong>Use this tool now.</strong> 
+                Turn one of your vague wishes into a specific, written goal. 
+                Answer the three questions below, then generate your goal statement.
+            </p>
+            
+            <div class="goal-step">
+                <label>1. What do you actually want?</label>
+                <div class="step-hint">Be specific. Not "more money" but "earn ₹50,000 per month."</div>
+                <input type="text" class="goal-input" id="goalWhat" placeholder="e.g., I want to earn ₹50,000 per month" autocomplete="off">
+            </div>
+            
+            <div class="goal-step">
+                <label>2. By when do you want it?</label>
+                <div class="step-hint">Give it a deadline. No deadline, no urgency.</div>
+                <input type="text" class="goal-input" id="goalWhen" placeholder="e.g., By June 30th, 2025" autocomplete="off">
+            </div>
+            
+            <div class="goal-step">
+                <label>3. How will you measure success?</label>
+                <div class="step-hint">What specific, visible result will prove you achieved it?</div>
+                <input type="text" class="goal-input" id="goalMeasure" placeholder="e.g., I will have 5 paying clients and ₹50,000 in monthly invoices" autocomplete="off">
+            </div>
+            
+            <button class="btn-generate" id="generateGoalBtn">Generate My Goal</button>
+            
+            <div class="goal-result" id="goalResult">
+                <div class="result-label">Your Written Goal</div>
+                <div class="result-text" id="goalResultText">—</div>
+                <div class="result-warning">Read this every morning. This is your table. Now go set it.</div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>Write down ONE specific goal that, if accomplished today, would make this day a complete success.</p>
-            <textarea id="chapter1Exercise" placeholder="e.g., Finish writing the project proposal for client X..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                Look at the goal you just generated in the tool above. 
+                Now write it one more time by hand in the box below. 
+                Writing it twice doubles the commitment. 
+                If you skip this, you are not serious.
+            </p>
+            <textarea id="chapter1Exercise" placeholder="Write your specific, measurable, deadline-driven goal here..."></textarea>
             <button class="btn-complete" id="markComplete1">Mark Chapter as Complete</button>
         </div>
 
-        <!-- FOOTER NAVIGATION -->
         <div class="footer-nav">
             <span class="disabled">← Previous Chapter</span>
             <a href="chapter-02.html">Next Chapter →</a>
@@ -80,5 +237,70 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 1: GOAL CLARITY TOOL === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const goalWhat = document.getElementById('goalWhat');
+            const goalWhen = document.getElementById('goalWhen');
+            const goalMeasure = document.getElementById('goalMeasure');
+            const generateBtn = document.getElementById('generateGoalBtn');
+            const goalResult = document.getElementById('goalResult');
+            const goalResultText = document.getElementById('goalResultText');
+            
+            // Load saved goal inputs
+            const savedWhat = localStorage.getItem('frog_ch1_what');
+            const savedWhen = localStorage.getItem('frog_ch1_when');
+            const savedMeasure = localStorage.getItem('frog_ch1_measure');
+            const savedGoal = localStorage.getItem('frog_ch1_goal');
+            
+            if (savedWhat) goalWhat.value = savedWhat;
+            if (savedWhen) goalWhen.value = savedWhen;
+            if (savedMeasure) goalMeasure.value = savedMeasure;
+            
+            if (savedGoal) {
+                goalResultText.textContent = savedGoal;
+                goalResult.classList.add('show');
+            }
+            
+            // Generate goal
+            generateBtn.addEventListener('click', function() {
+                const what = goalWhat.value.trim();
+                const when = goalWhen.value.trim();
+                const measure = goalMeasure.value.trim();
+                
+                if (what === '' || when === '' || measure === '') {
+                    alert('Please fill in all three fields before generating your goal.');
+                    return;
+                }
+                
+                const fullGoal = what + ' ' + when + '. ' + measure + '.';
+                
+                // Save to localStorage
+                localStorage.setItem('frog_ch1_what', what);
+                localStorage.setItem('frog_ch1_when', when);
+                localStorage.setItem('frog_ch1_measure', measure);
+                localStorage.setItem('frog_ch1_goal', fullGoal);
+                
+                // Display result
+                goalResultText.textContent = fullGoal;
+                goalResult.classList.add('show');
+            });
+            
+            // Auto-save inputs
+            goalWhat.addEventListener('input', function() {
+                localStorage.setItem('frog_ch1_what', goalWhat.value);
+            });
+            
+            goalWhen.addEventListener('input', function() {
+                localStorage.setItem('frog_ch1_when', goalWhen.value);
+            });
+            
+            goalMeasure.addEventListener('input', function() {
+                localStorage.setItem('frog_ch1_measure', goalMeasure.value);
+            });
+            
+        });
+    </script>
 </body>
 </html>
