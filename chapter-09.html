@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 8: Prepare Thoroughly Before You Begin - Frog First</title>
+    <title>Chapter 9: Do Your Homework - Frog First</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* === CHAPTER 8 SPECIFIC STYLES === */
+        /* === CHAPTER 9 SPECIFIC STYLES === */
         
-        .prep-tool {
+        .homework-tool {
             background-color: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: 12px;
@@ -17,23 +17,23 @@
             box-shadow: var(--shadow-subtle);
         }
         
-        .prep-tool h3 {
+        .homework-tool h3 {
             font-size: 1.2rem;
             color: var(--accent-green);
             margin-bottom: 10px;
         }
         
-        .prep-tool .tool-intro {
+        .homework-tool .tool-intro {
             color: var(--text-secondary);
             font-size: 0.95rem;
             margin-bottom: 20px;
         }
         
-        .prep-question {
+        .homework-step {
             margin-bottom: 20px;
         }
         
-        .prep-question label {
+        .homework-step label {
             display: block;
             font-weight: 700;
             color: var(--text-primary);
@@ -41,13 +41,13 @@
             font-size: 0.95rem;
         }
         
-        .prep-question .step-hint {
+        .homework-step .step-hint {
             color: var(--text-muted);
             font-size: 0.8rem;
             margin-bottom: 8px;
         }
         
-        .prep-input {
+        .homework-input {
             width: 100%;
             padding: 12px 15px;
             background-color: var(--bg-primary);
@@ -61,12 +61,12 @@
             font-family: inherit;
         }
         
-        .prep-input:focus {
+        .homework-input:focus {
             outline: none;
             border-color: var(--accent-green);
         }
         
-        .btn-build-checklist {
+        .btn-generate-plan {
             background-color: var(--accent-green);
             color: white;
             border: none;
@@ -80,13 +80,13 @@
             width: 100%;
         }
         
-        .btn-build-checklist:hover {
+        .btn-generate-plan:hover {
             background-color: var(--accent-green-glow);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
         }
         
-        .checklist-result {
+        .plan-result {
             background-color: var(--frog-pond-bg);
             border: 2px solid var(--accent-green);
             border-radius: 12px;
@@ -95,11 +95,11 @@
             display: none;
         }
         
-        .checklist-result.show {
+        .plan-result.show {
             display: block;
         }
         
-        .checklist-result .result-label {
+        .plan-result .result-label {
             font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -108,28 +108,38 @@
             margin-bottom: 10px;
         }
         
-        .checklist-result .checklist-items {
+        .plan-result .research-steps {
             list-style: none;
             padding: 0;
             margin: 0;
         }
         
-        .checklist-result .checklist-items li {
+        .plan-result .research-steps li {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
             padding: 10px 0;
             border-bottom: 1px solid var(--border-subtle);
             color: var(--text-primary);
         }
         
-        .checklist-result .checklist-items li:last-child {
+        .plan-result .research-steps li:last-child {
             border-bottom: none;
         }
         
-        .checklist-result .checklist-items .check-icon {
-            color: var(--accent-green);
+        .plan-result .research-steps .step-number {
+            background-color: var(--accent-green);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
     </style>
 </head>
@@ -137,103 +147,102 @@
 
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
-        <span class="nav-badge">Chapter 8 of 21</span>
+        <span class="nav-badge">Chapter 9 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
 
     <div class="container">
 
         <div class="hero">
-            <span class="chapter-tag">Strategy #8</span>
-            <h1>Prepare Thoroughly Before You Begin</h1>
-            <p class="hero-subtitle">Have everything you need at hand before you sit down to work.</p>
+            <span class="chapter-tag">Strategy #9</span>
+            <h1>Do Your Homework</h1>
+            <p class="hero-subtitle">Learn what you need to learn so you can do the job right the first time.</p>
         </div>
 
         <div class="frog-box">
-            <p>"Preparation prevents poor performance."</p>
+            <p>"The more you know, the less you fear."</p>
         </div>
 
         <div class="content-section">
             <h2>The Brutal Truth</h2>
             <p>
-                Most people start their important work in a state of chaos. They sit down to write a report, 
-                but their notes are scattered. They need a file that is on their other computer. Their phone 
-                keeps buzzing. They have to stand up five times to find things.
+                Most procrastination is not laziness. It is fear. And most fear comes from ignorance. 
+                You avoid a task because you do not know how to do it. You feel incompetent, so you delay.
             </p>
             <p>
-                Every interruption breaks your focus. And focus, once lost, takes 15 to 20 minutes to rebuild. 
-                If you interrupt yourself five times, you have lost over an hour of deep work. You are not lazy. 
-                You are unprepared.
+                The solution is not to wait until you feel confident. The solution is to close the knowledge gap. 
+                Research. Watch tutorials. Read guides. Ask someone who has done it before. Do whatever it takes 
+                to understand the task well enough to start.
             </p>
             <p>
-                High performers prepare like pilots before takeoff. They create a pre-flight checklist. 
-                Before they start their frog, they gather all tools, files, passwords, notes, and resources. 
-                They put their phone in another room. They close unnecessary tabs. They set up their workspace 
-                so that once they begin, they do not have to stop.
+                High performers are not born knowing everything. They are just willing to learn. When they face 
+                something unfamiliar, they do not panic. They do their homework. Then they act.
             </p>
             <p>
-                <strong>Rule: The first 10 minutes of preparation save you 60 minutes of lost focus.</strong>
+                <strong>Rule: One hour of research can save you ten hours of trial and error.</strong>
             </p>
         </div>
 
         <div class="content-section">
             <h2>Why This Works</h2>
             <ul>
-                <li><strong>It removes friction.</strong> You eliminate physical and digital barriers before they happen.</li>
-                <li><strong>It builds momentum.</strong> A clean, ready workspace makes it easy to dive in immediately.</li>
-                <li><strong>It signals commitment.</strong> Preparing tells your brain, "We are doing this now."</li>
-                <li><strong>It prevents procrastination.</strong> When everything is ready, there is no excuse to delay.</li>
+                <li><strong>It reduces anxiety.</strong> Fear of the unknown disappears when you know how to proceed.</li>
+                <li><strong>It improves quality.</strong> You make fewer mistakes and produce better results.</li>
+                <li><strong>It speeds up execution.</strong> You stop second-guessing yourself and start acting.</li>
+                <li><strong>It builds confidence.</strong> Every time you learn something new, you become more capable.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                <strong>The Student:</strong> Ravi sits down to study for his final exams. His desk is cluttered. 
-                His books are in his bag. His laptop is at 10% battery. His phone is next to him, face-up, buzzing 
-                with notifications. He spends 20 minutes looking for his notes. Then his phone buzzes. He checks it. 
-                45 minutes later, he has studied for exactly zero minutes.
+                <strong>The New Employee:</strong> Sneha just started her first job. On day two, her manager asks her 
+                to create a financial dashboard in Excel. Sneha has never made a dashboard before. Her first instinct 
+                is to panic. She opens Excel, stares at the blank screen, and feels overwhelmed.
             </p>
             <p>
-                Now Ravi prepares. The night before, he clears his desk. He charges his laptop. He puts his notes 
-                and textbooks on the desk in the exact order he will need them. He puts his phone in the kitchen. 
-                When he sits down to study, he starts within 60 seconds. He studies for 2 hours straight. 
-                Same student. Same material. Different preparation. Different result.
+                Instead of panicking, Sneha does her homework. She spends 45 minutes watching a YouTube tutorial on 
+                Excel dashboards. She reads a blog post about common mistakes. Now she has a clear plan: create a data 
+                table, add pivot tables, insert charts, and format the layout. She starts the task with confidence and 
+                finishes it the same day. Her manager is impressed.
+            </p>
+            <p>
+                Sneha was not more talented than anyone else. She was just willing to learn before doing.
             </p>
         </div>
 
-        <!-- INTERACTIVE PRE-FLIGHT CHECKLIST BUILDER -->
-        <div class="prep-tool" id="prepTool">
-            <h3>🛫 The Pre-Flight Checklist Builder</h3>
+        <!-- INTERACTIVE LEARNING GAP ANALYZER -->
+        <div class="homework-tool" id="homeworkTool">
+            <h3>📚 The Learning Gap Analyzer</h3>
             <p class="tool-intro">
-                <strong>Do this now.</strong> Pick one important task you will do tomorrow. 
-                Then answer the three questions below to build your preparation checklist.
+                <strong>Do this now.</strong> Pick one task you have been avoiding because you don't know how to do it.
+                Then answer the three questions below to create your research plan.
             </p>
             
-            <div class="prep-question">
-                <label>1. What is the task you will do tomorrow?</label>
-                <div class="step-hint">Be specific. Not "work" but "write the project proposal."</div>
-                <input type="text" class="prep-input" id="taskName" placeholder="e.g., Write the project proposal" autocomplete="off" style="min-height: auto;">
+            <div class="homework-step">
+                <label>1. What is the task you have been avoiding?</label>
+                <div class="step-hint">Be specific. Not "learn marketing" but "set up a Facebook ads campaign."</div>
+                <input type="text" class="homework-input" id="taskName" placeholder="e.g., Set up a Facebook ads campaign" autocomplete="off" style="min-height: auto;">
             </div>
             
-            <div class="prep-question">
-                <label>2. What materials, files, or tools do you need?</label>
-                <div class="step-hint">List everything. Documents, passwords, software, notes, templates, contact numbers.</div>
-                <textarea class="prep-input" id="materialsNeeded" placeholder="e.g., Client brief, previous proposal template, pricing sheet, laptop charger..."></textarea>
+            <div class="homework-step">
+                <label>2. What exactly don't you know how to do?</label>
+                <div class="step-hint">List the specific gaps. Not "everything" but "how to choose audience targeting."</div>
+                <textarea class="homework-input" id="knowledgeGap" placeholder="e.g., I don't know how to choose audience targeting, how to set a budget, or how to write ad copy..."></textarea>
             </div>
             
-            <div class="prep-question">
-                <label>3. What distractions must you remove?</label>
-                <div class="step-hint">Phone? Social media? Cluttered desk? Noisy room? Be specific about what you will eliminate.</div>
-                <textarea class="prep-input" id="distractionsToRemove" placeholder="e.g., Phone in another room, close all browser tabs except Google Docs, clean desk..."></textarea>
+            <div class="homework-step">
+                <label>3. Where can you learn this?</label>
+                <div class="step-hint">List specific resources: YouTube channels, blogs, books, courses, or people you can ask.</div>
+                <textarea class="homework-input" id="learningSources" placeholder="e.g., YouTube tutorial by "Ads Mastery", Facebook Blueprint course, ask my colleague Ravi..."></textarea>
             </div>
             
-            <button class="btn-build-checklist" id="buildChecklistBtn">Build My Checklist</button>
+            <button class="btn-generate-plan" id="generatePlanBtn">Generate My Research Plan</button>
             
-            <div class="checklist-result" id="checklistResult">
-                <div class="result-label">Your Pre-Flight Checklist</div>
-                <ul class="checklist-items" id="checklistItems">
-                    <!-- Checklist items appear here -->
+            <div class="plan-result" id="planResult">
+                <div class="result-label">Your Research Plan</div>
+                <ul class="research-steps" id="researchSteps">
+                    <!-- Research steps appear here -->
                 </ul>
             </div>
         </div>
@@ -241,95 +250,85 @@
         <div class="your-turn">
             <h3>The Exercise</h3>
             <p>
-                You just built your pre-flight checklist. Now read it once more and commit to it. 
-                Write down the ONE preparation step you will complete tonight before you go to bed. 
-                Do not leave it for tomorrow morning. Prepare tonight.
+                You just created your research plan. Now commit to it. 
+                Write down the FIRST learning action you will take today. 
+                Not tomorrow. Not this weekend. Today.
             </p>
-            <textarea id="chapter8Exercise" placeholder="e.g., Tonight I will clean my desk, charge my laptop, and put all my notes in order..."></textarea>
-            <button class="btn-complete" id="markComplete8">Mark Chapter as Complete</button>
+            <textarea id="chapter9Exercise" placeholder="e.g., Today at 4 PM I will watch the Facebook Ads tutorial and take notes..."></textarea>
+            <button class="btn-complete" id="markComplete9">Mark Chapter as Complete</button>
         </div>
 
         <div class="footer-nav">
-            <a href="chapter-07.html">← Previous Chapter</a>
-            <a href="chapter-09.html">Next Chapter →</a>
+            <a href="chapter-08.html">← Previous Chapter</a>
+            <a href="chapter-10.html">Next Chapter →</a>
         </div>
 
     </div>
 
     <script src="app.js"></script>
     <script>
-        /* === CHAPTER 8: PRE-FLIGHT CHECKLIST BUILDER === */
+        /* === CHAPTER 9: LEARNING GAP ANALYZER === */
         document.addEventListener('DOMContentLoaded', function() {
             
             const taskName = document.getElementById('taskName');
-            const materialsNeeded = document.getElementById('materialsNeeded');
-            const distractionsToRemove = document.getElementById('distractionsToRemove');
-            const buildChecklistBtn = document.getElementById('buildChecklistBtn');
-            const checklistResult = document.getElementById('checklistResult');
-            const checklistItems = document.getElementById('checklistItems');
+            const knowledgeGap = document.getElementById('knowledgeGap');
+            const learningSources = document.getElementById('learningSources');
+            const generatePlanBtn = document.getElementById('generatePlanBtn');
+            const planResult = document.getElementById('planResult');
+            const researchSteps = document.getElementById('researchSteps');
             
             // Load saved data
-            const savedTask = localStorage.getItem('frog_ch8_task');
-            const savedMaterials = localStorage.getItem('frog_ch8_materials');
-            const savedDistractions = localStorage.getItem('frog_ch8_distractions');
+            const savedTask = localStorage.getItem('frog_ch9_task');
+            const savedGap = localStorage.getItem('frog_ch9_gap');
+            const savedSources = localStorage.getItem('frog_ch9_sources');
             
             if (savedTask) taskName.value = savedTask;
-            if (savedMaterials) materialsNeeded.value = savedMaterials;
-            if (savedDistractions) distractionsToRemove.value = savedDistractions;
+            if (savedGap) knowledgeGap.value = savedGap;
+            if (savedSources) learningSources.value = savedSources;
             
             // Auto-save inputs
             taskName.addEventListener('input', function() {
-                localStorage.setItem('frog_ch8_task', taskName.value);
+                localStorage.setItem('frog_ch9_task', taskName.value);
             });
             
-            materialsNeeded.addEventListener('input', function() {
-                localStorage.setItem('frog_ch8_materials', materialsNeeded.value);
+            knowledgeGap.addEventListener('input', function() {
+                localStorage.setItem('frog_ch9_gap', knowledgeGap.value);
             });
             
-            distractionsToRemove.addEventListener('input', function() {
-                localStorage.setItem('frog_ch8_distractions', distractionsToRemove.value);
+            learningSources.addEventListener('input', function() {
+                localStorage.setItem('frog_ch9_sources', learningSources.value);
             });
             
-            // Build checklist
-            buildChecklistBtn.addEventListener('click', function() {
+            // Generate research plan
+            generatePlanBtn.addEventListener('click', function() {
                 const task = taskName.value.trim();
-                const materials = materialsNeeded.value.trim();
-                const distractions = distractionsToRemove.value.trim();
+                const gap = knowledgeGap.value.trim();
+                const sources = learningSources.value.trim();
                 
-                if (task === '' || materials === '' || distractions === '') {
-                    alert('Please fill in all three fields before building your checklist.');
+                if (task === '' || gap === '' || sources === '') {
+                    alert('Please fill in all three fields before generating your plan.');
                     return;
                 }
                 
-                const materialList = materials.split(',').map(function(item) {
+                const sourceList = sources.split(',').map(function(item) {
                     return item.trim();
                 }).filter(function(item) {
                     return item !== '';
                 });
                 
-                const distractionList = distractions.split(',').map(function(item) {
-                    return item.trim();
-                }).filter(function(item) {
-                    return item !== '';
+                let stepsHTML = '';
+                
+                stepsHTML += '<li><span class="step-number">1</span> Identify the task: ' + task + '</li>';
+                stepsHTML += '<li><span class="step-number">2</span> Acknowledge the gap: ' + gap + '</li>';
+                
+                sourceList.forEach(function(source, index) {
+                    stepsHTML += '<li><span class="step-number">' + (index + 3) + '</span> Learn from: ' + source + '</li>';
                 });
                 
-                let checklistHTML = '';
+                stepsHTML += '<li><span class="step-number">' + (sourceList.length + 3) + '</span> Apply what you learned immediately to ' + task + '</li>';
                 
-                checklistHTML += '<li><span class="check-icon">✓</span> Task: ' + task + '</li>';
-                checklistHTML += '<li style="font-weight:700; color:var(--accent-green);">Prepare These Items:</li>';
-                
-                materialList.forEach(function(item) {
-                    checklistHTML += '<li><span class="check-icon">☐</span> ' + item + '</li>';
-                });
-                
-                checklistHTML += '<li style="font-weight:700; color:var(--accent-green);">Remove These Distractions:</li>';
-                
-                distractionList.forEach(function(item) {
-                    checklistHTML += '<li><span class="check-icon">☐</span> ' + item + '</li>';
-                });
-                
-                checklistItems.innerHTML = checklistHTML;
-                checklistResult.classList.add('show');
+                researchSteps.innerHTML = stepsHTML;
+                planResult.classList.add('show');
             });
             
         });
