@@ -5,6 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 8: Prepare Thoroughly Before You Begin - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 8 SPECIFIC STYLES === */
+        
+        .prep-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .prep-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .prep-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .prep-question {
+            margin-bottom: 20px;
+        }
+        
+        .prep-question label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .prep-question .step-hint {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .prep-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+        
+        .prep-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-build-checklist {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .btn-build-checklist:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .checklist-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .checklist-result.show {
+            display: block;
+        }
+        
+        .checklist-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .checklist-result .checklist-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .checklist-result .checklist-items li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+        
+        .checklist-result .checklist-items li:last-child {
+            border-bottom: none;
+        }
+        
+        .checklist-result .checklist-items .check-icon {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+    </style>
 </head>
 <body>
 
@@ -27,36 +154,98 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Before you start eating your frog, set up your workspace. Gather all the files, passwords, 
-                links, tools, and resources you need. If you have to stand up to find something, you break 
-                your flow and give procrastination an opening.
+                Most people start their important work in a state of chaos. They sit down to write a report, 
+                but their notes are scattered. They need a file that is on their other computer. Their phone 
+                keeps buzzing. They have to stand up five times to find things.
+            </p>
+            <p>
+                Every interruption breaks your focus. And focus, once lost, takes 15 to 20 minutes to rebuild. 
+                If you interrupt yourself five times, you have lost over an hour of deep work. You are not lazy. 
+                You are unprepared.
+            </p>
+            <p>
+                High performers prepare like pilots before takeoff. They create a pre-flight checklist. 
+                Before they start their frog, they gather all tools, files, passwords, notes, and resources. 
+                They put their phone in another room. They close unnecessary tabs. They set up their workspace 
+                so that once they begin, they do not have to stop.
+            </p>
+            <p>
+                <strong>Rule: The first 10 minutes of preparation save you 60 minutes of lost focus.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Eliminates friction.</strong> You remove physical and digital barriers to starting.</li>
-                <li><strong>Builds momentum.</strong> A clean desk and a clear mind make it easy to dive in.</li>
-                <li><strong>Signals commitment.</strong> Preparing tells your brain, "We are doing this now."</li>
+                <li><strong>It removes friction.</strong> You eliminate physical and digital barriers before they happen.</li>
+                <li><strong>It builds momentum.</strong> A clean, ready workspace makes it easy to dive in immediately.</li>
+                <li><strong>It signals commitment.</strong> Preparing tells your brain, "We are doing this now."</li>
+                <li><strong>It prevents procrastination.</strong> When everything is ready, there is no excuse to delay.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A writer sits down to write a blog post. They spend 15 minutes hunting for their notes, 
-                checking their phone, and adjusting their chair. By the time they start typing, they are drained. 
-                A prepared writer opens their laptop, notes already on the screen, phone in another room. They type immediately.
+                <strong>The Student:</strong> Ravi sits down to study for his final exams. His desk is cluttered. 
+                His books are in his bag. His laptop is at 10% battery. His phone is next to him, face-up, buzzing 
+                with notifications. He spends 20 minutes looking for his notes. Then his phone buzzes. He checks it. 
+                45 minutes later, he has studied for exactly zero minutes.
+            </p>
+            <p>
+                Now Ravi prepares. The night before, he clears his desk. He charges his laptop. He puts his notes 
+                and textbooks on the desk in the exact order he will need them. He puts his phone in the kitchen. 
+                When he sits down to study, he starts within 60 seconds. He studies for 2 hours straight. 
+                Same student. Same material. Different preparation. Different result.
             </p>
         </div>
 
+        <!-- INTERACTIVE PRE-FLIGHT CHECKLIST BUILDER -->
+        <div class="prep-tool" id="prepTool">
+            <h3>🛫 The Pre-Flight Checklist Builder</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Pick one important task you will do tomorrow. 
+                Then answer the three questions below to build your preparation checklist.
+            </p>
+            
+            <div class="prep-question">
+                <label>1. What is the task you will do tomorrow?</label>
+                <div class="step-hint">Be specific. Not "work" but "write the project proposal."</div>
+                <input type="text" class="prep-input" id="taskName" placeholder="e.g., Write the project proposal" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="prep-question">
+                <label>2. What materials, files, or tools do you need?</label>
+                <div class="step-hint">List everything. Documents, passwords, software, notes, templates, contact numbers.</div>
+                <textarea class="prep-input" id="materialsNeeded" placeholder="e.g., Client brief, previous proposal template, pricing sheet, laptop charger..."></textarea>
+            </div>
+            
+            <div class="prep-question">
+                <label>3. What distractions must you remove?</label>
+                <div class="step-hint">Phone? Social media? Cluttered desk? Noisy room? Be specific about what you will eliminate.</div>
+                <textarea class="prep-input" id="distractionsToRemove" placeholder="e.g., Phone in another room, close all browser tabs except Google Docs, clean desk..."></textarea>
+            </div>
+            
+            <button class="btn-build-checklist" id="buildChecklistBtn">Build My Checklist</button>
+            
+            <div class="checklist-result" id="checklistResult">
+                <div class="result-label">Your Pre-Flight Checklist</div>
+                <ul class="checklist-items" id="checklistItems">
+                    <!-- Checklist items appear here -->
+                </ul>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is one task you need to do today? What materials or resources do you need to gather BEFORE you start?</p>
-            <textarea id="chapter8Exercise" placeholder="e.g., To write the report, I need the client data, previous report template, and a quiet room..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just built your pre-flight checklist. Now read it once more and commit to it. 
+                Write down the ONE preparation step you will complete tonight before you go to bed. 
+                Do not leave it for tomorrow morning. Prepare tonight.
+            </p>
+            <textarea id="chapter8Exercise" placeholder="e.g., Tonight I will clean my desk, charge my laptop, and put all my notes in order..."></textarea>
             <button class="btn-complete" id="markComplete8">Mark Chapter as Complete</button>
         </div>
 
@@ -68,5 +257,82 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 8: PRE-FLIGHT CHECKLIST BUILDER === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const taskName = document.getElementById('taskName');
+            const materialsNeeded = document.getElementById('materialsNeeded');
+            const distractionsToRemove = document.getElementById('distractionsToRemove');
+            const buildChecklistBtn = document.getElementById('buildChecklistBtn');
+            const checklistResult = document.getElementById('checklistResult');
+            const checklistItems = document.getElementById('checklistItems');
+            
+            // Load saved data
+            const savedTask = localStorage.getItem('frog_ch8_task');
+            const savedMaterials = localStorage.getItem('frog_ch8_materials');
+            const savedDistractions = localStorage.getItem('frog_ch8_distractions');
+            
+            if (savedTask) taskName.value = savedTask;
+            if (savedMaterials) materialsNeeded.value = savedMaterials;
+            if (savedDistractions) distractionsToRemove.value = savedDistractions;
+            
+            // Auto-save inputs
+            taskName.addEventListener('input', function() {
+                localStorage.setItem('frog_ch8_task', taskName.value);
+            });
+            
+            materialsNeeded.addEventListener('input', function() {
+                localStorage.setItem('frog_ch8_materials', materialsNeeded.value);
+            });
+            
+            distractionsToRemove.addEventListener('input', function() {
+                localStorage.setItem('frog_ch8_distractions', distractionsToRemove.value);
+            });
+            
+            // Build checklist
+            buildChecklistBtn.addEventListener('click', function() {
+                const task = taskName.value.trim();
+                const materials = materialsNeeded.value.trim();
+                const distractions = distractionsToRemove.value.trim();
+                
+                if (task === '' || materials === '' || distractions === '') {
+                    alert('Please fill in all three fields before building your checklist.');
+                    return;
+                }
+                
+                const materialList = materials.split(',').map(function(item) {
+                    return item.trim();
+                }).filter(function(item) {
+                    return item !== '';
+                });
+                
+                const distractionList = distractions.split(',').map(function(item) {
+                    return item.trim();
+                }).filter(function(item) {
+                    return item !== '';
+                });
+                
+                let checklistHTML = '';
+                
+                checklistHTML += '<li><span class="check-icon">✓</span> Task: ' + task + '</li>';
+                checklistHTML += '<li style="font-weight:700; color:var(--accent-green);">Prepare These Items:</li>';
+                
+                materialList.forEach(function(item) {
+                    checklistHTML += '<li><span class="check-icon">☐</span> ' + item + '</li>';
+                });
+                
+                checklistHTML += '<li style="font-weight:700; color:var(--accent-green);">Remove These Distractions:</li>';
+                
+                distractionList.forEach(function(item) {
+                    checklistHTML += '<li><span class="check-icon">☐</span> ' + item + '</li>';
+                });
+                
+                checklistItems.innerHTML = checklistHTML;
+                checklistResult.classList.add('show');
+            });
+            
+        });
+    </script>
 </body>
 </html>
