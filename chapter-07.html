@@ -5,6 +5,195 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 7: Obey the Law of Forced Efficiency - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 7 SPECIFIC STYLES === */
+        
+        .efficiency-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .efficiency-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .efficiency-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .task-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .task-input {
+            flex: 1;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .task-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-add-task {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-add-task:hover {
+            background-color: var(--accent-green-glow);
+        }
+        
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+        
+        .task-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .task-list li:hover {
+            border-color: var(--accent-green);
+        }
+        
+        .task-number {
+            font-weight: 800;
+            color: var(--text-muted);
+            min-width: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .task-text {
+            flex: 1;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+        
+        .btn-delete-task {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+            padding: 0 5px;
+        }
+        
+        .btn-delete-task:hover {
+            color: #ef4444;
+        }
+        
+        .empty-state {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .btn-challenge {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .btn-challenge:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .challenge-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .challenge-result.show {
+            display: block;
+        }
+        
+        .challenge-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .challenge-result .the-one {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        
+        .challenge-result .deleted-tasks {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .challenge-result .deleted-tasks ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+        
+        .challenge-result .deleted-tasks li {
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            text-decoration: line-through;
+        }
+        
+        .challenge-result .deleted-tasks li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +208,7 @@
         <div class="hero">
             <span class="chapter-tag">Strategy #7</span>
             <h1>Obey the Law of Forced Efficiency</h1>
-            <p class="hero-subtitle">There is never enough time to do everything, but there is always enough time to do the most important thing.</p>
+            <p class="hero-subtitle">There is never enough time to do everything. So stop trying.</p>
         </div>
 
         <div class="frog-box">
@@ -27,36 +216,92 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                The reality is brutal: you will never catch up. You will never finish every email, 
-                every small task, or every request. High performers accept this. They force themselves 
-                to focus only on the tasks that truly matter and let the rest go.
+                You will never catch up. Read that again. You will never answer every email, finish every 
+                small task, or attend every meeting. The workload will always exceed the time available.
+            </p>
+            <p>
+                Most people never accept this. They live in a state of constant guilt, trying to do everything, 
+                and ending the day feeling like a failure. They are busy from morning to night but accomplish nothing important.
+            </p>
+            <p>
+                High performers think differently. They obey the Law of Forced Efficiency. They know that 
+                since they cannot do everything, they must be ruthless about doing the most important thing. 
+                They deliberately let the small stuff slide.
+            </p>
+            <p>
+                <strong>Rule: There is always enough time for the most important thing. The problem is you are wasting time on the unimportant things.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Removes guilt.</strong> You stop feeling bad about not doing everything.</li>
-                <li><strong>Sharpens focus.</strong> Since you can't do it all, you naturally choose the best thing.</li>
-                <li><strong>Reduces stress.</strong> You accept that "good enough" on the important things beats perfection on the trivial.</li>
+                <li><strong>It removes guilt.</strong> You stop feeling bad about not doing everything. You accept it as reality.</li>
+                <li><strong>It sharpens focus.</strong> When you know you can only do one thing, you choose the right thing.</li>
+                <li><strong>It reduces stress.</strong> You stop juggling 15 tasks and start completing 1 or 2 truly important ones.</li>
+                <li><strong>It produces results.</strong> One important task completed beats ten trivial tasks half-finished.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer has 50 unread emails, 10 small admin tasks, and one major client project due. 
-                They obey the law by ignoring the emails and admin tasks until the major project is shipped. 
-                The client is happy, and the freelancer survives another day.
+                <strong>The Entrepreneur:</strong> Meera runs a small online bakery. Her to-do list has 20 items: 
+                order flour, post on Instagram, design new packaging, reply to customer messages, file taxes, 
+                update the website, plan next week's menu, and on and on.
+            </p>
+            <p>
+                She used to start with the easy stuff—posting on Instagram, checking emails. By the end of the day, 
+                the important tasks were still undone. Orders were late. Customers complained.
+            </p>
+            <p>
+                Now she obeys the Law of Forced Efficiency. She asks: "What is the ONE task that matters most today?" 
+                Answer: fulfill the pending orders. So she does that first, no matter what. Instagram can wait. 
+                Emails can wait. Taxes can wait until Friday. Customers get their cakes on time. Her business grows.
             </p>
         </div>
 
+        <!-- INTERACTIVE ONLY ONE THING CHALLENGE -->
+        <div class="efficiency-tool" id="efficiencyTool">
+            <h3>🎯 The Only One Thing Challenge</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> List every task currently on your plate. 
+                Then we will force you to delete all but one. This is the Law of Forced Efficiency in action.
+            </p>
+            
+            <div class="task-input-row">
+                <input type="text" class="task-input" id="taskInput" placeholder="e.g., Reply to customer emails" autocomplete="off">
+                <button class="btn-add-task" id="addTaskBtn">+ Add</button>
+            </div>
+            
+            <ul class="task-list" id="taskList">
+                <!-- Tasks appear here -->
+            </ul>
+            
+            <div class="empty-state" id="emptyState">
+                Your list is empty. Add the tasks currently on your plate.
+            </div>
+            
+            <button class="btn-challenge" id="challengeBtn">Delete Everything Except The One</button>
+            
+            <div class="challenge-result" id="challengeResult">
+                <div class="result-label">Your One Thing</div>
+                <div class="the-one" id="theOneText">—</div>
+                <div class="deleted-tasks" id="deletedTasksText">
+                    <!-- Deleted tasks listed here -->
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>Look at your current to-do list. What is the ONE task that, if you ignore everything else, will make the biggest difference?</p>
-            <textarea id="chapter7Exercise" placeholder="e.g., The one task is finishing the mobile app design..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just deleted all but one task. Now write that one task in the box below. 
+                This is the task you will complete today. Everything else can wait until tomorrow.
+            </p>
+            <textarea id="chapter7Exercise" placeholder="The ONE task I will complete today is..."></textarea>
             <button class="btn-complete" id="markComplete7">Mark Chapter as Complete</button>
         </div>
 
@@ -68,5 +313,121 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 7: ONLY ONE THING CHALLENGE === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+            const emptyState = document.getElementById('emptyState');
+            const challengeBtn = document.getElementById('challengeBtn');
+            const challengeResult = document.getElementById('challengeResult');
+            const theOneText = document.getElementById('theOneText');
+            const deletedTasksText = document.getElementById('deletedTasksText');
+            
+            let tasks = [];
+            
+            // Load saved tasks
+            const savedTasks = localStorage.getItem('frog_ch7_tasks');
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+                renderTasks();
+            }
+            
+            // Add task
+            function addTask() {
+                const text = taskInput.value.trim();
+                if (text === '') return;
+                
+                tasks.push({ id: Date.now(), text: text });
+                taskInput.value = '';
+                saveTasks();
+                renderTasks();
+                taskInput.focus();
+            }
+            
+            // Delete task
+            function deleteTask(id) {
+                tasks = tasks.filter(function(task) {
+                    return task.id !== id;
+                });
+                saveTasks();
+                renderTasks();
+            }
+            
+            // Save to localStorage
+            function saveTasks() {
+                localStorage.setItem('frog_ch7_tasks', JSON.stringify(tasks));
+            }
+            
+            // Render task list
+            function renderTasks() {
+                taskList.innerHTML = '';
+                
+                if (tasks.length === 0) {
+                    emptyState.style.display = 'block';
+                    return;
+                }
+                
+                emptyState.style.display = 'none';
+                
+                tasks.forEach(function(task, index) {
+                    const li = document.createElement('li');
+                    
+                    const numberSpan = document.createElement('span');
+                    numberSpan.className = 'task-number';
+                    numberSpan.textContent = index + 1;
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'task-text';
+                    textSpan.textContent = task.text;
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-delete-task';
+                    deleteBtn.textContent = '✕';
+                    deleteBtn.title = 'Remove task';
+                    deleteBtn.addEventListener('click', function() {
+                        deleteTask(task.id);
+                    });
+                    
+                    li.appendChild(numberSpan);
+                    li.appendChild(textSpan);
+                    li.appendChild(deleteBtn);
+                    taskList.appendChild(li);
+                });
+            }
+            
+            // Challenge button
+            challengeBtn.addEventListener('click', function() {
+                if (tasks.length < 2) {
+                    alert('Please add at least 2 tasks before taking the challenge.');
+                    return;
+                }
+                
+                if (tasks.length > 0) {
+                    theOneText.textContent = tasks[0].text;
+                    
+                    let deletedHTML = '<strong>You deleted these tasks:</strong><ul>';
+                    for (let i = 1; i < tasks.length; i++) {
+                        deletedHTML += '<li>' + tasks[i].text + '</li>';
+                    }
+                    deletedHTML += '</ul>';
+                    
+                    deletedTasksText.innerHTML = deletedHTML;
+                    challengeResult.classList.add('show');
+                }
+            });
+            
+            addTaskBtn.addEventListener('click', addTask);
+            
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+            
+        });
+    </script>
 </body>
 </html>
