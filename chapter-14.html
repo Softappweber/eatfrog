@@ -5,6 +5,190 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 14: Maximize Your Personal Power - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 14 SPECIFIC STYLES === */
+        
+        .energy-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .energy-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .energy-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .energy-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .energy-name {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .energy-name .energy-label {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            display: block;
+        }
+        
+        .energy-name .energy-example {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        .energy-rating {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .energy-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--border-subtle);
+            background: none;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .energy-btn:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        
+        .energy-btn.active-1, .energy-btn.active-2, .energy-btn.active-3 {
+            background-color: #ef4444;
+            border-color: #ef4444;
+            color: white;
+        }
+        
+        .energy-btn.active-4, .energy-btn.active-5, .energy-btn.active-6 {
+            background-color: #f59e0b;
+            border-color: #f59e0b;
+            color: white;
+        }
+        
+        .energy-btn.active-7, .energy-btn.active-8 {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+        
+        .energy-btn.active-9, .energy-btn.active-10 {
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+        }
+        
+        .btn-audit {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .btn-audit:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .audit-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .audit-result.show {
+            display: block;
+        }
+        
+        .audit-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .audit-result .energy-score {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        
+        .audit-result .weakest-area {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        
+        .audit-result .energy-summary {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .audit-result .energy-summary ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+        
+        .audit-result .energy-summary li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .audit-result .energy-summary li:last-child {
+            border-bottom: none;
+        }
+        
+        .audit-result .energy-summary .area-score {
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+    </style>
 </head>
 <body>
 
@@ -27,36 +211,91 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                You cannot eat frogs if you are exhausted. Productivity is not just about mental tricks; 
-                it is about biology. Eating well, exercising regularly, and getting enough sleep are not luxuries—they are 
-                the foundation of high performance. When you feel strong, tasks feel smaller.
+                You cannot eat frogs if you are exhausted. Productivity is not just about mental tricks and 
+                time management. It is about biology. Your brain runs on the fuel you give it.
+            </p>
+            <p>
+                If you sleep 5 hours, skip meals, and sit all day, your brain operates at 50% capacity. 
+                You feel foggy. You procrastinate. You make poor decisions. You snap at people.
+            </p>
+            <p>
+                If you sleep 7-8 hours, eat real food, and move your body, your brain operates at full power. 
+                You feel sharp. You focus easily. You handle stress gracefully.
+            </p>
+            <p>
+                Most people treat sleep, diet, and exercise as optional luxuries. They are not. They are the 
+                foundation of high performance.
+            </p>
+            <p>
+                <strong>Rule: Take care of your body, and your body will take care of your productivity.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Boosts brain function.</strong> Exercise increases blood flow to the brain, improving focus.</li>
-                <li><strong>Stabilizes mood.</strong> Good food and sleep reduce irritability and procrastination.</li>
+                <li><strong>Boosts brain function.</strong> Exercise increases blood flow to the brain, improving focus and memory.</li>
+                <li><strong>Stabilizes mood.</strong> Good food and sleep reduce irritability and emotional reactivity.</li>
                 <li><strong>Increases stamina.</strong> You have the energy to work long hours when needed.</li>
+                <li><strong>Improves decision-making.</strong> A well-rested brain makes better choices.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer who sleeps 5 hours, skips breakfast, and sits all day will struggle to focus at 2 PM. 
-                A freelancer who sleeps 7 hours, takes a 20-minute morning walk, and eats a protein-rich breakfast 
-                will still be sharp at 5 PM. Both have the same 24 hours, but one has far more usable energy.
+                <strong>The Entrepreneur:</strong> Suresh runs a growing logistics company. He works 14 hours a day, 
+                sleeps 5 hours, eats fast food at his desk, and never exercises. He is proud of his "hustle."
+            </p>
+            <p>
+                But his energy crashes every afternoon. He makes mistakes in important meetings. He is irritable 
+                with his team. His business is growing, but he feels terrible.
+            </p>
+            <p>
+                Then Suresh makes a change. He starts sleeping 7 hours. He takes a 20-minute walk every morning. 
+                He swaps fast food for home-cooked meals. Within two weeks, his energy skyrockets. He works 10 hours 
+                instead of 14 but gets more done. His team notices the difference. His business continues to grow, 
+                but now he enjoys it.
+            </p>
+            <p>
+                He didn't work harder. He worked healthier.
             </p>
         </div>
 
+        <!-- INTERACTIVE ENERGY AUDIT -->
+        <div class="energy-tool" id="energyTool">
+            <h3>🔋 The Energy Audit</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Rate yourself honestly on the 4 pillars of personal power.
+                Be brutal. Inflating your score only hurts you. Your lowest score is your frog.
+            </p>
+            
+            <div id="energyRows">
+                <!-- Energy rows generated here -->
+            </div>
+            
+            <button class="btn-audit" id="auditBtn">Calculate My Energy Score</button>
+            
+            <div class="audit-result" id="auditResult">
+                <div class="result-label">Your Energy Audit</div>
+                <div class="energy-score" id="energyScoreText">—</div>
+                <div class="weakest-area" id="weakestAreaText">—</div>
+                <div class="energy-summary" id="energySummaryText">
+                    <!-- Energy summary appears here -->
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is one small change you can make to your sleep, diet, or exercise routine this week to increase your daily energy?</p>
-            <textarea id="chapter14Exercise" placeholder="e.g., I will go to bed by 11 PM and walk for 20 minutes every morning..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just identified your weakest energy pillar. Now write down ONE specific change 
+                you will make this week to improve that area. Not "I will sleep more" but 
+                "I will go to bed by 11 PM every night this week."
+            </p>
+            <textarea id="chapter14Exercise" placeholder="e.g., This week I will go to bed by 11 PM every night and walk for 20 minutes every morning..."></textarea>
             <button class="btn-complete" id="markComplete14">Mark Chapter as Complete</button>
         </div>
 
@@ -68,5 +307,144 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 14: ENERGY AUDIT === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const energyRows = document.getElementById('energyRows');
+            const auditBtn = document.getElementById('auditBtn');
+            const auditResult = document.getElementById('auditResult');
+            const energyScoreText = document.getElementById('energyScoreText');
+            const weakestAreaText = document.getElementById('weakestAreaText');
+            const energySummaryText = document.getElementById('energySummaryText');
+            
+            const energyAreas = [
+                { name: 'Sleep', example: 'How many hours of quality sleep do you get?' },
+                { name: 'Diet & Nutrition', example: 'How clean is your daily food intake?' },
+                { name: 'Exercise & Movement', example: 'How often do you move your body?' },
+                { name: 'Stress Management', example: 'How well do you handle pressure and relax?' }
+            ];
+            
+            let ratings = {};
+            
+            // Load saved ratings
+            const savedRatings = localStorage.getItem('frog_ch14_ratings');
+            if (savedRatings) {
+                ratings = JSON.parse(savedRatings);
+            }
+            
+            // Render energy rows
+            function renderEnergyRows() {
+                energyRows.innerHTML = '';
+                
+                energyAreas.forEach(function(area, index) {
+                    const row = document.createElement('div');
+                    row.className = 'energy-row';
+                    
+                    const nameDiv = document.createElement('div');
+                    nameDiv.className = 'energy-name';
+                    
+                    const label = document.createElement('span');
+                    label.className = 'energy-label';
+                    label.textContent = area.name;
+                    
+                    const example = document.createElement('span');
+                    example.className = 'energy-example';
+                    example.textContent = area.example;
+                    
+                    nameDiv.appendChild(label);
+                    nameDiv.appendChild(example);
+                    
+                    const ratingDiv = document.createElement('div');
+                    ratingDiv.className = 'energy-rating';
+                    
+                    for (let i = 1; i <= 10; i++) {
+                        const btn = document.createElement('button');
+                        btn.className = 'energy-btn';
+                        btn.textContent = i;
+                        btn.dataset.area = index;
+                        btn.dataset.rating = i;
+                        
+                        if (ratings[index] === i) {
+                            if (i <= 3) btn.classList.add('active-1');
+                            else if (i <= 6) btn.classList.add('active-4');
+                            else if (i <= 8) btn.classList.add('active-7');
+                            else btn.classList.add('active-9');
+                        }
+                        
+                        btn.addEventListener('click', function() {
+                            ratings[index] = i;
+                            localStorage.setItem('frog_ch14_ratings', JSON.stringify(ratings));
+                            renderEnergyRows();
+                        });
+                        
+                        ratingDiv.appendChild(btn);
+                    }
+                    
+                    row.appendChild(nameDiv);
+                    row.appendChild(ratingDiv);
+                    energyRows.appendChild(row);
+                });
+            }
+            
+            // Audit energy
+            auditBtn.addEventListener('click', function() {
+                const ratedAreas = Object.keys(ratings);
+                
+                if (ratedAreas.length < energyAreas.length) {
+                    alert('Please rate ALL 4 areas before calculating your energy score.');
+                    return;
+                }
+                
+                // Calculate total score
+                let totalScore = 0;
+                for (let i = 0; i < energyAreas.length; i++) {
+                    totalScore += ratings[i];
+                }
+                
+                const averageScore = Math.round(totalScore / energyAreas.length);
+                
+                // Find weakest area
+                let weakestIndex = 0;
+                let weakestScore = ratings[0] || 10;
+                
+                for (let i = 1; i < energyAreas.length; i++) {
+                    if (ratings[i] < weakestScore) {
+                        weakestScore = ratings[i];
+                        weakestIndex = i;
+                    }
+                }
+                
+                energyScoreText.textContent = averageScore + '/10';
+                
+                weakestAreaText.textContent = 'Weakest area: ' + energyAreas[weakestIndex].name + ' (Score: ' + weakestScore + '/10)';
+                
+                // Build summary
+                let summaryHTML = '<strong>Your full energy profile:</strong><ul>';
+                
+                energyAreas.forEach(function(area, index) {
+                    const score = ratings[index];
+                    let scoreLabel = '';
+                    
+                    if (score <= 3) scoreLabel = 'Critical';
+                    else if (score <= 6) scoreLabel = 'Needs Work';
+                    else if (score <= 8) scoreLabel = 'Good';
+                    else scoreLabel = 'Excellent';
+                    
+                    summaryHTML += '<li><span>' + area.name + '</span> <span class="area-score">' + score + '/10 - ' + scoreLabel + '</span></li>';
+                });
+                
+                summaryHTML += '</ul>';
+                summaryHTML += '<p style="margin-top: 10px;"><strong>Your move:</strong> Focus on improving <strong>' + energyAreas[weakestIndex].name + '</strong> this week. That is your frog.</p>';
+                
+                energySummaryText.innerHTML = summaryHTML;
+                auditResult.classList.add('show');
+            });
+            
+            // Initial render
+            renderEnergyRows();
+            
+        });
+    </script>
 </body>
 </html>

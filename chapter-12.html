@@ -5,6 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 12: Take It One Oil Barrel at a Time - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 12 SPECIFIC STYLES === */
+        
+        .slicer-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .slicer-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .slicer-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .slicer-step {
+            margin-bottom: 20px;
+        }
+        
+        .slicer-step label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .slicer-step .step-hint {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .slicer-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+        
+        .slicer-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-slice-task {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .btn-slice-task:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .slice-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .slice-result.show {
+            display: block;
+        }
+        
+        .slice-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .slice-result .slices-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .slice-result .slices-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+        
+        .slice-result .slices-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .slice-result .slices-list .slice-number {
+            background-color: var(--accent-green);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .slice-result .slices-list .slice-text {
+            flex: 1;
+            font-size: 0.95rem;
+        }
+        
+        .slice-result .start-now {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+    </style>
 </head>
 <body>
 
@@ -27,36 +179,115 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Sometimes the frog is so big it feels impossible. Looking at the whole project overwhelms you. 
-                The secret is to focus only on the very next step. Do not look at the mountain; just look at your feet. 
-                Take one small action, then the next, and soon you are halfway there.
+                Some frogs are too big to eat in one bite. You look at the whole project—write a book, build a website, 
+                launch a business—and your brain freezes. The mountain is too high. The distance is too far.
+            </p>
+            <p>
+                So you do nothing. You procrastinate not because you are lazy, but because you are overwhelmed.
+            </p>
+            <p>
+                The solution is not to find more motivation. The solution is to shrink the task. Break it into 
+                such small pieces that starting feels easy. You do not need to build a website. You just need 
+                to open the editor and write the first line of code.
+            </p>
+            <p>
+                <strong>Rule: Focus only on the next step. The rest will take care of itself.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Reduces overwhelm.</strong> You shrink the task down to something manageable.</li>
-                <li><strong>Builds momentum.</strong> Starting is the hardest part. Once you start, you keep going.</li>
-                <li><strong>Creates hope.</strong> Every small step proves you are making progress.</li>
+                <li><strong>It kills overwhelm.</strong> A tiny step is less frightening than a giant leap.</li>
+                <li><strong>It builds momentum.</strong> Starting is the hardest part. Once you start, you keep going.</li>
+                <li><strong>It creates hope.</strong> Every small completion releases dopamine, pushing you forward.</li>
+                <li><strong>It makes the invisible visible.</strong> You see exactly what to do next.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer needs to build a 20-page website. It feels massive. Instead of thinking about 
-                all 20 pages, they think: "I will just open the design file and build the navigation bar." 
-                Once the nav bar is done, they naturally move to the hero section, and so on.
+                <strong>The Writer:</strong> Kavita wants to write a book. She has wanted to write it for three years. 
+                But every time she sits down, she thinks about 300 pages. She freezes. She opens her laptop, 
+                stares at the blank page, and closes it.
+            </p>
+            <p>
+                Then she applies this principle. She stops thinking about the book. She thinks about one chapter. 
+                Then one page. Then one paragraph. She sets a tiny goal: "Write 100 words today." That's it.
+            </p>
+            <p>
+                She writes 100 words. Then 200. Then 500. The next day she writes 800. Within three months, 
+                she has a full manuscript. She didn't find a magic burst of motivation. She just took it one oil barrel at a time.
             </p>
         </div>
 
+        <!-- INTERACTIVE TASK SLICER -->
+        <div class="slicer-tool" id="slicerTool">
+            <h3>🔪 The Task Slicer</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Pick one big project you have been avoiding. 
+                Then break it into 5 micro-steps. Steps so small you could do the first one right now.
+            </p>
+            
+            <div class="slicer-step">
+                <label>1. What is the big project you have been avoiding?</label>
+                <div class="step-hint">Be specific. Not "start a business" but "launch an online store."</div>
+                <input type="text" class="slicer-input" id="bigProject" placeholder="e.g., Launch an online store" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="slicer-step">
+                <label>2. What is the FIRST micro-step?</label>
+                <div class="step-hint">So small you could do it in 5 minutes.</div>
+                <input type="text" class="slicer-input" id="slice1" placeholder="e.g., Open Shopify and create an account" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="slicer-step">
+                <label>3. What is the SECOND micro-step?</label>
+                <div class="step-hint">What comes right after step 1?</div>
+                <input type="text" class="slicer-input" id="slice2" placeholder="e.g., Choose a theme for the store" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="slicer-step">
+                <label>4. What is the THIRD micro-step?</label>
+                <div class="step-hint">Keep it small. Keep it specific.</div>
+                <input type="text" class="slicer-input" id="slice3" placeholder="e.g., Add my first 5 products with descriptions" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="slicer-step">
+                <label>5. What is the FOURTH micro-step?</label>
+                <div class="step-hint">What comes next?</div>
+                <input type="text" class="slicer-input" id="slice4" placeholder="e.g., Set up payment gateway" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="slicer-step">
+                <label>6. What is the FIFTH micro-step?</label>
+                <div class="step-hint">What completes this first phase of the project?</div>
+                <input type="text" class="slicer-input" id="slice5" placeholder="e.g., Buy domain and connect it to the store" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <button class="btn-slice-task" id="sliceTaskBtn">Slice My Task</button>
+            
+            <div class="slice-result" id="sliceResult">
+                <div class="result-label">Your Micro-Step Plan</div>
+                <ul class="slices-list" id="slicesList">
+                    <!-- Slices appear here -->
+                </ul>
+                <div class="start-now">
+                    Your move: Do Step 1 right now. It will take 5 minutes.
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is a big project you are avoiding? What is the VERY FIRST small step you can take right now to get started?</p>
-            <textarea id="chapter12Exercise" placeholder="e.g., The big project is my portfolio. The first step is creating a new document and listing my top 5 projects..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just sliced your big project into 5 micro-steps. Now write down the FIRST micro-step 
+                and the exact time you will do it today. Not tomorrow. Today.
+            </p>
+            <textarea id="chapter12Exercise" placeholder="e.g., Today at 5 PM I will open Shopify and create an account..."></textarea>
             <button class="btn-complete" id="markComplete12">Mark Chapter as Complete</button>
         </div>
 
@@ -68,5 +299,87 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 12: TASK SLICER === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const bigProject = document.getElementById('bigProject');
+            const slice1 = document.getElementById('slice1');
+            const slice2 = document.getElementById('slice2');
+            const slice3 = document.getElementById('slice3');
+            const slice4 = document.getElementById('slice4');
+            const slice5 = document.getElementById('slice5');
+            const sliceTaskBtn = document.getElementById('sliceTaskBtn');
+            const sliceResult = document.getElementById('sliceResult');
+            const slicesList = document.getElementById('slicesList');
+            
+            // Load saved data
+            const savedProject = localStorage.getItem('frog_ch12_project');
+            const savedSlice1 = localStorage.getItem('frog_ch12_slice1');
+            const savedSlice2 = localStorage.getItem('frog_ch12_slice2');
+            const savedSlice3 = localStorage.getItem('frog_ch12_slice3');
+            const savedSlice4 = localStorage.getItem('frog_ch12_slice4');
+            const savedSlice5 = localStorage.getItem('frog_ch12_slice5');
+            
+            if (savedProject) bigProject.value = savedProject;
+            if (savedSlice1) slice1.value = savedSlice1;
+            if (savedSlice2) slice2.value = savedSlice2;
+            if (savedSlice3) slice3.value = savedSlice3;
+            if (savedSlice4) slice4.value = savedSlice4;
+            if (savedSlice5) slice5.value = savedSlice5;
+            
+            // Auto-save inputs
+            bigProject.addEventListener('input', function() {
+                localStorage.setItem('frog_ch12_project', bigProject.value);
+            });
+            
+            slice1.addEventListener('input', function() {
+                localStorage.setItem('frog_ch12_slice1', slice1.value);
+            });
+            
+            slice2.addEventListener('input', function() {
+                localStorage.setItem('frog_ch12_slice2', slice2.value);
+            });
+            
+            slice3.addEventListener('input', function() {
+                localStorage.setItem('frog_ch12_slice3', slice3.value);
+            });
+            
+            slice4.addEventListener('input', function() {
+                localStorage.setItem('frog_ch12_slice4', slice4.value);
+            });
+            
+            slice5.addEventListener('input', function() {
+                localStorage.setItem('frog_ch12_slice5', slice5.value);
+            });
+            
+            // Slice task
+            sliceTaskBtn.addEventListener('click', function() {
+                const project = bigProject.value.trim();
+                const s1 = slice1.value.trim();
+                const s2 = slice2.value.trim();
+                const s3 = slice3.value.trim();
+                const s4 = slice4.value.trim();
+                const s5 = slice5.value.trim();
+                
+                if (project === '' || s1 === '' || s2 === '' || s3 === '' || s4 === '' || s5 === '') {
+                    alert('Please fill in all six fields before slicing your task.');
+                    return;
+                }
+                
+                const slices = [s1, s2, s3, s4, s5];
+                
+                let slicesHTML = '';
+                
+                slices.forEach(function(slice, index) {
+                    slicesHTML += '<li><span class="slice-number">' + (index + 1) + '</span><span class="slice-text">' + slice + '</span></li>';
+                });
+                
+                slicesList.innerHTML = slicesHTML;
+                sliceResult.classList.add('show');
+            });
+            
+        });
+    </script>
 </body>
 </html>

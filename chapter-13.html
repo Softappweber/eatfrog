@@ -5,6 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 13: Put the Pressure on Yourself - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 13 SPECIFIC STYLES === */
+        
+        .pressure-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .pressure-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .pressure-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .pressure-step {
+            margin-bottom: 20px;
+        }
+        
+        .pressure-step label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .pressure-step .step-hint {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .pressure-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+            min-height: 60px;
+            font-family: inherit;
+        }
+        
+        .pressure-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-compress {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .btn-compress:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .compress-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .compress-result.show {
+            display: block;
+        }
+        
+        .compress-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .compress-result .original-deadline {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-decoration: line-through;
+            margin-bottom: 5px;
+        }
+        
+        .compress-result .new-deadline {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        
+        .compress-result .challenge {
+            padding: 15px;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+    </style>
 </head>
 <body>
 
@@ -27,36 +153,99 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Most people wait for a deadline, a boss, or a crisis to force them into action. 
-                High performers create their own deadlines. They pretend they have only half the time they actually have. 
-                By manufacturing urgency, they tap into deep focus and get more done.
+                Most people wait for a deadline, a boss, or a crisis to force them into action. They need 
+                external pressure to do what they already know they should do. That is a weak position.
+            </p>
+            <p>
+                High performers create their own pressure. They set their own deadlines. They pretend they 
+                have half the time they actually have. They manufacture urgency even when none exists.
+            </p>
+            <p>
+                Why? Because pressure creates focus. When you have 5 days to do a task, you take 5 days. 
+                When you give yourself 2 days, you find a way to do it in 2 days. Same task. Same person. 
+                Different deadline. Different result.
+            </p>
+            <p>
+                <strong>Rule: The deadline you set for yourself is the one that matters most.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Eliminates laziness.</strong> You stop waiting for the "perfect time" to start.</li>
-                <li><strong>Sharpens focus.</strong> Self-imposed deadlines stop you from wasting time.</li>
-                <li><strong>Builds confidence.</strong> Every time you hit your own deadline, you trust yourself more.</li>
+                <li><strong>It eliminates laziness.</strong> You stop waiting for the "perfect time" to start.</li>
+                <li><strong>It sharpens focus.</strong> A tight deadline forces you to ignore distractions.</li>
+                <li><strong>It builds confidence.</strong> Every time you hit your own deadline, you trust yourself more.</li>
+                <li><strong>It creates momentum.</strong> Fast action builds energy. Slow action drains it.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer has 5 days to deliver a project. Instead of relaxing for 4 days, they tell themselves, 
-                "I will deliver this in 48 hours." They work with intense focus. They deliver early, the client is amazed, 
-                and they free up 3 days for new work or rest.
+                <strong>The Student:</strong> Rahul has 10 days to submit his final year project. He knows he can 
+                do it in 3 days if he focuses. But he tells himself, "I have 10 days. I'll start later." 
+                He scrolls Instagram, hangs out with friends, and procrastinates. On day 8, panic sets in. 
+                He works frantically, makes mistakes, and submits an average project.
+            </p>
+            <p>
+                Now imagine Rahul does something different on day 1. He tells himself: "I will finish this 
+                project in 3 days. I will submit it by day 3. That is my deadline." He puts his phone away. 
+                He works with intense focus. He submits the project on day 3, gets excellent feedback, 
+                and enjoys the next 7 days stress-free.
+            </p>
+            <p>
+                Same project. Same student. The only difference was self-imposed pressure.
             </p>
         </div>
 
+        <!-- INTERACTIVE DEADLINE COMPRESSOR -->
+        <div class="pressure-tool" id="pressureTool">
+            <h3>⚡ The Deadline Compressor</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Pick one task you are currently doing slowly. 
+                Set a real deadline. Then cut it in half. That is your new deadline.
+            </p>
+            
+            <div class="pressure-step">
+                <label>1. What is the task you are doing slowly?</label>
+                <div class="step-hint">Be specific. Not "work" but "complete the marketing report."</div>
+                <input type="text" class="pressure-input" id="taskName" placeholder="e.g., Complete the marketing report" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="pressure-step">
+                <label>2. What is your current deadline?</label>
+                <div class="step-hint">When would you normally finish this task?</div>
+                <input type="text" class="pressure-input" id="oldDeadline" placeholder="e.g., Friday by 5 PM" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="pressure-step">
+                <label>3. What is half of that time?</label>
+                <div class="step-hint">Be aggressive. Cut it in half. Really half.</div>
+                <input type="text" class="pressure-input" id="newDeadline" placeholder="e.g., Wednesday by 5 PM" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <button class="btn-compress" id="compressBtn">Compress My Deadline</button>
+            
+            <div class="compress-result" id="compressResult">
+                <div class="result-label">Your New Commitment</div>
+                <div class="original-deadline" id="oldDeadlineText">—</div>
+                <div class="new-deadline" id="newDeadlineText">—</div>
+                <div class="challenge">
+                    You will finish this task by your new deadline. No excuses.
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is one task you are currently doing slowly? What new, earlier deadline will you set for yourself to force faster action?</p>
-            <textarea id="chapter13Exercise" placeholder="e.g., I will finish the client draft by 3 PM today instead of tomorrow morning..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just compressed your deadline. Now write down the task, the new deadline, 
+                and one specific action you will take right now to start moving faster.
+            </p>
+            <textarea id="chapter13Exercise" placeholder="e.g., I will finish the marketing report by Wednesday 5 PM. Right now I will close all distractions and work on it for 1 hour..."></textarea>
             <button class="btn-complete" id="markComplete13">Mark Chapter as Complete</button>
         </div>
 
@@ -68,5 +257,58 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 13: DEADLINE COMPRESSOR === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const taskName = document.getElementById('taskName');
+            const oldDeadline = document.getElementById('oldDeadline');
+            const newDeadline = document.getElementById('newDeadline');
+            const compressBtn = document.getElementById('compressBtn');
+            const compressResult = document.getElementById('compressResult');
+            const oldDeadlineText = document.getElementById('oldDeadlineText');
+            const newDeadlineText = document.getElementById('newDeadlineText');
+            
+            // Load saved data
+            const savedTask = localStorage.getItem('frog_ch13_task');
+            const savedOld = localStorage.getItem('frog_ch13_old');
+            const savedNew = localStorage.getItem('frog_ch13_new');
+            
+            if (savedTask) taskName.value = savedTask;
+            if (savedOld) oldDeadline.value = savedOld;
+            if (savedNew) newDeadline.value = savedNew;
+            
+            // Auto-save inputs
+            taskName.addEventListener('input', function() {
+                localStorage.setItem('frog_ch13_task', taskName.value);
+            });
+            
+            oldDeadline.addEventListener('input', function() {
+                localStorage.setItem('frog_ch13_old', oldDeadline.value);
+            });
+            
+            newDeadline.addEventListener('input', function() {
+                localStorage.setItem('frog_ch13_new', newDeadline.value);
+            });
+            
+            // Compress deadline
+            compressBtn.addEventListener('click', function() {
+                const task = taskName.value.trim();
+                const oldD = oldDeadline.value.trim();
+                const newD = newDeadline.value.trim();
+                
+                if (task === '' || oldD === '' || newD === '') {
+                    alert('Please fill in all three fields before compressing your deadline.');
+                    return;
+                }
+                
+                oldDeadlineText.textContent = 'Old deadline: ' + oldD;
+                newDeadlineText.textContent = 'New deadline: ' + newD + ' (for "' + task + '")';
+                
+                compressResult.classList.add('show');
+            });
+            
+        });
+    </script>
 </body>
 </html>
