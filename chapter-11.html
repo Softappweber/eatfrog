@@ -5,6 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 11: Identify Your Key Constraints - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 11 SPECIFIC STYLES === */
+        
+        .constraint-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .constraint-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .constraint-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .constraint-step {
+            margin-bottom: 20px;
+        }
+        
+        .constraint-step label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .constraint-step .step-hint {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+        
+        .constraint-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+            resize: vertical;
+            min-height: 60px;
+            font-family: inherit;
+        }
+        
+        .constraint-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-dig-deeper {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .btn-dig-deeper:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .constraint-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .constraint-result.show {
+            display: block;
+        }
+        
+        .constraint-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .constraint-result .root-cause {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        
+        .constraint-result .why-chain {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .constraint-result .why-chain ol {
+            padding-left: 20px;
+            margin: 10px 0 0 0;
+        }
+        
+        .constraint-result .why-chain li {
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .constraint-result .why-chain li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -27,36 +156,104 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Between you and your goal, there is always a limiting factor—a constraint. 
-                It might be a lack of money, a lack of time, a lack of knowledge, or a specific person. 
-                Your job is to identify exactly what is holding you back and attack that constraint directly.
+                Between you and your goal, there is always a bottleneck. A single constraint that is holding 
+                everything else back. It might be a lack of money. A lack of time. A lack of knowledge. 
+                A specific person. A specific fear.
+            </p>
+            <p>
+                Most people never identify this constraint. They work hard on everything except the one thing 
+                that is actually blocking them. They are busy, but they are not effective.
+            </p>
+            <p>
+                High performers are different. They play detective. They keep asking "Why?" until they find 
+                the root cause. Then they attack that one constraint with everything they have.
+            </p>
+            <p>
+                <strong>Rule: 80% of your problems come from 20% of the constraints. Find that 20%.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Clarifies the battleground.</strong> You stop fighting symptoms and fix the root cause.</li>
-                <li><strong>Saves time.</strong> You don't waste effort on areas that aren't the problem.</li>
-                <li><strong>Produces rapid results.</strong> Removing one major blockage creates massive momentum.</li>
+                <li><strong>It clarifies the battleground.</strong> You stop fighting symptoms and fix the root cause.</li>
+                <li><strong>It saves time.</strong> You don't waste effort on areas that aren't the problem.</li>
+                <li><strong>It produces rapid results.</strong> Removing one major blockage creates massive momentum.</li>
+                <li><strong>It reduces frustration.</strong> You stop wondering why you're not making progress. Now you know.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer wants to earn more money. Their immediate thought is "I need more clients." 
-                But upon reflection, they realize their real constraint is that their portfolio is outdated, 
-                so clients don't trust them. They spend two days fixing their portfolio. Suddenly, clients say yes.
+                <strong>The Job Seeker:</strong> Vikram has been applying for jobs for 6 months. No interviews. 
+                He is frustrated and starting to lose hope. His first instinct is to blame the job market.
+            </p>
+            <p>
+                Then he applies the constraint analysis. His goal: get a job. What's the constraint? 
+                "No one is calling me." Why? "My resume is not getting shortlisted." Why? "It's generic and 
+                doesn't highlight my specific achievements." Why? "I never tailored it for each application."
+            </p>
+            <p>
+                The root cause is not the job market. It's his resume. He spends two days rewriting it with 
+                specific, measurable achievements. He starts tailoring it for each application. Within two weeks, 
+                he gets three interview calls. Same job market. Different resume. The bottleneck was removed.
             </p>
         </div>
 
+        <!-- INTERACTIVE BOTTLENECK FINDER -->
+        <div class="constraint-tool" id="constraintTool">
+            <h3>🔍 The Bottleneck Finder</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Pick one goal you are struggling with. 
+                Then answer the "Why" chain honestly. Dig until you find the root cause.
+            </p>
+            
+            <div class="constraint-step">
+                <label>1. What is your goal?</label>
+                <div class="step-hint">Be specific. Not "earn more" but "earn ₹50,000 per month."</div>
+                <input type="text" class="constraint-input" id="goalInput" placeholder="e.g., Earn ₹50,000 per month" autocomplete="off" style="min-height: auto;">
+            </div>
+            
+            <div class="constraint-step">
+                <label>2. Why haven't you achieved it yet?</label>
+                <div class="step-hint">Be honest. This is your first surface-level answer.</div>
+                <textarea class="constraint-input" id="why1" placeholder="e.g., I don't have enough clients..."></textarea>
+            </div>
+            
+            <div class="constraint-step">
+                <label>3. Why is that?</label>
+                <div class="step-hint">Dig deeper. Do not accept the first excuse.</div>
+                <textarea class="constraint-input" id="why2" placeholder="e.g., I don't know how to find clients..."></textarea>
+            </div>
+            
+            <div class="constraint-step">
+                <label>4. And why is that?</label>
+                <div class="step-hint">Keep going. The root cause is usually two or three levels down.</div>
+                <textarea class="constraint-input" id="why3" placeholder="e.g., I never learned marketing or sales..."></textarea>
+            </div>
+            
+            <button class="btn-dig-deeper" id="digDeeperBtn">Find My Root Constraint</button>
+            
+            <div class="constraint-result" id="constraintResult">
+                <div class="result-label">Your Root Constraint</div>
+                <div class="root-cause" id="rootCauseText">—</div>
+                <div class="why-chain" id="whyChainText">
+                    <!-- Why chain appears here -->
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is your biggest goal right now? What is the ONE major constraint standing between you and that goal?</p>
-            <textarea id="chapter11Exercise" placeholder="e.g., My goal is 5 new clients. My constraint is I have no strong portfolio..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just found your root constraint. Now write down ONE specific action you will take 
+                this week to remove or reduce that constraint. Be specific. Not "I will work harder" 
+                but "I will spend 1 hour every morning learning marketing."
+            </p>
+            <textarea id="chapter11Exercise" placeholder="e.g., This week I will spend 1 hour every morning learning how to find clients..."></textarea>
             <button class="btn-complete" id="markComplete11">Mark Chapter as Complete</button>
         </div>
 
@@ -68,5 +265,74 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 11: BOTTLENECK FINDER === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const goalInput = document.getElementById('goalInput');
+            const why1 = document.getElementById('why1');
+            const why2 = document.getElementById('why2');
+            const why3 = document.getElementById('why3');
+            const digDeeperBtn = document.getElementById('digDeeperBtn');
+            const constraintResult = document.getElementById('constraintResult');
+            const rootCauseText = document.getElementById('rootCauseText');
+            const whyChainText = document.getElementById('whyChainText');
+            
+            // Load saved data
+            const savedGoal = localStorage.getItem('frog_ch11_goal');
+            const savedWhy1 = localStorage.getItem('frog_ch11_why1');
+            const savedWhy2 = localStorage.getItem('frog_ch11_why2');
+            const savedWhy3 = localStorage.getItem('frog_ch11_why3');
+            
+            if (savedGoal) goalInput.value = savedGoal;
+            if (savedWhy1) why1.value = savedWhy1;
+            if (savedWhy2) why2.value = savedWhy2;
+            if (savedWhy3) why3.value = savedWhy3;
+            
+            // Auto-save inputs
+            goalInput.addEventListener('input', function() {
+                localStorage.setItem('frog_ch11_goal', goalInput.value);
+            });
+            
+            why1.addEventListener('input', function() {
+                localStorage.setItem('frog_ch11_why1', why1.value);
+            });
+            
+            why2.addEventListener('input', function() {
+                localStorage.setItem('frog_ch11_why2', why2.value);
+            });
+            
+            why3.addEventListener('input', function() {
+                localStorage.setItem('frog_ch11_why3', why3.value);
+            });
+            
+            // Find root cause
+            digDeeperBtn.addEventListener('click', function() {
+                const goal = goalInput.value.trim();
+                const w1 = why1.value.trim();
+                const w2 = why2.value.trim();
+                const w3 = why3.value.trim();
+                
+                if (goal === '' || w1 === '' || w2 === '' || w3 === '') {
+                    alert('Please fill in all four fields before finding your root constraint.');
+                    return;
+                }
+                
+                rootCauseText.textContent = 'Your root constraint is: ' + w3;
+                
+                let chainHTML = '<strong>Your Why Chain:</strong><ol>';
+                chainHTML += '<li>Goal: ' + goal + '</li>';
+                chainHTML += '<li>Why not achieved? ' + w1 + '</li>';
+                chainHTML += '<li>Why? ' + w2 + '</li>';
+                chainHTML += '<li>Root cause? ' + w3 + '</li>';
+                chainHTML += '</ol>';
+                chainHTML += '<p style="margin-top: 10px;"><strong>Your move:</strong> Attack the root cause. That is your frog.</p>';
+                
+                whyChainText.innerHTML = chainHTML;
+                constraintResult.classList.add('show');
+            });
+            
+        });
+    </script>
 </body>
 </html>
