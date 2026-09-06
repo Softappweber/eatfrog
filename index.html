@@ -6,26 +6,21 @@
     <title>Frog First - Master the 21 Strategies</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* === HOMEPAGE SPECIFIC STYLES === */
-        
         .hero-home {
             text-align: center;
             margin: 30px 0 20px 0;
         }
-        
         .hero-home h1 {
             font-size: 3rem;
             font-weight: 800;
             color: var(--accent-green);
             margin-bottom: 8px;
         }
-        
         .hero-home p {
             font-size: 1.2rem;
             color: var(--text-secondary);
         }
         
-        /* Lock Screen Box */
         .lock-box {
             background-color: var(--bg-card);
             border: 2px solid var(--accent-green);
@@ -35,21 +30,17 @@
             text-align: center;
             box-shadow: var(--shadow-subtle);
         }
-        
         .lock-box.hidden {
             display: none;
         }
-        
         .lock-box h2 {
             font-size: 1.5rem;
             margin-bottom: 8px;
         }
-        
         .lock-box p {
             color: var(--text-secondary);
             margin-bottom: 20px;
         }
-        
         .promo-input {
             width: 100%;
             max-width: 350px;
@@ -64,12 +55,10 @@
             margin-bottom: 15px;
             transition: border-color 0.3s ease;
         }
-        
         .promo-input:focus {
             outline: none;
             border-color: var(--accent-green);
         }
-        
         .btn-unlock {
             background-color: var(--accent-green);
             color: white;
@@ -82,25 +71,21 @@
             transition: all 0.3s ease;
             letter-spacing: 0.5px;
         }
-        
         .btn-unlock:hover {
             background-color: var(--accent-green-glow);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
         }
-        
         .unlock-error {
-            color: #ef4444;
+            color: var(--accent-red);
             font-size: 0.9rem;
             margin-top: 10px;
             display: none;
         }
         
-        /* Frog Pond Dashboard */
         .pond-section {
             margin: 30px 0;
         }
-        
         .pond-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -108,14 +93,12 @@
             margin-bottom: 10px;
             text-align: center;
         }
-        
         .pond-progress {
             text-align: center;
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-bottom: 15px;
         }
-        
         .frog-pond {
             background-color: var(--frog-pond-bg);
             border-radius: 16px;
@@ -127,36 +110,30 @@
             min-height: 80px;
             border: 1px solid var(--border-subtle);
         }
-        
         .frog-emoji {
             font-size: 2.2rem;
             transition: transform 0.3s ease;
             cursor: default;
         }
-        
         .frog-emoji.earned {
             animation: hop 0.5s ease;
         }
-        
         .frog-emoji.locked {
             filter: grayscale(100%);
             opacity: 0.3;
         }
-        
         @keyframes hop {
             0% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
             100% { transform: translateY(0); }
         }
         
-        /* Chapter Grid */
         .chapter-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 15px;
             margin: 30px 0;
         }
-        
         .chapter-card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-subtle);
@@ -168,18 +145,15 @@
             position: relative;
             display: block;
         }
-        
         .chapter-card:hover {
             transform: translateY(-4px);
             border-color: var(--accent-green);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: var(--shadow-hover);
         }
-        
         .chapter-card.locked-card {
             opacity: 0.6;
             pointer-events: none;
         }
-        
         .chapter-card .card-number {
             font-size: 0.75rem;
             font-weight: 700;
@@ -188,19 +162,16 @@
             letter-spacing: 1px;
             margin-bottom: 6px;
         }
-        
         .chapter-card .card-title {
             font-size: 1.05rem;
             font-weight: 700;
             margin-bottom: 6px;
         }
-        
         .chapter-card .card-summary {
             font-size: 0.85rem;
             color: var(--text-muted);
             line-height: 1.4;
         }
-        
         .chapter-card .card-check {
             position: absolute;
             top: 15px;
@@ -209,17 +180,14 @@
             color: var(--accent-green);
             display: none;
         }
-        
         .chapter-card.completed-card .card-check {
             display: block;
         }
         
-        /* Reset Button */
         .reset-section {
             text-align: center;
             margin: 40px 0 20px 0;
         }
-        
         .btn-reset {
             background: none;
             border: 1px solid var(--border-subtle);
@@ -230,16 +198,14 @@
             font-size: 0.8rem;
             transition: all 0.3s ease;
         }
-        
         .btn-reset:hover {
-            border-color: #ef4444;
-            color: #ef4444;
+            border-color: var(--accent-red);
+            color: var(--accent-red);
         }
     </style>
 </head>
 <body>
 
-    <!-- TOP NAVIGATION BAR -->
     <nav class="nav-bar">
         <span class="nav-badge">Frog First</span>
         <span class="nav-badge" id="progressBadge">0/21 Done</span>
@@ -248,13 +214,11 @@
 
     <div class="container">
 
-        <!-- HERO SECTION -->
         <div class="hero-home">
             <h1>🐸 Frog First</h1>
             <p>Master the 21 strategies to stop procrastinating and get more done.</p>
         </div>
 
-        <!-- LOCK SCREEN / PROMO CODE -->
         <div class="lock-box" id="lockBox">
             <h2>🔒 Unlock All 21 Chapters</h2>
             <p>Enter your promo code to access the complete book.</p>
@@ -264,21 +228,14 @@
             <p class="unlock-error" id="unlockError">Invalid code. Please try again.</p>
         </div>
 
-        <!-- FROG POND DASHBOARD -->
         <div class="pond-section">
             <div class="pond-title">Your Frog Pond</div>
             <div class="pond-progress" id="pondProgress">Complete chapters to fill your pond with frogs.</div>
-            <div class="frog-pond" id="frogPond">
-                <!-- Frogs will be generated here by JavaScript -->
-            </div>
+            <div class="frog-pond" id="frogPond"></div>
         </div>
 
-        <!-- CHAPTER GRID -->
-        <div class="chapter-grid" id="chapterGrid">
-            <!-- Chapter cards will be generated here by JavaScript -->
-        </div>
+        <div class="chapter-grid" id="chapterGrid"></div>
 
-        <!-- RESET PROGRESS -->
         <div class="reset-section">
             <button class="btn-reset" id="resetBtn">Reset All Progress</button>
         </div>
@@ -287,13 +244,11 @@
 
     <script src="app.js"></script>
     <script>
-        /* === HOMEPAGE LOGIC (Runs after app.js loads) === */
-        
         document.addEventListener('DOMContentLoaded', function() {
             
             const chapterData = [
                 { num: 1, title: "Set the Table", summary: "Decide exactly what you want. Clarity is the starting point." },
-                { num: 2, title: "Plan Every Day in Advance", summary: "Think on paper. Every minute planning saves five in execution." },
+                { num: 2, title: "Plan Every Day in Advance", summary: "Think on paper. Every minute planning saves ten in execution." },
                 { num: 3, title: "Apply the 80/20 Rule", summary: "20% of your activities produce 80% of your results." },
                 { num: 4, title: "Consider the Consequences", summary: "Long-term thinking improves short-term decisions." },
                 { num: 5, title: "Practice the ABCDE Method", summary: "Prioritize tasks by labeling them A, B, C, D, or E." },
@@ -325,12 +280,10 @@
             const unlockError = document.getElementById('unlockError');
             const resetBtn = document.getElementById('resetBtn');
             
-            // Check if app is unlocked
             function isUnlocked() {
                 return localStorage.getItem('frogUnlocked') === 'true';
             }
             
-            // Get completed chapters
             function getCompletedChapters() {
                 const completed = [];
                 for (let i = 1; i <= 21; i++) {
@@ -341,7 +294,6 @@
                 return completed;
             }
             
-            // Render the Frog Pond
             function renderPond() {
                 const completed = getCompletedChapters();
                 frogPond.innerHTML = '';
@@ -371,7 +323,6 @@
                 }
             }
             
-            // Render Chapter Grid
             function renderGrid() {
                 chapterGrid.innerHTML = '';
                 const completed = getCompletedChapters();
@@ -400,7 +351,6 @@
                 });
             }
             
-            // Lock/Unlock Logic
             function updateLockUI() {
                 if (isUnlocked()) {
                     lockBox.classList.add('hidden');
@@ -413,9 +363,6 @@
             
             unlockBtn.addEventListener('click', function() {
                 const code = promoInput.value.trim().toUpperCase();
-                
-                // TEMPORARY TEST CODES
-                // You can change these later to work with Google Sheets
                 const validCodes = ['FROG21', 'EATFROG', 'UNLOCK21'];
                 
                 if (validCodes.includes(code)) {
@@ -427,14 +374,12 @@
                 }
             });
             
-            // Allow Enter key to submit
             promoInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     unlockBtn.click();
                 }
             });
             
-            // Reset Progress
             resetBtn.addEventListener('click', function() {
                 if (confirm('Are you sure you want to delete ALL progress? This cannot be undone.')) {
                     localStorage.clear();
@@ -442,7 +387,6 @@
                 }
             });
             
-            // Initial render
             updateLockUI();
         });
     </script>
