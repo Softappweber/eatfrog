@@ -5,70 +5,192 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 20: Develop a Sense of Urgency - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .sprint-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+            text-align: center;
+        }
+        .sprint-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .sprint-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .sprint-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+        .sprint-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        .sprint-display {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 20px 0;
+            font-variant-numeric: tabular-nums;
+        }
+        .btn-sprint {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-sprint:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+        }
+        .sprint-done {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
         <span class="nav-badge">Chapter 20 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
-
     <div class="container">
-
         <div class="hero">
             <span class="chapter-tag">Strategy #20</span>
             <h1>Develop a Sense of Urgency</h1>
             <p class="hero-subtitle">Train yourself to act fast. Speed is a habit.</p>
         </div>
-
         <div class="frog-box">
             <p>"Do it now! Sometimes 'later' becomes 'never'."</p>
         </div>
-
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
                 Highly effective people have a bias for action. They do not wait for perfect conditions. 
-                They do not say "tomorrow." They feel a constant, low-level urgency to move forward. 
-                When they identify a frog, they eat it immediately. This urgency is not stress; it is a calm, 
-                focused drive that turns thoughts into results.
+                They do not say "tomorrow." They feel a constant, low-level urgency to move forward.
+            </p>
+            <p>
+                When they identify a frog, they eat it immediately. They do not bookmark it. They do not add it 
+                to a list. They act.
+            </p>
+            <p>
+                This urgency is not stress. It is a calm, focused drive that turns thoughts into results.
+            </p>
+            <p>
+                <strong>Rule: The best time to do something was yesterday. The second best time is right now.</strong>
             </p>
         </div>
-
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
                 <li><strong>Beats procrastination.</strong> Urgency leaves no room for hesitation.</li>
                 <li><strong>Creates momentum.</strong> Fast action builds energy. Slow action drains it.</li>
                 <li><strong>Develops a reputation.</strong> People who act fast get promoted, hired, and trusted.</li>
             </ul>
         </div>
-
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A job seeker sees a job posting that matches their skills perfectly. The deadline is in 5 days. 
-                Most people will bookmark it and "apply later." A person with urgency stops what they are doing, 
-                tailors their resume, and submits their application within the hour. 
-                The recruiter reviews applications on a rolling basis—the urgent candidate gets the interview.
+                <strong>The Job Seeker:</strong> Vikram sees a job posting that matches his skills perfectly. 
+                The deadline is in 5 days. Most people bookmark it and "apply later." Vikram does something different. 
+                He stops what he is doing, tailors his resume, and submits his application within the hour.
+            </p>
+            <p>
+                The recruiter reviews applications on a rolling basis. Vikram's application is the first one she sees. 
+                He gets the interview. He gets the job. The other candidates were just as qualified—but they waited. 
+                Vikram acted.
             </p>
         </div>
-
+        <div class="sprint-tool" id="sprintTool">
+            <h3>⚡ The 60-Second Sprint</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Write down ONE small action you can take in the next 60 seconds. 
+                Then start the timer and do it before it rings.
+            </p>
+            <input type="text" class="sprint-input" id="sprintInput" placeholder="e.g., Send the payment reminder email" autocomplete="off">
+            <div class="sprint-display" id="sprintDisplay">60</div>
+            <button class="btn-sprint" id="sprintBtn">Start Sprint</button>
+            <p class="sprint-done" id="sprintDone" style="display:none;">Done! You acted with urgency. Now do the next thing.</p>
+        </div>
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is one action you have been postponing that you can do RIGHT NOW? Close this chapter and do it immediately.</p>
-            <textarea id="chapter20Exercise" placeholder="e.g., I will send the payment reminder email right now, before reading anything else..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just completed a 60-second sprint. Now write down the action you took, and how it felt. 
+                Urgency is a muscle. Every sprint builds it.
+            </p>
+            <textarea id="chapter20Exercise" placeholder="e.g., I sent the payment reminder email. It felt uncomfortable but I did it immediately..."></textarea>
             <button class="btn-complete" id="markComplete20">Mark Chapter as Complete</button>
         </div>
-
         <div class="footer-nav">
             <a href="chapter-19.html">← Previous Chapter</a>
             <a href="chapter-21.html">Next Chapter →</a>
         </div>
-
     </div>
-
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sprintInput = document.getElementById('sprintInput');
+            const sprintBtn = document.getElementById('sprintBtn');
+            const sprintDisplay = document.getElementById('sprintDisplay');
+            const sprintDone = document.getElementById('sprintDone');
+            
+            let timeLeft = 60;
+            let sprintInterval = null;
+            
+            sprintBtn.addEventListener('click', function() {
+                const action = sprintInput.value.trim();
+                if (action === '') {
+                    alert('Please write down your 60-second action first.');
+                    return;
+                }
+                if (sprintInterval) return;
+                
+                sprintBtn.disabled = true;
+                sprintDone.style.display = 'none';
+                
+                sprintInterval = setInterval(function() {
+                    timeLeft--;
+                    sprintDisplay.textContent = timeLeft;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(sprintInterval);
+                        sprintInterval = null;
+                        sprintDisplay.textContent = 'GO!';
+                        sprintDone.style.display = 'block';
+                        sprintBtn.disabled = false;
+                        timeLeft = 60;
+                    }
+                }, 1000);
+            });
+            
+            sprintInput.addEventListener('input', function() {
+                localStorage.setItem('frog_ch20_sprint', sprintInput.value);
+            });
+            
+            const savedSprint = localStorage.getItem('frog_ch20_sprint');
+            if (savedSprint) sprintInput.value = savedSprint;
+        });
+    </script>
 </body>
 </html>

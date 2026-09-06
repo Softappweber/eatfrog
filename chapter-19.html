@@ -5,69 +5,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 19: Create Large Chunks of Time - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .block-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        .block-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .block-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .time-block-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .time-block {
+            padding: 12px 8px;
+            background-color: var(--bg-primary);
+            border: 2px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .time-block:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        .time-block.selected {
+            border-color: var(--accent-green);
+            background-color: var(--frog-pond-bg);
+            color: var(--accent-green);
+        }
+        .block-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        .block-result.show {
+            display: block;
+        }
+        .block-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .block-result .block-summary {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+    </style>
 </head>
 <body>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
         <span class="nav-badge">Chapter 19 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
-
     <div class="container">
-
         <div class="hero">
             <span class="chapter-tag">Strategy #19</span>
             <h1>Create Large Chunks of Time</h1>
             <p class="hero-subtitle">Important work requires uninterrupted focus. Schedule it deliberately.</p>
         </div>
-
         <div class="frog-box">
             <p>"You cannot eat a frog in 5-minute increments."</p>
         </div>
-
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
                 Checking emails, answering texts, and scrolling social media fragment your day into tiny, useless pieces. 
-                You cannot do deep, meaningful work in 5-minute gaps. You must block out large chunks of time—60, 90, or 120 minutes—where 
-                you turn off your phone, close your browser tabs, and work exclusively on your biggest frog. 
-                Treat this block of time like a non-negotiable appointment with yourself.
+                You cannot do deep, meaningful work in 5-minute gaps.
+            </p>
+            <p>
+                Deep work requires long, uninterrupted blocks of time—60, 90, or 120 minutes—where you turn off 
+                your phone, close your browser tabs, and work exclusively on your biggest frog.
+            </p>
+            <p>
+                If you do not schedule these blocks, they will not happen. Something will always come up. 
+                Treat your time blocks like a non-negotiable appointment with yourself.
+            </p>
+            <p>
+                <strong>Rule: What gets scheduled gets done. What doesn't get scheduled gets lost.</strong>
             </p>
         </div>
-
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
                 <li><strong>Enables deep work.</strong> It takes 15–20 minutes just to reach full concentration. You need long blocks to get there.</li>
                 <li><strong>Eliminates context switching.</strong> Every interruption costs you time and mental energy to refocus.</li>
                 <li><strong>Creates a rhythm.</strong> Knowing you have a dedicated block reduces the urge to check your phone.</li>
             </ul>
         </div>
-
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A manager is trying to write a strategic plan. They keep trying to squeeze it in between meetings and emails. 
-                After a week, they have written nothing. They block off 9:00 AM to 11:00 AM on their calendar, 
-                put their phone in a drawer, and close their email. In two hours, they accomplish more than they did all week.
+                <strong>The Nurse:</strong> Anita works as a nurse. Her shifts are long and exhausting. But she is also 
+                studying for an advanced certification. She tries to study in 10-minute gaps between tasks, 
+                but it doesn't work. She never gets into deep focus.
+            </p>
+            <p>
+                Then Anita schedules a 90-minute block every evening after dinner. She puts her phone in another room. 
+                She tells her family not to disturb her. She studies with full focus for 90 minutes. 
+                In three months, she passes the certification with flying colors.
+            </p>
+            <p>
+                The time was always there. She just had to block it out.
             </p>
         </div>
-
+        <div class="block-tool" id="blockTool">
+            <h3>📅 The Time Block Builder</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Click the time blocks you will reserve for your most important task. 
+                You need at least 3 consecutive blocks (90 minutes) for deep work.
+            </p>
+            <div class="time-block-grid" id="timeBlockGrid">
+                <button class="time-block" data-time="8AM">8 AM</button>
+                <button class="time-block" data-time="9AM">9 AM</button>
+                <button class="time-block" data-time="10AM">10 AM</button>
+                <button class="time-block" data-time="11AM">11 AM</button>
+                <button class="time-block" data-time="12PM">12 PM</button>
+                <button class="time-block" data-time="1PM">1 PM</button>
+                <button class="time-block" data-time="2PM">2 PM</button>
+                <button class="time-block" data-time="3PM">3 PM</button>
+                <button class="time-block" data-time="4PM">4 PM</button>
+                <button class="time-block" data-time="5PM">5 PM</button>
+                <button class="time-block" data-time="6PM">6 PM</button>
+                <button class="time-block" data-time="7PM">7 PM</button>
+            </div>
+            <div class="block-result" id="blockResult">
+                <div class="result-label">Your Time Block</div>
+                <div class="block-summary" id="blockSummaryText">—</div>
+            </div>
+        </div>
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is your most important task this week? Block out a 90-minute chunk tomorrow to work on it with zero distractions. When will that be?</p>
-            <textarea id="chapter19Exercise" placeholder="e.g., I will work on my business plan from 8:00 AM to 9:30 AM. Phone off, email closed..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just built your time block. Now write down the task you will work on during this block, 
+                and what you will do to eliminate distractions.
+            </p>
+            <textarea id="chapter19Exercise" placeholder="e.g., During my 9 AM - 11 AM block I will work on the strategy report. Phone off. Email closed..."></textarea>
             <button class="btn-complete" id="markComplete19">Mark Chapter as Complete</button>
         </div>
-
         <div class="footer-nav">
             <a href="chapter-18.html">← Previous Chapter</a>
             <a href="chapter-20.html">Next Chapter →</a>
         </div>
-
     </div>
-
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const blockGrid = document.getElementById('timeBlockGrid');
+            const blockResult = document.getElementById('blockResult');
+            const blockSummaryText = document.getElementById('blockSummaryText');
+            
+            let selectedBlocks = [];
+            
+            const savedBlocks = localStorage.getItem('frog_ch19_blocks');
+            if (savedBlocks) {
+                selectedBlocks = JSON.parse(savedBlocks);
+            }
+            
+            function renderBlocks() {
+                const allBlocks = blockGrid.querySelectorAll('.time-block');
+                allBlocks.forEach(function(btn) {
+                    if (selectedBlocks.includes(btn.dataset.time)) {
+                        btn.classList.add('selected');
+                    } else {
+                        btn.classList.remove('selected');
+                    }
+                });
+            }
+            
+            blockGrid.addEventListener('click', function(e) {
+                if (e.target.classList.contains('time-block')) {
+                    const time = e.target.dataset.time;
+                    if (selectedBlocks.includes(time)) {
+                        selectedBlocks = selectedBlocks.filter(function(t) { return t !== time; });
+                    } else {
+                        selectedBlocks.push(time);
+                    }
+                    localStorage.setItem('frog_ch19_blocks', JSON.stringify(selectedBlocks));
+                    renderBlocks();
+                    updateResult();
+                }
+            });
+            
+            function updateResult() {
+                if (selectedBlocks.length === 0) {
+                    blockResult.classList.remove('show');
+                    return;
+                }
+                const sorted = selectedBlocks.slice().sort();
+                const first = sorted[0];
+                const last = sorted[sorted.length - 1];
+                blockSummaryText.textContent = 'You blocked ' + selectedBlocks.length + ' slots (' + first + ' - ' + last + '). That is your deep work time. Protect it.';
+                blockResult.classList.add('show');
+            }
+            
+            renderBlocks();
+            updateResult();
+        });
+    </script>
 </body>
 </html>

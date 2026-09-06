@@ -5,68 +5,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 15: Motivate Yourself into Action - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .mood-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        .mood-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .mood-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .mood-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .mood-btn {
+            padding: 15px;
+            background-color: var(--bg-primary);
+            border: 2px solid var(--border-subtle);
+            border-radius: 10px;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .mood-btn:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+        .mood-btn.selected {
+            border-color: var(--accent-green);
+            background-color: var(--frog-pond-bg);
+        }
+        .mood-shift {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            display: none;
+        }
+        .mood-shift.show {
+            display: block;
+        }
+        .mood-shift .shift-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .mood-shift .shift-action {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+        .mood-shift .shift-why {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
         <span class="nav-badge">Chapter 15 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
-
     <div class="container">
-
         <div class="hero">
             <span class="chapter-tag">Strategy #15</span>
             <h1>Motivate Yourself into Action</h1>
             <p class="hero-subtitle">Be your own cheerleader. No one is coming to save you.</p>
         </div>
-
         <div class="frog-box">
             <p>"Talk to yourself positively, because you are always listening."</p>
         </div>
-
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
                 Motivation is not a feeling that arrives by magic. It is a result of action. 
-                When you feel stuck, you must actively change your emotional state. Listen to uplifting music, 
-                repeat empowering phrases, or visualize the result you want. Push yourself to start, and motivation follows.
+                You do not wait to feel motivated. You act first, and motivation follows.
+            </p>
+            <p>
+                Most people get this backwards. They say, "I will start when I feel ready." 
+                But you never feel ready. You feel ready after you start.
+            </p>
+            <p>
+                High performers know this. When they feel stuck, they change their emotional state deliberately. 
+                They play music. They repeat empowering phrases. They visualize success. They move their body. 
+                They do whatever it takes to shift from "I don't want to" to "Let's go."
+            </p>
+            <p>
+                <strong>Rule: Action creates motivation. Not the other way around.</strong>
             </p>
         </div>
-
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Breaks negative loops.</strong> You stop the spiral of fear and doubt.</li>
-                <li><strong>Triggers action.</strong> A small shift in mood makes it easier to take the first step.</li>
-                <li><strong>Builds resilience.</strong> You stop relying on external validation to feel driven.</li>
+                <li><strong>It breaks negative loops.</strong> You stop the spiral of fear and doubt.</li>
+                <li><strong>It triggers action.</strong> A small shift in mood makes it easier to take the first step.</li>
+                <li><strong>It builds resilience.</strong> You stop relying on external validation to feel driven.</li>
+                <li><strong>It puts you in control.</strong> You stop being a victim of your mood.</li>
             </ul>
         </div>
-
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer wakes up feeling unmotivated about a difficult client call. Instead of scrolling social media, 
-                they play their favorite high-energy song, repeat "I am confident and prepared," and dial the number. 
-                The call goes better than expected, and now they feel unstoppable.
+                <strong>The Teacher:</strong> Meera is a school teacher. Every Sunday evening, she faces a mountain 
+                of lesson planning for the week. She hates it. She procrastinates until late at night, then rushes 
+                through it and produces mediocre work.
+            </p>
+            <p>
+                Then Meera changes her approach. Before she starts, she plays her favorite song. She repeats to herself: 
+                "I am a great teacher. My students need me at my best." She visualizes her classroom running smoothly. 
+                Then she starts. The work still takes time, but she no longer dreads it. She finishes faster and better.
+            </p>
+            <p>
+                The task didn't change. Her state changed. And her state changed her output.
             </p>
         </div>
-
+        <div class="mood-tool" id="moodTool">
+            <h3>🎭 The Mood Shifter</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> How are you feeling right now about the task you are avoiding? 
+                Select one mood below. Then get your specific shift.
+            </p>
+            <div class="mood-grid" id="moodGrid">
+                <button class="mood-btn" data-mood="tired">😴 Tired</button>
+                <button class="mood-btn" data-mood="bored">🥱 Bored</button>
+                <button class="mood-btn" data-mood="anxious">😰 Anxious</button>
+                <button class="mood-btn" data-mood="overwhelmed">😵 Overwhelmed</button>
+                <button class="mood-btn" data-mood="unconfident">😔 Unconfident</button>
+                <button class="mood-btn" data-mood="angry">😤 Frustrated</button>
+            </div>
+            <div class="mood-shift" id="moodShift">
+                <div class="shift-label">Your Shift</div>
+                <div class="shift-action" id="shiftAction">—</div>
+                <div class="shift-why" id="shiftWhy">—</div>
+            </div>
+        </div>
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is your "motivation switch"? What song, phrase, or visual can you use right now to shift your mood and take action?</p>
-            <textarea id="chapter15Exercise" placeholder="e.g., My switch is playing 'Eye of the Tiger' and repeating 'I am capable'..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just identified your current mood and your shift. Now write down the mood you are feeling, 
+                the shift you will use, and the task you will start immediately after shifting.
+            </p>
+            <textarea id="chapter15Exercise" placeholder="e.g., I feel anxious about the presentation. I will play my favorite song and say 'I am prepared' 5 times. Then I will practice for 10 minutes..."></textarea>
             <button class="btn-complete" id="markComplete15">Mark Chapter as Complete</button>
         </div>
-
         <div class="footer-nav">
             <a href="chapter-14.html">← Previous Chapter</a>
             <a href="chapter-16.html">Next Chapter →</a>
         </div>
-
     </div>
-
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const moodBtns = document.querySelectorAll('.mood-btn');
+            const moodShift = document.getElementById('moodShift');
+            const shiftAction = document.getElementById('shiftAction');
+            const shiftWhy = document.getElementById('shiftWhy');
+            
+            const shifts = {
+                tired: { action: 'Stand up. Do 10 jumping jacks. Drink a glass of water. Then sit back down.', why: 'Physical movement increases blood flow to your brain. You are not tired. You are stagnant.' },
+                bored: { action: 'Set a timer for 10 minutes. Tell yourself you only have to work for 10 minutes. After that you can stop.', why: 'Boredom often comes from the size of the task. Shrinking it to 10 minutes removes the resistance.' },
+                anxious: { action: 'Write down exactly what you are worried about. Then write down the worst-case scenario and your plan if it happens.', why: 'Anxiety lives in vague thoughts. Putting it on paper makes it concrete and manageable.' },
+                overwhelmed: { action: 'Close every tab. Clear your desk. Write down only ONE task on a blank page. Do that one task.', why: 'Overwhelm comes from too many open loops. Closing them down and focusing on one thing restores control.' },
+                unconfident: { action: 'Write down three times in the past when you succeeded at something difficult. Read them aloud. Then start the task.', why: 'Confidence is built on evidence. You have succeeded before. You will succeed again.' },
+                angry: { action: 'Take 5 slow deep breaths. Then channel the anger into speed. Use it as fuel to attack the task aggressively.', why: 'Anger is just energy. Redirect it from frustration to focused action.' }
+            };
+            
+            moodBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    moodBtns.forEach(function(b) { b.classList.remove('selected'); });
+                    btn.classList.add('selected');
+                    
+                    const mood = btn.dataset.mood;
+                    const shift = shifts[mood];
+                    
+                    shiftAction.textContent = shift.action;
+                    shiftWhy.textContent = shift.why;
+                    moodShift.classList.add('show');
+                    
+                    localStorage.setItem('frog_ch15_mood', mood);
+                });
+            });
+            
+            const savedMood = localStorage.getItem('frog_ch15_mood');
+            if (savedMood && shifts[savedMood]) {
+                moodBtns.forEach(function(btn) {
+                    if (btn.dataset.mood === savedMood) {
+                        btn.classList.add('selected');
+                    }
+                });
+                const shift = shifts[savedMood];
+                shiftAction.textContent = shift.action;
+                shiftWhy.textContent = shift.why;
+                moodShift.classList.add('show');
+            }
+        });
+    </script>
 </body>
 </html>

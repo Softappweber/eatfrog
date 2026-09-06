@@ -5,70 +5,199 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 21: Single Handle Every Task - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .focus-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+            text-align: center;
+        }
+        .focus-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .focus-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .focus-pledge {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        .focus-display {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 20px 0;
+            font-variant-numeric: tabular-nums;
+        }
+        .btn-focus {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        .btn-focus:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+        }
+        .btn-focus.reset {
+            background-color: #64748b;
+        }
+        .focus-complete {
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
         <span class="nav-badge">Chapter 21 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
-
     <div class="container">
-
         <div class="hero">
             <span class="chapter-tag">Strategy #21</span>
             <h1>Single Handle Every Task</h1>
             <p class="hero-subtitle">Start your frog and do not stop until it is completely done.</p>
         </div>
-
         <div class="frog-box">
             <p>"The best way to finish a task is to start it, and the best way to start is to refuse to stop."</p>
         </div>
-
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
                 Once you begin your most important task, commit to it fully. Do not switch to another tab. 
                 Do not answer a text. Do not take a "quick break." Single handling means picking up the task 
-                and not putting it down until it is 100% complete. Every time you stop and restart, you lose 
-                momentum and have to climb the mountain of resistance all over again.
+                and not putting it down until it is 100% complete.
+            </p>
+            <p>
+                Every time you stop and restart, you lose momentum. You have to climb the mountain of resistance 
+                all over again. The task takes twice as long and feels twice as hard.
+            </p>
+            <p>
+                <strong>Rule: Start once. Finish once. Do not stop in between.</strong>
             </p>
         </div>
-
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
                 <li><strong>Preserves focus.</strong> Continuous work keeps your brain in the zone.</li>
                 <li><strong>Reduces completion time.</strong> You finish faster because you never waste time restarting.</li>
                 <li><strong>Builds mental strength.</strong> Every time you resist distraction, you get stronger at resisting future distractions.</li>
             </ul>
         </div>
-
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                An entrepreneur sits down to write a business proposal. They set a timer for 45 minutes. 
-                During that time, their phone buzzes three times. They ignore it. They see a notification on their laptop. They ignore it. 
-                They stay locked on the document until the proposal is finished. It takes them 45 minutes. 
-                If they had given in to each distraction, it would have taken 3 hours.
+                <strong>The Entrepreneur:</strong> Deepak sits down to write a business proposal. He sets a timer 
+                for 45 minutes. During that time, his phone buzzes three times. He ignores it. He sees a notification 
+                on his laptop. He ignores it. He stays locked on the document until the proposal is finished. 
+                It takes him 45 minutes.
+            </p>
+            <p>
+                If he had given in to each distraction, it would have taken 3 hours. The proposal would have been 
+                worse. And he would have felt drained.
+            </p>
+            <p>
+                Same task. Same person. Different focus. Different result.
             </p>
         </div>
-
+        <div class="focus-tool" id="focusTool">
+            <h3>🔒 The Focus Lock</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Read the pledge below. Then set the timer for 25 minutes. 
+                Work on your task until the timer rings. No stopping. No distractions.
+            </p>
+            <div class="focus-ledge">
+                "I will work on my task for 25 minutes. I will not check my phone. I will not open new tabs. I will not stop until the timer rings."
+            </div>
+            <div class="focus-display" id="focusDisplay">25:00</div>
+            <button class="btn-focus" id="focusStartBtn">Start Focus</button>
+            <button class="btn-focus reset" id="focusResetBtn">Reset</button>
+            <p class="focus-complete" id="focusComplete">Done! You single handled your task. That is how frogs get eaten.</p>
+        </div>
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is your single most important task right now? Set a timer for 30 minutes, close everything else, and work on it without stopping.</p>
-            <textarea id="chapter21Exercise" placeholder="e.g., I will single handle my sales pitch deck for 30 minutes with no interruptions..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                Write down the task you will single handle right now. Then use the Focus Lock timer above 
+                to work on it for 25 minutes without stopping.
+            </p>
+            <textarea id="chapter21Exercise" placeholder="e.g., I will single handle my sales pitch deck for 25 minutes with no interruptions..."></textarea>
             <button class="btn-complete" id="markComplete21">Mark Chapter as Complete</button>
         </div>
-
         <div class="footer-nav">
             <a href="chapter-20.html">← Previous Chapter</a>
             <a href="index.html">Back to Contents →</a>
         </div>
-
     </div>
-
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const focusDisplay = document.getElementById('focusDisplay');
+            const focusStartBtn = document.getElementById('focusStartBtn');
+            const focusResetBtn = document.getElementById('focusResetBtn');
+            const focusComplete = document.getElementById('focusComplete');
+            
+            let timeLeft = 1500; // 25 minutes in seconds
+            let focusInterval = null;
+            
+            function updateDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                focusDisplay.textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+            }
+            
+            focusStartBtn.addEventListener('click', function() {
+                if (focusInterval) return;
+                if (timeLeft === 0) {
+                    timeLeft = 1500;
+                    updateDisplay();
+                }
+                focusComplete.style.display = 'none';
+                focusInterval = setInterval(function() {
+                    timeLeft--;
+                    updateDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(focusInterval);
+                        focusInterval = null;
+                        focusDisplay.textContent = 'DONE!';
+                        focusComplete.style.display = 'block';
+                    }
+                }, 1000);
+            });
+            
+            focusResetBtn.addEventListener('click', function() {
+                if (focusInterval) {
+                    clearInterval(focusInterval);
+                    focusInterval = null;
+                }
+                timeLeft = 1500;
+                updateDisplay();
+                focusComplete.style.display = 'none';
+            });
+            
+            updateDisplay();
+        });
+    </script>
 </body>
 </html>

@@ -5,69 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 18: Slice and Dice the Task - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .timer-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+            text-align: center;
+        }
+        .timer-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .timer-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .timer-display {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 20px 0;
+            font-variant-numeric: tabular-nums;
+        }
+        .btn-timer {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        .btn-timer:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+        }
+        .btn-timer.reset {
+            background-color: #64748b;
+        }
+        .timer-slice-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
         <span class="nav-badge">Chapter 18 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
-
     <div class="container">
-
         <div class="hero">
             <span class="chapter-tag">Strategy #18</span>
             <h1>Slice and Dice the Task</h1>
             <p class="hero-subtitle">Break large tasks into small, manageable pieces.</p>
         </div>
-
         <div class="frog-box">
             <p>"How do you eat an elephant? One bite at a time."</p>
         </div>
-
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                A massive project can feel like standing at the base of Mount Everest. The peak is invisible, and the climb seems impossible. 
-                The solution is to "slice and dice." Break the project down into tiny, specific, non-intimidating steps. 
-                Instead of writing "Build website," you write "Open editor, create header file, write 5 lines of code." 
-                Once the first slice is done, the next slice feels easier.
+                A massive project can feel like standing at the base of Mount Everest. The peak is invisible, 
+                and the climb seems impossible. So you do nothing. Not because you are lazy, but because you are overwhelmed.
+            </p>
+            <p>
+                The solution is not more motivation. The solution is to shrink the task. Break it into such small 
+                pieces that starting feels easy. You do not need to write a book. You just need to write one paragraph.
+            </p>
+            <p>
+                <strong>Rule: Focus only on the next slice. The rest will take care of itself.</strong>
             </p>
         </div>
-
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Makes starting easy.</strong> A tiny step is less frightening than a giant leap.</li>
-                <li><strong>Provides a roadmap.</strong> You see exactly what to do next.</li>
-                <li><strong>Builds confidence.</strong> Every small completion releases a bit of dopamine, pushing you forward.</li>
+                <li><strong>It kills overwhelm.</strong> A tiny step is less frightening than a giant leap.</li>
+                <li><strong>It builds momentum.</strong> Starting is the hardest part. Once you start, you keep going.</li>
+                <li><strong>It creates hope.</strong> Every small completion releases dopamine, pushing you forward.</li>
             </ul>
         </div>
-
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                An artist wants to paint a large mural. The blank wall terrifies them. So they slice it: 
-                Day 1, sketch the outline in pencil. Day 2, paint the background. Day 3, paint the main subject. 
-                By breaking it down, the artist only ever has to focus on one small section. Before they know it, the mural is done.
+                <strong>The Developer:</strong> Amit needs to build a mobile app for a client. It has 20 screens, 
+                user authentication, payment integration, and push notifications. He stares at the code editor 
+                and freezes. For three days, he does nothing.
+            </p>
+            <p>
+                Then Amit slices the task. He doesn't think about the whole app. He thinks about one screen: 
+                the login screen. He sets a timer for 10 minutes and tells himself: "I will just write the code 
+                for the login screen. That's it." Ten minutes later, the login screen is done. He feels momentum. 
+                He moves to the next screen. By the end of the week, the app is halfway done.
             </p>
         </div>
-
+        <div class="timer-tool" id="timerTool">
+            <h3>⏱️ The Mini-Slice Timer</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Pick one slice of a big task. Set the timer for 10 minutes. 
+                Work on that slice—and only that slice—until the timer rings.
+            </p>
+            <div class="timer-display" id="timerDisplay">10:00</div>
+            <button class="btn-timer" id="timerStartBtn">Start</button>
+            <button class="btn-timer reset" id="timerResetBtn">Reset</button>
+            <div class="timer-slice-label" id="timerSliceLabel">10 minutes of focused work on ONE slice.</div>
+        </div>
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is a large, overwhelming task you've been avoiding? Write down the first 5 "slices" you can break it into.</p>
-            <textarea id="chapter18Exercise" placeholder="e.g., 1) Create new document  2) Write heading  3) Draft one paragraph  4) Find one image  5) Review..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                Write down the ONE slice you will work on right now, and the timer will hold you accountable.
+            </p>
+            <textarea id="chapter18Exercise" placeholder="e.g., I will write the login screen for the app. Just that. Nothing else..."></textarea>
             <button class="btn-complete" id="markComplete18">Mark Chapter as Complete</button>
         </div>
-
         <div class="footer-nav">
             <a href="chapter-17.html">← Previous Chapter</a>
             <a href="chapter-19.html">Next Chapter →</a>
         </div>
-
     </div>
-
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const timerDisplay = document.getElementById('timerDisplay');
+            const timerStartBtn = document.getElementById('timerStartBtn');
+            const timerResetBtn = document.getElementById('timerResetBtn');
+            const timerSliceLabel = document.getElementById('timerSliceLabel');
+            
+            let timeLeft = 600; // 10 minutes in seconds
+            let timerInterval = null;
+            
+            function updateDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+            }
+            
+            timerStartBtn.addEventListener('click', function() {
+                if (timerInterval) return;
+                if (timeLeft === 0) {
+                    timeLeft = 600;
+                    updateDisplay();
+                }
+                timerInterval = setInterval(function() {
+                    timeLeft--;
+                    updateDisplay();
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        timerInterval = null;
+                        timerDisplay.textContent = 'DONE!';
+                        timerSliceLabel.textContent = 'You did it! That was one slice. Now move to the next one.';
+                    }
+                }, 1000);
+            });
+            
+            timerResetBtn.addEventListener('click', function() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                timeLeft = 600;
+                updateDisplay();
+                timerSliceLabel.textContent = '10 minutes of focused work on ONE slice.';
+            });
+            
+            updateDisplay();
+        });
+    </script>
 </body>
 </html>

@@ -5,70 +5,335 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 17: Do the Most Difficult Task First - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .frog-rank-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        .frog-rank-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .frog-rank-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .rank-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .rank-input {
+            flex: 1;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        .rank-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        .btn-rank-add {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-rank-add:hover {
+            background-color: var(--accent-green-glow);
+        }
+        .rank-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+        .rank-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .rank-list li:hover {
+            border-color: var(--accent-green);
+        }
+        .rank-list li.ranked-1 {
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+        .rank-list .rank-number {
+            font-weight: 800;
+            color: var(--text-muted);
+            min-width: 30px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .rank-list li.ranked-1 .rank-number {
+            color: #ef4444;
+        }
+        .rank-list .rank-text {
+            flex: 1;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+        .btn-rank-delete {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+        }
+        .btn-rank-delete:hover {
+            color: #ef4444;
+        }
+        .rank-empty {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+        .rank-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        .rank-result.show {
+            display: block;
+        }
+        .rank-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ef4444;
+            margin-bottom: 10px;
+        }
+        .rank-result .ugliest-frog {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+    </style>
 </head>
 <body>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
         <span class="nav-badge">Chapter 17 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
-
     <div class="container">
-
         <div class="hero">
             <span class="chapter-tag">Strategy #17</span>
             <h1>Do the Most Difficult Task First</h1>
             <p class="hero-subtitle">The task you fear the most is almost always the one you must do first.</p>
         </div>
-
         <div class="frog-box">
             <p>"The hardest part of any important task is getting started on it in the first place."</p>
         </div>
-
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Every day, one task stands out as the most challenging. It is the one that makes your stomach tighten 
-                when you think about it. This is your biggest, ugliest frog. Human nature is to avoid it and do easy 
-                tasks to feel busy. But true productivity means attacking the hardest task when your energy and willpower 
-                are at their peak—usually first thing in the morning.
+                Every day, one task stands out as the most challenging. It is the one that makes your stomach 
+                tighten when you think about it. This is your ugliest frog.
+            </p>
+            <p>
+                Human nature is to avoid it. You do easy tasks to feel busy. You check email. You organize files. 
+                You make coffee. But the whole time, the ugly frog sits in the back of your mind, draining your energy.
+            </p>
+            <p>
+                High performers do the opposite. They attack the hardest task first, when their willpower is strongest. 
+                They eat the ugliest frog before they do anything else.
+            </p>
+            <p>
+                <strong>Rule: The first hour of your day determines the rest of it. Spend it on the hardest thing.</strong>
             </p>
         </div>
-
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
                 <li><strong>Willpower is finite.</strong> You have the most mental energy at the start of the day. Use it on the hard stuff.</li>
-                <li><strong>Relieves anxiety.</strong> The dread of the task hangs over you all day. Doing it first removes that weight.</li>
-                <li><strong>Creates momentum.</strong> Once the worst is over, every other task feels like a walk in the park.</li>
+                <li><strong>It relieves anxiety.</strong> The dread of the task hangs over you all day. Doing it first removes that weight.</li>
+                <li><strong>It creates momentum.</strong> Once the worst is over, every other task feels like a walk in the park.</li>
+                <li><strong>It builds discipline.</strong> You train yourself to face discomfort instead of running from it.</li>
             </ul>
         </div>
-
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A student has three assignments and one massive chemistry exam to study for. They hate chemistry. 
-                If they study chemistry first thing in the morning, the rest of the day feels easy. 
-                If they leave it until evening, they will procrastinate all day, dreading it. By 9 PM, they are tired, 
-                stressed, and study poorly. The task didn't change—the timing did.
+                <strong>The Lawyer:</strong> Priya is a junior lawyer. She has to make a difficult phone call to a client 
+                whose case is not going well. She has been dreading it for days. She wakes up thinking about it. 
+                She goes to bed thinking about it. The call takes 15 minutes, but she has spent 10 hours worrying about it.
+            </p>
+            <p>
+                Then Priya changes her approach. She makes the call first thing in the morning, before checking email, 
+                before anything else. The call is uncomfortable, but it is over in 15 minutes. The rest of her day feels light. 
+                She is free.
+            </p>
+            <p>
+                The task was never the problem. The anticipation was the problem.
             </p>
         </div>
-
+        <div class="frog-rank-tool" id="frogRankTool">
+            <h3>🐸 The Frog Ranker</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> List all your tasks for tomorrow. Then click the task that feels the MOST 
+                difficult—the one you are dreading the most. That is your ugliest frog.
+            </p>
+            <div class="rank-input-row">
+                <input type="text" class="rank-input" id="rankInput" placeholder="e.g., Call the difficult client" autocomplete="off">
+                <button class="btn-rank-add" id="rankAddBtn">+ Add</button>
+            </div>
+            <ul class="rank-list" id="rankList"></ul>
+            <div class="rank-empty" id="rankEmpty">Your list is empty. Add the tasks you are dreading for tomorrow.</div>
+            <button class="btn-complete" id="rankResultBtn" style="margin-top:15px; background-color:#ef4444;">Identify My Ugliest Frog</button>
+            <div class="rank-result" id="rankResult">
+                <div class="result-label">Your Ugliest Frog</div>
+                <div class="ugliest-frog" id="ugliestFrogText">—</div>
+                <p style="color: var(--text-secondary); margin-top: 10px; font-size: 0.9rem;">Eat this one first. Tomorrow morning. Before anything else.</p>
+            </div>
+        </div>
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is the single most difficult task you are facing right now? Commit to doing it tomorrow before 10:00 AM.</p>
-            <textarea id="chapter17Exercise" placeholder="e.g., The most difficult task is calling the angry client. I will do it at 9:00 AM sharp..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just identified your ugliest frog. Now write down the task, and the exact time tomorrow 
+                morning you will do it. Be specific. Not "in the morning" but "at 9:00 AM sharp."
+            </p>
+            <textarea id="chapter17Exercise" placeholder="e.g., Tomorrow at 9:00 AM sharp I will call the difficult client. Before email. Before anything..."></textarea>
             <button class="btn-complete" id="markComplete17">Mark Chapter as Complete</button>
         </div>
-
         <div class="footer-nav">
             <a href="chapter-16.html">← Previous Chapter</a>
             <a href="chapter-18.html">Next Chapter →</a>
         </div>
-
     </div>
-
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const rankInput = document.getElementById('rankInput');
+            const rankAddBtn = document.getElementById('rankAddBtn');
+            const rankList = document.getElementById('rankList');
+            const rankEmpty = document.getElementById('rankEmpty');
+            const rankResultBtn = document.getElementById('rankResultBtn');
+            const rankResult = document.getElementById('rankResult');
+            const ugliestFrogText = document.getElementById('ugliestFrogText');
+            
+            let rankTasks = [];
+            let ugliestId = null;
+            
+            const savedTasks = localStorage.getItem('frog_ch17_tasks');
+            const savedUgliest = localStorage.getItem('frog_ch17_ugliest');
+            if (savedTasks) {
+                rankTasks = JSON.parse(savedTasks);
+            }
+            if (savedUgliest) {
+                ugliestId = parseInt(savedUgliest);
+            }
+            renderTasks();
+            
+            function addTask() {
+                const text = rankInput.value.trim();
+                if (text === '') return;
+                rankTasks.push({ id: Date.now(), text: text });
+                rankInput.value = '';
+                saveTasks();
+                renderTasks();
+                rankInput.focus();
+            }
+            
+            function deleteTask(id) {
+                rankTasks = rankTasks.filter(function(task) { return task.id !== id; });
+                if (ugliestId === id) ugliestId = null;
+                saveTasks();
+                renderTasks();
+            }
+            
+            function markUgliest(id) {
+                ugliestId = id;
+                saveUgliest();
+                renderTasks();
+            }
+            
+            function saveTasks() {
+                localStorage.setItem('frog_ch17_tasks', JSON.stringify(rankTasks));
+            }
+            
+            function saveUgliest() {
+                localStorage.setItem('frog_ch17_ugliest', ugliestId);
+            }
+            
+            function renderTasks() {
+                rankList.innerHTML = '';
+                if (rankTasks.length === 0) {
+                    rankEmpty.style.display = 'block';
+                    return;
+                }
+                rankEmpty.style.display = 'none';
+                rankTasks.forEach(function(task, index) {
+                    const li = document.createElement('li');
+                    if (task.id === ugliestId) li.classList.add('ranked-1');
+                    const numSpan = document.createElement('span');
+                    numSpan.className = 'rank-number';
+                    numSpan.textContent = task.id === ugliestId ? '🐸' : index + 1;
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'rank-text';
+                    textSpan.textContent = task.text;
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-rank-delete';
+                    deleteBtn.textContent = '✕';
+                    deleteBtn.addEventListener('click', function() { deleteTask(task.id); });
+                    li.appendChild(numSpan);
+                    li.appendChild(textSpan);
+                    li.appendChild(deleteBtn);
+                    li.addEventListener('click', function(e) {
+                        if (e.target !== deleteBtn) markUgliest(task.id);
+                    });
+                    rankList.appendChild(li);
+                });
+            }
+            
+            rankAddBtn.addEventListener('click', addTask);
+            rankInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') { addTask(); }
+            });
+            
+            rankResultBtn.addEventListener('click', function() {
+                if (rankTasks.length === 0) {
+                    alert('Please add at least one task first.');
+                    return;
+                }
+                if (ugliestId === null) {
+                    alert('Please click on the task that feels the MOST difficult—your ugliest frog.');
+                    return;
+                }
+                const ugliest = rankTasks.find(function(task) { return task.id === ugliestId; });
+                ugliestFrogText.textContent = ugliest.text;
+                rankResult.classList.add('show');
+            });
+        });
+    </script>
 </body>
 </html>

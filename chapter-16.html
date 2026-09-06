@@ -5,69 +5,296 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 16: Practice Creative Procrastination - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .stop-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        .stop-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .stop-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .stop-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .stop-input {
+            flex: 1;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        .stop-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        .btn-stop-add {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .btn-stop-add:hover {
+            background-color: #dc2626;
+        }
+        .stop-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+        .stop-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid #ef4444;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .stop-list li:hover {
+            opacity: 1;
+        }
+        .stop-list .stop-text {
+            flex: 1;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            text-decoration: line-through;
+        }
+        .btn-stop-delete {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+        }
+        .btn-stop-delete:hover {
+            color: #ef4444;
+        }
+        .stop-empty {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+        .stop-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        .stop-result.show {
+            display: block;
+        }
+        .stop-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        .stop-result .time-saved {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+    </style>
 </head>
 <body>
-
     <nav class="nav-bar">
         <a href="index.html" class="nav-link">← Contents</a>
         <span class="nav-badge">Chapter 16 of 21</span>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
     </nav>
-
     <div class="container">
-
         <div class="hero">
             <span class="chapter-tag">Strategy #16</span>
             <h1>Practice Creative Procrastination</h1>
-            <p class="hero-subtitle">You can't do everything, so deliberately choose what you will NOT do.</p>
+            <p class="hero-subtitle">You can't do everything. So deliberately choose what you will NOT do.</p>
         </div>
-
         <div class="frog-box">
             <p>"Procrastinate on purpose. Decide now what you will never do again."</p>
         </div>
-
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
                 Everyone procrastinates. The question is: what are you procrastinating on? 
-                Creative procrastination means making a conscious decision to ignore low-value tasks. 
-                Put those tasks at the bottom of your list and refuse to feel guilty about them.
+                If you are putting off high-value tasks to do low-value busywork, you are failing.
+            </p>
+            <p>
+                But if you are deliberately postponing low-value tasks to focus on what truly matters, 
+                you are practicing creative procrastination. You are choosing to say no to the trivial 
+                so you can say yes to the important.
+            </p>
+            <p>
+                Most people never make this distinction. They treat every task as equal. They feel guilty 
+                for not doing everything. Creative procrastination removes that guilt. It gives you permission 
+                to ignore what does not matter.
+            </p>
+            <p>
+                <strong>Rule: You can't do everything. So choose what you won't do.</strong>
             </p>
         </div>
-
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Protects your time.</strong> You stop letting trivial tasks eat your day.</li>
-                <li><strong>Removes guilt.</strong> You give yourself permission to say no.</li>
-                <li><strong>Prioritizes impact.</strong> You force yourself to focus only on high-value work.</li>
+                <li><strong>It protects your time.</strong> You stop letting trivial tasks eat your day.</li>
+                <li><strong>It removes guilt.</strong> You give yourself permission to say no.</li>
+                <li><strong>It sharpens focus.</strong> You force yourself to prioritize high-value work.</li>
+                <li><strong>It builds boundaries.</strong> You teach others that your time is valuable.</li>
             </ul>
         </div>
-
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer decides to creatively procrastinate on organizing their email folders, 
-                designing a new logo for themselves, and attending every free webinar. 
-                They know that writing proposals and delivering client work is what pays the bills. 
-                Everything else can wait indefinitely.
+                <strong>The Small Shop Owner:</strong> Ramesh runs a kirana store. He spends 3 hours every day 
+                arranging products on shelves, dusting, and reorganizing inventory. He tells himself he is being 
+                productive. But these tasks do not bring in money.
+            </p>
+            <p>
+                Then Ramesh practices creative procrastination. He decides to stop arranging shelves daily. 
+                Instead, he does it once a week. The freed-up 3 hours per day he spends on what actually grows 
+                his business: calling suppliers to negotiate better prices, and chatting with customers to understand 
+                what they want.
+            </p>
+            <p>
+                Within a month, his profits increase. The shelves are a little less perfect. But the business is thriving.
             </p>
         </div>
-
+        <div class="stop-tool" id="stopTool">
+            <h3>🚫 The Stop-Doing List</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> List every low-value task you will deliberately stop doing or postpone 
+                this week. Be specific. These are the tasks that keep you busy but don't move the needle.
+            </p>
+            <div class="stop-input-row">
+                <input type="text" class="stop-input" id="stopInput" placeholder="e.g., Organize files for 2 hours" autocomplete="off">
+                <button class="btn-stop-add" id="stopAddBtn">+ Stop</button>
+            </div>
+            <ul class="stop-list" id="stopList"></ul>
+            <div class="stop-empty" id="stopEmpty">Your stop-doing list is empty. Add low-value tasks you will stop doing.</div>
+            <button class="btn-complete" id="stopResultBtn" style="margin-top:15px;">Show Me My Time Saved</button>
+            <div class="stop-result" id="stopResult">
+                <div class="result-label">Your Creative Procrastination</div>
+                <div class="time-saved" id="timeSavedText">—</div>
+            </div>
+        </div>
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What are three low-value tasks you will deliberately postpone or eliminate this week to free up time for your frogs?</p>
-            <textarea id="chapter16Exercise" placeholder="e.g., 1) Organizing files  2) Redesigning my logo  3) Browsing stock photos..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just created your Stop-Doing list. Now write down the top 3 tasks from that list, 
+                and what high-value work you will do instead with that freed-up time.
+            </p>
+            <textarea id="chapter16Exercise" placeholder="e.g., I will stop arranging shelves daily. Instead I will call 5 suppliers and talk to 10 customers..."></textarea>
             <button class="btn-complete" id="markComplete16">Mark Chapter as Complete</button>
         </div>
-
         <div class="footer-nav">
             <a href="chapter-15.html">← Previous Chapter</a>
             <a href="chapter-17.html">Next Chapter →</a>
         </div>
-
     </div>
-
     <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stopInput = document.getElementById('stopInput');
+            const stopAddBtn = document.getElementById('stopAddBtn');
+            const stopList = document.getElementById('stopList');
+            const stopEmpty = document.getElementById('stopEmpty');
+            const stopResultBtn = document.getElementById('stopResultBtn');
+            const stopResult = document.getElementById('stopResult');
+            const timeSavedText = document.getElementById('timeSavedText');
+            
+            let stopTasks = [];
+            
+            const savedTasks = localStorage.getItem('frog_ch16_tasks');
+            if (savedTasks) {
+                stopTasks = JSON.parse(savedTasks);
+                renderTasks();
+            }
+            
+            function addTask() {
+                const text = stopInput.value.trim();
+                if (text === '') return;
+                stopTasks.push({ id: Date.now(), text: text });
+                stopInput.value = '';
+                saveTasks();
+                renderTasks();
+                stopInput.focus();
+            }
+            
+            function deleteTask(id) {
+                stopTasks = stopTasks.filter(function(task) { return task.id !== id; });
+                saveTasks();
+                renderTasks();
+            }
+            
+            function saveTasks() {
+                localStorage.setItem('frog_ch16_tasks', JSON.stringify(stopTasks));
+            }
+            
+            function renderTasks() {
+                stopList.innerHTML = '';
+                if (stopTasks.length === 0) {
+                    stopEmpty.style.display = 'block';
+                    return;
+                }
+                stopEmpty.style.display = 'none';
+                stopTasks.forEach(function(task) {
+                    const li = document.createElement('li');
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'stop-text';
+                    textSpan.textContent = task.text;
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-stop-delete';
+                    deleteBtn.textContent = '✕';
+                    deleteBtn.addEventListener('click', function() { deleteTask(task.id); });
+                    li.appendChild(textSpan);
+                    li.appendChild(deleteBtn);
+                    stopList.appendChild(li);
+                });
+            }
+            
+            stopAddBtn.addEventListener('click', addTask);
+            stopInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') { addTask(); }
+            });
+            
+            stopResultBtn.addEventListener('click', function() {
+                if (stopTasks.length === 0) {
+                    alert('Please add at least one task to your stop-doing list first.');
+                    return;
+                }
+                const hours = stopTasks.length * 1.5;
+                timeSavedText.textContent = 'You will save approximately ' + hours + ' hours this week by stopping these ' + stopTasks.length + ' tasks.';
+                stopResult.classList.add('show');
+            });
+        });
+    </script>
 </body>
 </html>
