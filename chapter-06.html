@@ -5,6 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 6: Focus on Key Result Areas - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 6 SPECIFIC STYLES === */
+        
+        .skill-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .skill-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .skill-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .skill-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .skill-name {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .skill-name .skill-label {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            display: block;
+        }
+        
+        .skill-name .skill-example {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+        
+        .skill-rating {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .rating-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid var(--border-subtle);
+            background: none;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .rating-btn:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        
+        .rating-btn.active-1, .rating-btn.active-2, .rating-btn.active-3 {
+            background-color: #ef4444;
+            border-color: #ef4444;
+            color: white;
+        }
+        
+        .rating-btn.active-4, .rating-btn.active-5, .rating-btn.active-6 {
+            background-color: #f59e0b;
+            border-color: #f59e0b;
+            color: white;
+        }
+        
+        .rating-btn.active-7, .rating-btn.active-8 {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+        
+        .rating-btn.active-9, .rating-btn.active-10 {
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+        }
+        
+        .btn-analyze-skills {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .btn-analyze-skills:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .skill-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .skill-result.show {
+            display: block;
+        }
+        
+        .skill-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .skill-result .weakest-skill {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+        
+        .skill-result .skill-summary {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .skill-result .skill-summary ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+        
+        .skill-result .skill-summary li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .skill-result .skill-summary li:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-result .skill-summary .skill-score {
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +196,7 @@
         <div class="hero">
             <span class="chapter-tag">Strategy #6</span>
             <h1>Focus on Key Result Areas</h1>
-            <p class="hero-subtitle">Identify the specific skills that determine your success, and master them.</p>
+            <p class="hero-subtitle">Your weakest key skill sets the ceiling on your success.</p>
         </div>
 
         <div class="frog-box">
@@ -27,36 +204,87 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                Every job has 5 to 7 key result areas (KRAs). These are the core skills you must do well 
-                to succeed. For a freelancer, KRAs might be: finding clients, delivering quality work, 
-                managing time, communicating, and invoicing. You are only as strong as your weakest KRA.
+                Every job, every role, every business has 5 to 7 key result areas. These are the core skills 
+                you must master to succeed. If you are a student, they might be: attending lectures, taking notes, 
+                studying, writing exams, and managing time. If you are a business owner, they might be: marketing, 
+                sales, operations, finance, and customer service.
+            </p>
+            <p>
+                Here is the uncomfortable truth: <strong>You are only as strong as your weakest key skill.</strong> 
+                You can be brilliant at 6 out of 7 areas, but if you are terrible at the 7th, that weakness 
+                drags everything else down. It becomes your bottleneck.
+            </p>
+            <p>
+                Most people ignore their weaknesses. They keep practicing what they are already good at 
+                because it feels comfortable. That is a mistake. The fastest way to level up is to identify 
+                your weakest key area and attack it until it is no longer weak.
+            </p>
+            <p>
+                <strong>Rule: Fix your weakest link and the whole chain gets stronger.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Identifies bottlenecks.</strong> You see exactly where you are struggling.</li>
-                <li><strong>Targets improvement.</strong> You stop practicing what you're already good at and fix what's broken.</li>
-                <li><strong>Improves confidence.</strong> Mastering a weak area removes fear and procrastination.</li>
+                <li><strong>It reveals your bottleneck.</strong> You stop guessing and see exactly what is holding you back.</li>
+                <li><strong>It targets improvement.</strong> You stop wasting time on skills you already have.</li>
+                <li><strong>It removes fear.</strong> Many people procrastinate because they feel incompetent. Fixing the skill removes the fear.</li>
+                <li><strong>It compounds.</strong> A small improvement in a weak area often produces massive overall results.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelancer is brilliant at design but terrible at sending invoices. Because they delay 
-                invoicing, they always have cash flow problems. If they spend one day fixing their invoicing 
-                system, they solve 50% of their financial stress.
+                <strong>The Developer:</strong> Arjun is a brilliant programmer. His code is clean, fast, and elegant. 
+                Clients love his work. But there is a problem: he is terrible at communication. He misses emails. 
+                He doesn't update clients on progress. He goes silent for days.
+            </p>
+            <p>
+                Because of this one weakness, clients stop hiring him. They assume he is unreliable. His income drops 
+                even though his technical skills are excellent.
+            </p>
+            <p>
+                Arjun finally identifies this key result area—communication—and works on it. He sets a rule: respond 
+                to every client email within 2 hours. He sends weekly progress updates. Within 3 months, his client 
+                retention doubles. Same programming skill. Different outcome. The bottleneck was removed.
             </p>
         </div>
 
+        <!-- INTERACTIVE SKILL GAP FINDER -->
+        <div class="skill-tool" id="skillTool">
+            <h3>🎯 The Skill Gap Finder</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> Rate yourself honestly on the 7 key result areas for your current role.
+                Be brutal. Inflating your score only hurts you. Your lowest score is your frog.
+            </p>
+            
+            <div id="skillRows">
+                <!-- Skill rows generated here -->
+            </div>
+            
+            <button class="btn-analyze-skills" id="analyzeSkillsBtn">Find My Weakest Skill</button>
+            
+            <div class="skill-result" id="skillResult">
+                <div class="result-label">Your Skill Analysis</div>
+                <div class="weakest-skill" id="weakestSkillText">—</div>
+                <div class="skill-summary" id="skillSummaryText">
+                    <!-- Skill summary listed here -->
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is your weakest Key Result Area right now? What one action can you take this week to improve it?</p>
-            <textarea id="chapter6Exercise" placeholder="e.g., My weakest area is marketing myself. I will update my portfolio..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just identified your weakest key result area. 
+                Now write down ONE specific action you will take this week to improve that skill.
+                Not "I will get better at communication." That is vague. Be specific.
+            </p>
+            <textarea id="chapter6Exercise" placeholder="e.g., I will respond to all client emails within 2 hours and send a weekly update every Friday..."></textarea>
             <button class="btn-complete" id="markComplete6">Mark Chapter as Complete</button>
         </div>
 
@@ -68,5 +296,136 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 6: SKILL GAP FINDER === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const skillRows = document.getElementById('skillRows');
+            const analyzeBtn = document.getElementById('analyzeSkillsBtn');
+            const skillResult = document.getElementById('skillResult');
+            const weakestSkillText = document.getElementById('weakestSkillText');
+            const skillSummaryText = document.getElementById('skillSummaryText');
+            
+            const defaultSkills = [
+                { name: 'Planning & Organization', example: 'How well do you plan your day and meet deadlines?' },
+                { name: 'Core Work Skill', example: 'Your main technical or professional ability.' },
+                { name: 'Communication', example: 'Emails, calls, updates, clarity with others.' },
+                { name: 'Sales / Persuasion', example: 'Convincing others, selling products, negotiating.' },
+                { name: 'Money Management', example: 'Invoicing, budgeting, saving, cash flow.' },
+                { name: 'Learning & Growth', example: 'Improving yourself, reading, taking courses.' },
+                { name: 'Health & Energy', example: 'Sleep, exercise, diet, stress management.' }
+            ];
+            
+            let ratings = {};
+            
+            // Load saved ratings
+            const savedRatings = localStorage.getItem('frog_ch6_ratings');
+            if (savedRatings) {
+                ratings = JSON.parse(savedRatings);
+            }
+            
+            // Render skill rows
+            function renderSkillRows() {
+                skillRows.innerHTML = '';
+                
+                defaultSkills.forEach(function(skill, index) {
+                    const row = document.createElement('div');
+                    row.className = 'skill-row';
+                    
+                    const nameDiv = document.createElement('div');
+                    nameDiv.className = 'skill-name';
+                    
+                    const label = document.createElement('span');
+                    label.className = 'skill-label';
+                    label.textContent = skill.name;
+                    
+                    const example = document.createElement('span');
+                    example.className = 'skill-example';
+                    example.textContent = skill.example;
+                    
+                    nameDiv.appendChild(label);
+                    nameDiv.appendChild(example);
+                    
+                    const ratingDiv = document.createElement('div');
+                    ratingDiv.className = 'skill-rating';
+                    
+                    for (let i = 1; i <= 10; i++) {
+                        const btn = document.createElement('button');
+                        btn.className = 'rating-btn';
+                        btn.textContent = i;
+                        btn.dataset.skill = index;
+                        btn.dataset.rating = i;
+                        
+                        if (ratings[index] === i) {
+                            if (i <= 3) btn.classList.add('active-1');
+                            else if (i <= 6) btn.classList.add('active-4');
+                            else if (i <= 8) btn.classList.add('active-7');
+                            else btn.classList.add('active-9');
+                        }
+                        
+                        btn.addEventListener('click', function() {
+                            ratings[index] = i;
+                            localStorage.setItem('frog_ch6_ratings', JSON.stringify(ratings));
+                            renderSkillRows();
+                        });
+                        
+                        ratingDiv.appendChild(btn);
+                    }
+                    
+                    row.appendChild(nameDiv);
+                    row.appendChild(ratingDiv);
+                    skillRows.appendChild(row);
+                });
+            }
+            
+            // Analyze skills
+            analyzeBtn.addEventListener('click', function() {
+                const ratedSkills = Object.keys(ratings);
+                
+                if (ratedSkills.length < defaultSkills.length) {
+                    alert('Please rate ALL 7 skills before analyzing.');
+                    return;
+                }
+                
+                // Find weakest skill
+                let weakestIndex = 0;
+                let weakestScore = ratings[0] || 10;
+                
+                for (let i = 1; i < defaultSkills.length; i++) {
+                    if (ratings[i] < weakestScore) {
+                        weakestScore = ratings[i];
+                        weakestIndex = i;
+                    }
+                }
+                
+                weakestSkillText.textContent = defaultSkills[weakestIndex].name + ' (Score: ' + weakestScore + '/10)';
+                
+                // Build summary
+                let summaryHTML = '<strong>Your full skill profile:</strong><ul>';
+                
+                defaultSkills.forEach(function(skill, index) {
+                    const score = ratings[index];
+                    let scoreLabel = '';
+                    
+                    if (score <= 3) scoreLabel = 'Critical';
+                    else if (score <= 6) scoreLabel = 'Needs Work';
+                    else if (score <= 8) scoreLabel = 'Good';
+                    else scoreLabel = 'Excellent';
+                    
+                    summaryHTML += '<li><span>' + skill.name + '</span> <span class="skill-score">' + score + '/10 - ' + scoreLabel + '</span></li>';
+                });
+                
+                summaryHTML += '</ul>';
+                summaryHTML += '<p style="margin-top: 10px;"><strong>Your move:</strong> Focus on improving <strong>' + defaultSkills[weakestIndex].name + '</strong> this week. That is your frog.</p>';
+                
+                skillSummaryText.innerHTML = summaryHTML;
+                skillResult.classList.add('show');
+            });
+            
+            // Initial render
+            renderSkillRows();
+            
+        });
+    </script>
 </body>
 </html>
