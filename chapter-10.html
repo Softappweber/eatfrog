@@ -5,6 +5,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapter 10: Leverage Your Special Talents - Frog First</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === CHAPTER 10 SPECIFIC STYLES === */
+        
+        .talent-tool {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: var(--shadow-subtle);
+        }
+        
+        .talent-tool h3 {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .talent-tool .tool-intro {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .task-input-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .task-input {
+            flex: 1;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .task-input:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+        
+        .btn-add-task {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .btn-add-task:hover {
+            background-color: var(--accent-green-glow);
+        }
+        
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+        
+        .task-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            flex-wrap: wrap;
+        }
+        
+        .task-list li:hover {
+            border-color: var(--accent-green);
+        }
+        
+        .task-list li.genius-zone {
+            border-color: var(--accent-green);
+            background-color: var(--frog-pond-bg);
+        }
+        
+        .task-list li.delegate-zone {
+            border-color: #f59e0b;
+            background-color: rgba(245, 158, 11, 0.1);
+        }
+        
+        .task-list li.delete-zone {
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+        
+        .task-text {
+            flex: 1;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            min-width: 150px;
+        }
+        
+        .zone-selector {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .zone-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 2px solid var(--border-subtle);
+            background: none;
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .zone-btn:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+        
+        .zone-btn.active-genius {
+            background-color: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+        }
+        
+        .zone-btn.active-delegate {
+            background-color: #f59e0b;
+            border-color: #f59e0b;
+            color: white;
+        }
+        
+        .zone-btn.active-delete {
+            background-color: #ef4444;
+            border-color: #ef4444;
+            color: white;
+        }
+        
+        .btn-delete-task {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+            padding: 0 5px;
+        }
+        
+        .btn-delete-task:hover {
+            color: #ef4444;
+        }
+        
+        .empty-state {
+            color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .btn-analyze-talent {
+            background-color: var(--accent-green);
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        .btn-analyze-talent:hover {
+            background-color: var(--accent-green-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+        }
+        
+        .talent-result {
+            background-color: var(--frog-pond-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 25px;
+            display: none;
+        }
+        
+        .talent-result.show {
+            display: block;
+        }
+        
+        .talent-result .result-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-green);
+            margin-bottom: 10px;
+        }
+        
+        .talent-result .zone-section {
+            margin-bottom: 15px;
+        }
+        
+        .talent-result .zone-section h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .talent-result .zone-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .talent-result .zone-section li {
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+        
+        .talent-result .zone-section li:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +257,7 @@
         <div class="hero">
             <span class="chapter-tag">Strategy #10</span>
             <h1>Leverage Your Special Talents</h1>
-            <p class="hero-subtitle">Focus on what you do best, and delegate or eliminate the rest.</p>
+            <p class="hero-subtitle">Focus on what you do best. Delegate or eliminate the rest.</p>
         </div>
 
         <div class="frog-box">
@@ -27,37 +265,96 @@
         </div>
 
         <div class="content-section">
-            <h2>The Breakdown</h2>
+            <h2>The Brutal Truth</h2>
             <p>
-                You have specific strengths—things you do easily that others find difficult. 
-                When you work in your area of genius, you produce more in less time and enjoy the process. 
-                When you force yourself to do tasks you hate, you procrastinate and deliver poor work.
+                You have specific strengths. Things you do easily that others find difficult. When you work 
+                in this zone, time flies. You produce excellent work without feeling drained. You are in flow.
+            </p>
+            <p>
+                But most people spend 80% of their time doing things they are mediocre at. They answer emails, 
+                organize files, do admin work, and attend meetings—all tasks that drain them and produce little value.
+            </p>
+            <p>
+                This is a massive waste. Every hour you spend on a weakness is an hour you could have spent 
+                on a strength. And the value you produce from your strengths is exponentially higher.
+            </p>
+            <p>
+                High performers identify their "Genius Zone" and protect it fiercely. They delegate everything 
+                that is not their unique talent. They eliminate everything that does not matter.
+            </p>
+            <p>
+                <strong>Rule: Never spend time on a task that someone else can do faster, cheaper, or better than you.</strong>
             </p>
         </div>
 
         <div class="content-section">
-            <h2>Why It Works</h2>
+            <h2>Why This Works</h2>
             <ul>
-                <li><strong>Increases flow.</strong> You enter a state of deep focus when doing what you're good at.</li>
-                <li><strong>Boosts energy.</strong> Working on strengths energizes you rather than draining you.</li>
-                <li><strong>Maximizes income.</strong> You get paid more for skills where you are excellent.</li>
+                <li><strong>It maximizes your value.</strong> You get paid for your strengths, not your weaknesses.</li>
+                <li><strong>It increases energy.</strong> Working in your genius zone energizes you instead of draining you.</li>
+                <li><strong>It reduces burnout.</strong> You stop forcing yourself to do tasks you hate.</li>
+                <li><strong>It creates leverage.</strong> You multiply your output by focusing on what only you can do well.</li>
             </ul>
         </div>
 
         <div class="example-box">
             <div class="example-label">Real World Example</div>
             <p>
-                A freelance developer is excellent at coding but terrible at customer support. 
-                They spend 10 hours a week answering basic client emails (hating every minute). 
-                If they hire a virtual assistant for a small fee to handle those emails, they free up 
-                10 hours to code, which earns them 5x more money.
+                <strong>The Photographer:</strong> Anita is a brilliant wedding photographer. Her photos are stunning. 
+                Clients cry when they see them. But Anita spends 15 hours a week editing photos, answering emails, 
+                and managing her Instagram account. She hates editing. She is slow at it. And it drains her creative energy.
+            </p>
+            <p>
+                Then she applies this principle. She identifies her genius zone: shooting weddings and making clients 
+                feel comfortable. She delegates photo editing to a freelance editor who is faster and better than her. 
+                She hires a virtual assistant to handle emails and Instagram. 
+            </p>
+            <p>
+                Now Anita spends her time doing what she loves and what makes her money. She books more weddings. 
+                She is less stressed. Her income increases. She didn't work harder. She worked on her strengths.
             </p>
         </div>
 
+        <!-- INTERACTIVE TALENT-DELEGATION MATRIX -->
+        <div class="talent-tool" id="talentTool">
+            <h3>🎯 The Talent-Delegation Matrix</h3>
+            <p class="tool-intro">
+                <strong>Do this now.</strong> List all the tasks you do in a typical week. 
+                Then mark each one: <strong>Genius Zone</strong> (your talent), <strong>Delegate Zone</strong> (someone else should do it), 
+                or <strong>Delete Zone</strong> (it doesn't matter).
+            </p>
+            
+            <div class="task-input-row">
+                <input type="text" class="task-input" id="taskInput" placeholder="e.g., Edit photos for clients" autocomplete="off">
+                <button class="btn-add-task" id="addTaskBtn">+ Add</button>
+            </div>
+            
+            <ul class="task-list" id="taskList">
+                <!-- Tasks appear here -->
+            </ul>
+            
+            <div class="empty-state" id="emptyState">
+                Your list is empty. Add the tasks you do in a typical week.
+            </div>
+            
+            <button class="btn-analyze-talent" id="analyzeTalentBtn">Analyze My Week</button>
+            
+            <div class="talent-result" id="talentResult">
+                <div class="result-label">Your Talent Analysis</div>
+                <div id="zonesContainer">
+                    <!-- Zones appear here -->
+                </div>
+            </div>
+        </div>
+
         <div class="your-turn">
-            <h3>Your Turn</h3>
-            <p>What is your single greatest talent or skill? What tasks are you doing right now that are outside this talent and could be delegated?</p>
-            <textarea id="chapter10Exercise" placeholder="e.g., My talent is design. I should delegate accounting and admin work..."></textarea>
+            <h3>The Exercise</h3>
+            <p>
+                You just categorized your weekly tasks. Now write down ONE task from your Delegate or Delete 
+                zone that you will remove from your plate this week. Be specific about who will do it instead, 
+                or when you will stop doing it.
+            </p>
+            <textarea id="chapter10Exercise" placeholder="e.g., This week I will delegate photo editing to a freelance editor and stop doing it myself..."></textarea>
             <button class="btn-complete" id="markComplete10">Mark Chapter as Complete</button>
         </div>
 
@@ -69,5 +366,193 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        /* === CHAPTER 10: TALENT-DELEGATION MATRIX === */
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const taskInput = document.getElementById('taskInput');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
+            const emptyState = document.getElementById('emptyState');
+            const analyzeBtn = document.getElementById('analyzeTalentBtn');
+            const talentResult = document.getElementById('talentResult');
+            const zonesContainer = document.getElementById('zonesContainer');
+            
+            let tasks = [];
+            
+            // Load saved tasks
+            const savedTasks = localStorage.getItem('frog_ch10_tasks');
+            if (savedTasks) {
+                tasks = JSON.parse(savedTasks);
+                renderTasks();
+            }
+            
+            // Add task
+            function addTask() {
+                const text = taskInput.value.trim();
+                if (text === '') return;
+                
+                tasks.push({ id: Date.now(), text: text, zone: null });
+                taskInput.value = '';
+                saveTasks();
+                renderTasks();
+                taskInput.focus();
+            }
+            
+            // Delete task
+            function deleteTask(id) {
+                tasks = tasks.filter(function(task) {
+                    return task.id !== id;
+                });
+                saveTasks();
+                renderTasks();
+            }
+            
+            // Assign zone
+            function assignZone(id, zone) {
+                tasks.forEach(function(task) {
+                    if (task.id === id) {
+                        task.zone = zone;
+                    }
+                });
+                saveTasks();
+                renderTasks();
+            }
+            
+            // Save to localStorage
+            function saveTasks() {
+                localStorage.setItem('frog_ch10_tasks', JSON.stringify(tasks));
+            }
+            
+            // Render task list
+            function renderTasks() {
+                taskList.innerHTML = '';
+                
+                if (tasks.length === 0) {
+                    emptyState.style.display = 'block';
+                    return;
+                }
+                
+                emptyState.style.display = 'none';
+                
+                tasks.forEach(function(task) {
+                    const li = document.createElement('li');
+                    
+                    if (task.zone === 'genius') li.classList.add('genius-zone');
+                    else if (task.zone === 'delegate') li.classList.add('delegate-zone');
+                    else if (task.zone === 'delete') li.classList.add('delete-zone');
+                    
+                    const textSpan = document.createElement('span');
+                    textSpan.className = 'task-text';
+                    textSpan.textContent = task.text;
+                    
+                    const zoneSelector = document.createElement('div');
+                    zoneSelector.className = 'zone-selector';
+                    
+                    const zones = [
+                        { label: 'Genius', value: 'genius', activeClass: 'active-genius' },
+                        { label: 'Delegate', value: 'delegate', activeClass: 'active-delegate' },
+                        { label: 'Delete', value: 'delete', activeClass: 'active-delete' }
+                    ];
+                    
+                    zones.forEach(function(zone) {
+                        const btn = document.createElement('button');
+                        btn.className = 'zone-btn';
+                        btn.textContent = zone.label;
+                        
+                        if (task.zone === zone.value) {
+                            btn.classList.add(zone.activeClass);
+                        }
+                        
+                        btn.addEventListener('click', function() {
+                            assignZone(task.id, zone.value);
+                        });
+                        
+                        zoneSelector.appendChild(btn);
+                    });
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'btn-delete-task';
+                    deleteBtn.textContent = '✕';
+                    deleteBtn.title = 'Remove task';
+                    deleteBtn.addEventListener('click', function() {
+                        deleteTask(task.id);
+                    });
+                    
+                    li.appendChild(textSpan);
+                    li.appendChild(zoneSelector);
+                    li.appendChild(deleteBtn);
+                    taskList.appendChild(li);
+                });
+            }
+            
+            // Analyze talent
+            analyzeBtn.addEventListener('click', function() {
+                if (tasks.length === 0) {
+                    alert('Please add at least one task first.');
+                    return;
+                }
+                
+                const geniusTasks = tasks.filter(function(task) {
+                    return task.zone === 'genius';
+                });
+                
+                const delegateTasks = tasks.filter(function(task) {
+                    return task.zone === 'delegate';
+                });
+                
+                const deleteTasks = tasks.filter(function(task) {
+                    return task.zone === 'delete';
+                });
+                
+                let zonesHTML = '';
+                
+                // Genius zone
+                zonesHTML += '<div class="zone-section"><h4 style="color: var(--accent-green);">✅ Genius Zone (Do these yourself)</h4><ul>';
+                if (geniusTasks.length === 0) {
+                    zonesHTML += '<li>No tasks assigned. Mark your key talents!</li>';
+                } else {
+                    geniusTasks.forEach(function(task) {
+                        zonesHTML += '<li>' + task.text + '</li>';
+                    });
+                }
+                zonesHTML += '</ul></div>';
+                
+                // Delegate zone
+                zonesHTML += '<div class="zone-section"><h4 style="color: #f59e0b;">🔄 Delegate Zone (Hand these off)</h4><ul>';
+                if (delegateTasks.length === 0) {
+                    zonesHTML += '<li>No tasks assigned. What can you hand off?</li>';
+                } else {
+                    delegateTasks.forEach(function(task) {
+                        zonesHTML += '<li>' + task.text + '</li>';
+                    });
+                }
+                zonesHTML += '</ul></div>';
+                
+                // Delete zone
+                zonesHTML += '<div class="zone-section"><h4 style="color: #ef4444;">❌ Delete Zone (Stop doing these)</h4><ul>';
+                if (deleteTasks.length === 0) {
+                    zonesHTML += '<li>No tasks assigned. What can you eliminate?</li>';
+                } else {
+                    deleteTasks.forEach(function(task) {
+                        zonesHTML += '<li>' + task.text + '</li>';
+                    });
+                }
+                zonesHTML += '</ul></div>';
+                
+                zonesContainer.innerHTML = zonesHTML;
+                talentResult.classList.add('show');
+            });
+            
+            addTaskBtn.addEventListener('click', addTask);
+            
+            taskInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTask();
+                }
+            });
+            
+        });
+    </script>
 </body>
 </html>
